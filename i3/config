@@ -8,29 +8,29 @@ set $Secondary_Screen VGA-1
 ## Font
 font pango:Cantarell Regular 11
 
-## Startup
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id pasystray
-exec --no-startup-id numlockx on
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-exec --no-startup-id picom -b -r 10 -o .9 -m 0.88 -cCf -i 0.95 -D 5
-exec --no-startup-id sh -c "google-drive-ocamlfuse ~/GoogleDrive"
-
 ## Refresh
 #Background
 exec_always ~/.fehbg >> /tmp/wallpaper
 #Polybar
 exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh &
+## Startup
+exec --no-startup-id numlockx on
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id pasystray -m 150
+exec --no-startup-id picom -b -r 10 -o .9 -m 0.88 -cCf -i 0.95 -D 5
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+
 
 ## Default Window Settings
-default_border pixel 2
+default_border pixel 1
 hide_edge_borders smart
-popup_during_fullscreen smart 
+popup_during_fullscreen smart
 workspace_auto_back_and_forth yes
-gaps inner 3
-gaps outer 3
+gaps inner 4
+gaps outer 2
 
 ## Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -46,13 +46,13 @@ bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit sh
 ## Media Keys
 #Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 2%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 2%- unmute
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 #Screen Brightness Keys
-bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 2
-bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 2
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2
 #Media Player
 bindcode 179 exec spotify
 bindcode 174 exec playerctl stop
@@ -79,9 +79,9 @@ bindsym $mod+Mod1+r		gaps inner current set 2; gaps outer current set 2
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Mod1+d exec --no-startup-id rofi -show window
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu"
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme lime-amber -show-icons -icon-theme Flat-Remix-Green-Dark -display-drun ""
+bindsym $mod+Mod1+d exec --no-startup-id rofi -show window -theme lime-amber -display-window ""
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -theme lime-amber -p "
 
 ## Focused Window
 #Change focused window
@@ -104,8 +104,8 @@ bindsym $mod+p focus parent
 #focus the child container
 bindsym $mod+c focus child
 #Focus to output
-bindsym Mod1+Control+Left focus output left	
-bindsym Mod1+Control+Right focus output Right	
+bindsym Mod1+Control+Left focus output left
+bindsym Mod1+Control+Right focus output Right
 
 ## Layout
 #split in horizontal orientation
@@ -121,11 +121,11 @@ bindsym $mod+e layout toggle split
 #toggle tiling / floating
 bindsym $mod+space floating toggle
 #ScratchPad
-bindsym $mod+Mod1+grave	scratchpad show
+bindsym $mod+Mod1+grave		scratchpad show
 bindsym Mod1+grave			move container to scratchpad
 
 ## ScreenShot
-bindsym Print exec gnome-screenshot -i 
+bindsym Print exec gnome-screenshot -i
 bindsym $mod+Print exec gnome-screenshot
 
 ## Workspace
@@ -190,11 +190,10 @@ assign [class="Chromium"] $ws02
 assign [class="Thunar"] $ws03
 #4 Editors
 assign [class="Geany"] $ws04
-assign [class="Atom"] $ws04
 #5 Video Players
 assign [class="mpv"] $ws05
 #6 Music Players
-for_window [class= "Spotify"] move to workspace $ws06 
+for_window [class= "Spotify"] move to workspace $ws06
 #7 Messengers
 assign [class="TelegramDesktop"] $ws07
 #8 Downloader
@@ -202,6 +201,7 @@ assign [class="qBittorrent"] $ws08
 #9 Photo Editing(Gimp)
 assign [class="Gimp-2.10"] $ws09
 #10 IDE
+assign [class="Atom"] $ws10
 assign [class="jetbrains-pycharm-ce"] $ws8
 #Assigning WS to Screen O/P
 workspace $ws00 output $Primary_Screen
@@ -214,59 +214,33 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Cheese"] floating enable
 for_window [title="Pages Unresponsive"] floating enable
+for_window [title="Internet Download Manager 6.27"] floating enable
 
 ### Color Variables ###
-set $bg-color	         #020c4a1f
-set $inactive-bg-color   #031031aa
-set $text-color          #abff4f
-set $inactive-text-color #ff9914
-set $urgent-bg-color     #b3b3b344
-set $urgent-text-color   #c7bd80
-set $transparent		 #11111155
+set $itransparent		#12121234
+set $ilime				#abff4f
+set $ilime-trans		#abff4f88
+set $iamber				#ff9914
+set $iamber-trans		#ff991488
+set $ired				#F00C0C
+set $ired-trans			#F00C0C88
+set $iblack				#1A1A1A
+set $iblack-trans		#1A1A1AAA
+set $iblack-trans1		#1A1A1A66
+set $iwhite				#E5E5E5
+set $iwhite-trans		#E5E5E5AA
+set $iwhite-trans1		#E5E5E566
+set $isilver			#bfbfbf
+set $isilver-trans		#88bfbfbf
 #### Window Colors ###
-#                       border              	background         text                 indicator
-client.focused          $text-color         	$bg-color          $text-color          #00ff00
-client.unfocused        $inactive-text-color	$inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-text-color		$inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-text-color		$urgent-bg-color   $urgent-text-color	#00ff00
+#class					border					background				text				indicator				Child-border
+client.focused			$ilime					$iblack-trans1			$iwhite-trans1		$itransparent			$ilime
+client.unfocused		$iamber					$iblack-trans1			$iwhite-trans1		$itransparent			$iamber
+client.focused_inactive	$iamber-trans			$iblack-trans			$iwhite-trans		$itransparent			$iamber-trans
+client.urgent			$ired					$white					$iblack				$isilver				$ired-trans
+client.placeholder		$ired-trans				$white					$iblack				$isilver-trans			$ired
 
-## i3Bar
-#i3Bar & i3Blocks
-bindsym $mod+b			bar mode toggle
-#Primary Screen
-#bar{
-#		i3bar_command polybar -c ~/.config/polybar/config primary
-#		output $Primary_Screen
-#	    #status_command i3blocks -c /home/greenalien/.config/i3blocks/config
-#		font pango:Monospace Regular 10
-#		colors {
-#				background $transparent
-#				separator #81899B88
-#				#					border					background			text
-#				focused_workspace	$text-color				$transparent		$text-color
-#				inactive_workspace	$inactive-text-color	$transparent		$inactive-text-color
-#				urgent_workspace	$urgent-text-color		$urgent-bg-color	$urgent-text-color
-#			}
-#		position top
-#		tray_padding 2
-#}
-#Second Screen
-#bar{
-#		i3bar_command polybar -c ~/.config/polybar/config primary
-#		output $Secondary_Screen
-#		status_command i3blocks -c ~/.config/i3/i3blocks2.conf
-#		font pango:Monospace Regular 10
-#		colors {
-#				separator #81899B00
-#				#                  border				background			text
-#				focused_workspace  $text-color			$transparent		$text-color
-#				inactive_workspace $inactive-text-color	$transparent		$inactive-text-color
-#				urgent_workspace   $urgent-text-color	$urgent-bg-color	$urgent-text-color
-#			}
-#		position top
-#		tray_padding 1
-#		tray_output none
-#}
+client.background		$itransparent
 
 ## resize window (you can also use the mouse for that)
 mode "resize" {
@@ -280,7 +254,7 @@ mode "resize" {
         bindsym i resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
-        
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -296,7 +270,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -310,13 +284,12 @@ mode "$mode_display" {
     bindsym 1 exec --no-startup-id xrandr --output $Secondary_Screen --auto --right-of $Primary_Screen, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output $Secondary_Screen --auto --left-of $Primary_Screen, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output $Secondary_Screen --off, mode "default"
-    
+
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+m mode "$mode_display"
-
 
 ## App shortcut
 # start a terminal
@@ -327,6 +300,6 @@ bindsym $mod+Control+3				exec thunar
 bindsym $mod+Control+4				exec geany
 bindsym $mod+Control+5				exec vlc
 bindsym $mod+Control+7				exec skype
-bindsym $mod+Control+$alt+7			exec telegram-desktop 
+bindsym $mod+Control+$alt+7			exec telegram-desktop
 bindsym $mod+Control+$alt+Shift+7	exec hexchat
 bindsym $mod+Control+8				exec qbittorrent
