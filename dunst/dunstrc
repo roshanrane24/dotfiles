@@ -166,8 +166,8 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/devices/16/
-
+	icon_path = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
+	
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
@@ -280,7 +280,7 @@
     frame_color = "#88abff4f"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
-    icon = /usr/share/icons/maia-dark/actions/16/:/usr/share/icons/maia-dark/actions/22/:/usr/share/icons/maia-dark/actions/16/
+	icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
 
 [urgency_normal]
     background = "#55000000"
@@ -288,7 +288,7 @@
     frame_color = "#88ff9914"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    icon = /usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/devices/16/
+	icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
 
 [urgency_critical]
     background = "#55AAAAAA"
@@ -296,7 +296,8 @@
     frame_color = "#55f21b3f"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
-    icon = /usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/devices/16/
+    icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -413,8 +414,36 @@
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
 #
+[pop-up]
+summary="*"
+script = ~/.config/dunst/sound/bell.sh
+
 [pa-applet]
 		appname = "pasystray"
 		format = "%p"
 		timeout = 2
+		script = ~/.config/dunst/sound/pa.sh
+		
+		
+[pa-detect]
+		appname = "pasystray"
+		summary = "New*"
+		format = "%s"
+		timeout = 2
+		script = ~/.config/dunst/sound/pa-detect.sh
+
+[nm-connect]
+		appname = "NetworkManager"
+		summary = "*Established*"
+		format = "%b"
+		timeout = 2
+		script = ~/.config/dunst/sound/net-con.sh
+
+[nm-disconnect]
+		appname = "NetworkManager"
+		summary = "*Disconnected*"
+		format = "%b"
+		timeout = 2
+		script = ~/.config/dunst/sound/net-dis.sh
+
 # vim: ft=cfg
