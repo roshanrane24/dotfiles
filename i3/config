@@ -1,5 +1,5 @@
 set $mod Mod4
-set $Locker i3lock && sleep 1
+set $Locker ~/.config/scripts/i3lockshot.sh && sleep 1
 
 set $Primary_Screen LVDS-1
 set $Secondary_Screen VGA-1
@@ -20,7 +20,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id pasystray -m 150
 exec --no-startup-id picom -b -r 10 -o .9 -m 0.88 -cCf -i 0.95 -D 5
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/scripts/i3lockshot.sh --nofork
 
 
 
@@ -284,7 +284,6 @@ mode "$mode_display" {
     bindsym 1 exec --no-startup-id xrandr --output $Secondary_Screen --auto --right-of $Primary_Screen, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output $Secondary_Screen --auto --left-of $Primary_Screen, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output $Secondary_Screen --off, mode "default"
-
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
