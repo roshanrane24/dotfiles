@@ -86,7 +86,7 @@ monitor = ${screen.secondary-monitor}
 monitor-fallback = ${screen.fallback-secondary-monitor}
 
 modules-center = mpd
-modules-right = pulseaudio xkeyboard eth swap memory cpu temperature date
+modules-right = xkeyboard pulseaudio eth swap memory temperature cpu date
 
 tray-position = none
 
@@ -188,19 +188,6 @@ ws-icon-7 = 7;
 ws-icon-8 = 8;
 ws-icon-9 = 9;
 ws-icon-10 = 10;
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-;icon-prev = 
-;icon-stop = 
-;icon-play = 
-;icon-pause = 
-;icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -403,35 +390,13 @@ ramp-foreground = ${self.format-underline}
 base-temperature = 27
 
 [module/powermenu]
-type = custom/menu
+type = custom/text
 
-expand-right = true
-
-format-underline = ${colors.red}
-
-format-spacing = 1
-
-label-open = %{F#FFFFFF}
-label-open-foreground = ${colors.red}
-label-close =  cancel
-label-close-foreground = ${colors.green}
-label-separator = |
-label-separator-foreground = ${colors.foreground}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+content = "  "
+content-foreground = ${colors.silver}
+content-underline = ${colors.red}
+click-left = ~/.config/polybar/scripts/powermenu.sh
+tail = true
 
 [settings]
 screenchange-reload = true
