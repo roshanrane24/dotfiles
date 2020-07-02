@@ -1,0 +1,45 @@
+configuration{
+}
+@import "lime-amber.rasi"
+*{
+	font:		"Cantarell 12";
+}
+window{
+	width:										10%;
+	height:										24.5%;
+	fullscreen:								false;
+	background-color:	@trans;
+	padding:	0;
+}
+mainbox{
+	padding:	0%;
+	border-radius:	0px;
+}
+textbox {
+}
+listview {
+	background-color:					@black-trans;
+	border-radius: 						0px;
+	padding:	0.4%;
+}
+element {
+	orientation:	vertical;
+	padding:	5px 2px 2px 2px;
+	margin:	0px;
+	//font:	FontAwesome5Free;
+}
+element-text {
+	text-color: inherit;
+	expand:	true;
+	align:	center;
+}
+element-icon {
+	size:	64;
+	border:	10px;
+	boder-color: @ired;
+	text-color: inherit;
+	horizontal-align: true;
+}
+inputbar{
+enabled:	false;
+}
