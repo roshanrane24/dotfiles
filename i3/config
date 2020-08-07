@@ -1,8 +1,8 @@
 set $mod Mod4
 set $Locker ~/.config/scripts/i3lockshot.sh && sleep 1
 
-set $Primary_Screen LVDS-1
-set $Secondary_Screen VGA-1
+set $Primary_Screen eDP-1
+set $Secondary_Screen DP-1
 
 
 ## Font
@@ -15,14 +15,16 @@ exec_always ~/.fehbg >> /tmp/wallpaper
 exec_always --no-startup-id ~/.config/i3/scripts/polybar.sh &
 ## Startup
 exec --no-startup-id numlockx on
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id pasystray -m 150
 exec --no-startup-id picom -b -r 10 -o .9 -m 0.88 -cCf -i 0.95 -D 5
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/scripts/i3lockshot.sh --nofork
-
-
+exec --no-startup-id xautolock -time 10 -locker $Locker &
+# Conky
+exec --no-startup-id conky -c ~/.config/conky/conky.conf
+exec_always killall conky && sleep 1 && conky -c ~/.config/conky/conky.conf > /tmp/conky.log
 
 ## Default Window Settings
 default_border pixel 1
@@ -31,6 +33,7 @@ popup_during_fullscreen smart
 workspace_auto_back_and_forth yes
 gaps inner 4
 gaps outer 2
+#border_radius 10
 
 ## Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -46,8 +49,8 @@ bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit sh
 ## Media Keys
 #Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 2%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 2%- unmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 #Screen Brightness Keys
@@ -125,9 +128,7 @@ bindsym $mod+Mod1+grave		scratchpad show
 bindsym Mod1+grave			move container to scratchpad
 
 ## ScreenShot
-bindsym Print exec gnome-screenshot -i
-bindsym $mod+Print exec gnome-screenshot
-
+bindsym Print exec scrot '%Y-%m-%d-%s_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'
 ## Workspace
 set $ws00 "0"
 set $ws01 "1"
@@ -142,7 +143,7 @@ set $ws09 "9"
 set $ws10 "10"
 #set $ws00 "0: "
 #set $ws01 "1: "
-#set $ws02 "2: "
+#se
 #set $ws03 "3: "
 #set $ws04 "4: "
 #set $ws05 "5: "
@@ -151,7 +152,7 @@ set $ws10 "10"
 #set $ws08 "8: "
 #set $ws09 "9: "
 #set $ws10 "10: "
-#switch to workspace
+#switch to workspace 
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
 bindsym $mod+grave workspace $ws00
@@ -182,6 +183,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Tab workspace back_and_forth
 
 ## Workspace Assignment
+#0 Conky
+assign [class="Conky"] $ws00
 #1 Terminals
 assign [class="Terminator"] $ws01
 #2 Browsers
@@ -189,7 +192,7 @@ assign [class="Chromium"] $ws02
 #3 File Managers
 assign [class="Thunar"] $ws03
 #4 Editors
-assign [class="Geany"] $ws04
+assign [class="code-oss"] $ws04
 #5 Video Players
 assign [class="mpv"] $ws05
 #6 Music Players
@@ -198,11 +201,10 @@ for_window [class= "Spotify"] move to workspace $ws06
 assign [class="TelegramDesktop"] $ws07
 #8 Downloader
 assign [class="qBittorrent"] $ws08
-#9 Photo Editing(Gimp)
-assign [class="Gimp-2.10"] $ws09
-#10 IDE
+#9 IDE
+assign [class="jetbrains-pycharm-ce"] $ws09
 assign [class="Atom"] $ws10
-assign [class="jetbrains-pycharm-ce"] $ws8
+#10 ETC
 #Assigning WS to Screen O/P
 workspace $ws00 output $Primary_Screen
 workspace $ws01 output $Primary_Screen
@@ -237,8 +239,8 @@ set $isilver-trans		#88bfbfbf
 client.focused			$ilime					$iblack-trans1			$iwhite-trans1		$itransparent			$ilime
 client.unfocused		$iamber					$iblack-trans1			$iwhite-trans1		$itransparent			$iamber
 client.focused_inactive	$iamber-trans			$iblack-trans			$iwhite-trans		$itransparent			$iamber-trans
-client.urgent			$ired					$white					$iblack				$isilver				$ired-trans
-client.placeholder		$ired-trans				$white					$iblack				$isilver-trans			$ired
+client.urgent			$ired					$iwhite					$iblack				$isilver				$ired-trans
+client.placeholder		$ired-trans				$iwhite					$iblack				$isilver-trans			$ired
 
 client.background		$itransparent
 
@@ -278,12 +280,14 @@ mode "$mode_system" {
 }
 bindsym $mod+Pause mode "$mode_system"
 
+bindsym $mod+Mod1+Delete exec ~/.config/polybar/scripts/powermenu.sh
+
 ## Display Management
 set $mode_display Ext Screen (1) VGA RIGHT, (2) VGA LEFT, (3) VGA OFF
 mode "$mode_display" {
     bindsym 1 exec --no-startup-id xrandr --output $Secondary_Screen --auto --right-of $Primary_Screen, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output $Secondary_Screen --auto --left-of $Primary_Screen, mode "default"
-    bindsym 2 exec --no-startup-id xrandr --output $Secondary_Screen --off, mode "default"
+    bindsym 3 exec --no-startup-id xrandr --output $Secondary_Screen --off, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -296,9 +300,8 @@ bindsym $mod+Return 				exec i3-sensible-terminal
 bindsym $mod+Mod1+v 				exec pavucontrol
 bindsym $mod+Control+2 				exec chromium
 bindsym $mod+Control+3				exec thunar
-bindsym $mod+Control+4				exec geany
-bindsym $mod+Control+5				exec vlc
+bindsym $mod+Control+4				exec code
+bindsym $mod+Control+5				exec mpv 
 bindsym $mod+Control+7				exec skype
-bindsym $mod+Control+$alt+7			exec telegram-desktop
-bindsym $mod+Control+$alt+Shift+7	exec hexchat
+bindsym $mod+Control+Shift+7		exec hexchat
 bindsym $mod+Control+8				exec qbittorrent
