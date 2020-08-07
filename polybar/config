@@ -1,17 +1,18 @@
 [screen]
-primary-monitor = LVDS-1
-secondary-monitor = VGA-1
+primary-monitor =eDP-1 
+secondary-monitor = DP-1
 fallback-secondary-monitor = HDMI-1
 
 [colors]
 
-background = #77000000
-background-alt = #0FFFFFFF
-foreground = #E5E5E5
-foreground-alt = #ADD8E6
+background = #88444444
+background-0 = #CC444444
+ackground-alt = #0FFFFFFF
+foreground = #FFFFFF
+foreground-alt = #EEEEEE
 
-amber = #FFBF00
-lime = #BFFF00
+amber = #DDFFBF00
+lime = #DDBFFF00
 scarlet-red = #FF2400
 silver = #88C0C0C0
 chartreuse-green = #7FE617
@@ -34,7 +35,6 @@ color12 = #FF00FF
 
 primary = ${self.lime}
 primary_light = ${self.chartreuse-green}
-primary-light = ${self.chartreuse-green}
 secondary = ${self.amber}
 alert = ${self.silver}
 alert-red = ${self.scarlet-red}
@@ -45,18 +45,20 @@ width = 100%
 height = 3%
 fixed-center = true
 
+radius-bottom = 7
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2%
+line-size = 0%
 line-color  = ${colors.primary}
 
-padding-left = 1
-padding-right = 1
+padding-left = 0
+padding-right = 0
 
-module-margin-left = 1
+module-margin-left = 0
 module-margin-top = 2
-module-margin-right = 1
+module-margin-right = 2
 
 font-0 = Cantarell:style=Light:size=10;0
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -67,13 +69,13 @@ font-5 = FontAwesome5Free:style=Regular:size=10;0
 font-6 = FontAwesome5Brands:style=Regular:size=10;0
 font-7 = icomoon:style=Regular:size=10;0
 
-modules-left = i3 xwindow
+modules-left = i3
 modules-center = 
-modules-right = xkeyboard backlight-acpi pulseaudio filesystem wlan eth swap memory temperature cpu battery date powermenu
-separator = |
+modules-right = backlight-acpi pulseaudio battery date
+separator = 
 
 tray-position = right
-tray-padding = 1
+tray-padding = 5
 tray-background = ${colors.background}
 tray-transparency = true
 
@@ -86,54 +88,22 @@ monitor = ${screen.secondary-monitor}
 monitor-fallback = ${screen.fallback-secondary-monitor}
 
 modules-center = mpd
-modules-right = xkeyboard pulseaudio eth swap memory temperature cpu date
+modules-right = xkeyboard eth swap memory temperature cpu date
 
 tray-position = none
 
-[module/xwindow]
-type = internal/xwindow
-label = %title%
-label-maxlen = 20
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/xkeyboard]
 type = internal/xkeyboard
 
 format = <label-indicator>
-format-spacing = 0
-format-foreground = ${self.format-underline}
-format-underline = ${colors.color1}
+format-spacing = 1
+format-foreground = ${colors.lime}
 
-;label-indicator-on-capslock = 
-;label-indicator-on-numlock = 
-
-label-indicator-on = [%icon%]
-indicator-icon-0 = caps lock;on icon;
-indicator-icon-1 = num lock;on icon;
-
-[module/filesystem]
-type = internal/fs
-
-mount-0 = /
-
-interval = 30
-
-fixed-values = true
-
-spacing = 0
-
-format-mounted = <label-mounted>
-format-unmounted = <label-unmounted>
-
-label-mounted = %{F#00FFFF}%{F-} %percentage_used%%
-label-mounted-underline = ${colors.color4}
-
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.alert-red}
+label-indicator-on-capslock = 
+label-indicator-off-capslock = 
+label-indicator-on-numlock = 
+label-indicator-off-numlock = 
 
 [module/i3]
 type = internal/i3
@@ -151,29 +121,27 @@ label-state-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-foreground = ${colors.primary_light}
+label-focused-background = ${colors.background-0}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
 label-unfocused-padding = 1
-label-unfocused-underline = ${colors.secondary}
+label-unfocused-foreground = ${colors.secondary}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.primary_light}
-label-visible-padding = ${self.label-unfocused-padding}
+label-visible-foreground = ${colors.primary}
+label-visible-padding = 1
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
-label-urgent-background = ${colors.alert}
-label-urgent-underline = ${colors.alert-red}
+label-urgent-foreground = ${colors.alert-red}
 label-urgent-padding = ${self.label-focused-padding}
 
 ; Separator in between workspaces
-label-separator = |
+label-separator = | 
 label-separator-padding = 0
 label-separator-foreground = ${colors.foreground}
 
@@ -186,8 +154,8 @@ ws-icon-5 = 5;
 ws-icon-6 = 6;
 ws-icon-7 = 7;
 ws-icon-8 = 8;
-ws-icon-9 = 9;
-ws-icon-10 = 10;
+ws-icon-9 = 9;
+ws-icon-10 = 10;
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -197,11 +165,8 @@ format-foreground = ${root.foreground}
 label = %percentage%%
 label-foreground = ${root.foreground}
 
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
+ramp-0 = 
+ramp-1 = 
 
 enable-scroll = true
 
@@ -217,7 +182,7 @@ type = internal/cpu
 interval = 1
 
 format = <label>
-format-underline = ${colors.color10}
+format-underline = ${root.foreground}
 format-prefix = " "
 format-prefix-foreground = ${self.format-underline}
 label-foreground = ${root.foreground}
@@ -230,7 +195,7 @@ type = internal/memory
 interval = 2
 
 format-prefix = " "
-format-underline = ${colors.color8}
+format-underline = ${root.foreground}
 format-prefix-foreground = ${self.format-underline}
 label = %percentage_used%%
 
@@ -238,49 +203,8 @@ label = %percentage_used%%
 inherit = module/memory
 
 format-prefix = " "
-format-underline = ${colors.color7}
+format-underline = ${root.foreground}
 label = %percentage_swap_used%%
-
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.color5}
-label-connected = %signal%%
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal = 
-ramp-signal-foreground = ${self.format-connected-underline}
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.alert-red}
-format-disconnected-prefix = 
-format-disconnected-prefix-foreground = ${self.format-disconnected-underline}
-label-disconnected = disconnected
-label-disconnected-foreground = ${root.foreground}
-
-[module/eth]
-type = internal/network
-interface = enp12s0
-interval = 3.0
-
-format-connected-underline = ${colors.color6}
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${self.format-connected-underline}
-label-connected = %local_ip%
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.alert-red}
-format-disconnected-prefix = " "
-format-disconnected-prefix-foreground = ${self.format-disconnected-underline}
-format-disconnected-foreground = ${root.foreground}
-label-disconnected = %ifname%
-label-disconnected-foreground = ${root.foreground}
 
 [module/date]
 type = internal/date
@@ -292,7 +216,7 @@ date-alt = "| %d %b, %Y |"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-underline = ${colors.color12}
+format-underline = ${colors.foreground}
 format-prefix = " "
 format-foreground = ${root.foreground}
 format-prefix-foreground = ${self.format-underline}
@@ -319,8 +243,7 @@ label-muted-foreground = ${colors.alert-red}
 
 ramp-volume-0 = 
 ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
+ramp-volume-2 = 
 
 click-right = pavucontrol
 
@@ -331,21 +254,18 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.color11}
 
 label-charging = %percentage%%
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 
 label-discharging = %percentage%%
 
 format-full = <label-full>
 format-full-prefix = 
 format-full-prefix-foreground = ${colors.lime}
-format-full-underline = ${self.format-full-prefix-foreground}
 
-label-full = Fully charged
+label-full = %percentage%%
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -362,31 +282,28 @@ animation-charging-4 = 
 animation-charging-foreground = ${root.foreground}
 animation-charging-framerate = 750
 
-
-
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
 
 format = <ramp> <label>
-format-underline = ${colors.color9}
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${colors.alert-red}
-format-warn-foreground = ${self.format-warn-underline}
 
 label = %temperature-c%
 label-foreground = ${root.foreground}
+
+format-warn = <ramp> <label-warn>
+format-warn-foreground = ${colors.alert-red}
+
 label-warn = %temperature-c%
-label-warn-foreground = ${self.format-warn-underline}
+label-warn-foreground = ${colors.red}
 
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${self.format-underline}
-
+ramp-foreground = ${root.foreground}
 base-temperature = 27
 
 [module/powermenu]
