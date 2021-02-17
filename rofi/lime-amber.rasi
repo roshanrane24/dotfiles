@@ -1,0 +1,155 @@
+configuration{
+}
+
+
+@import "globals.rasi"
+*{
+	font:											"Cantarell 25";
+	columns: 4;
+
+}
+
+window{
+	background-color:					@black-trans;
+	width:										100%;
+	height:										100%;
+	fullscreen:								true;
+	padding:									2% 3% 2% 3%;
+}
+
+mainbox{
+	background-color:					@black-trans;
+	border-radius:						2%;
+	border:						1px;
+	//border-color:						@ilime;
+	padding:	0.5% 1% 0.5% 1%;
+}
+
+prompt {
+	width:	5%;
+	enabled:							true;
+	background-color:					@white-trans2;
+	text-color:								@white-trans;
+	border-radius: 						10px;
+	padding: 									1% 1% 1% 1%;
+	border:						1px;
+	border-color:						@white-trans3;
+}
+
+textbox {
+	border-radius:						1px;
+	background-color: 				@black-trans;
+	border:						1px;
+	border-color:						@white-trans3;
+}
+
+listview {
+	background-color:					@black-trans;
+	border-radius: 						10px;
+	padding:	1% 1% 0% 1%;
+}
+
+element {
+	orientation:	vertical;
+	padding:3px;
+	margin:	3px;
+	border-radius:					20px;
+}
+
+element normal.normal {
+    background-color: 			@black-trans2;
+    text-color:       			@white-trans;
+    border:	1px;
+    border-color:       			@ilime;
+}
+element normal.urgent {
+    background-color: 			@black-trans3;
+    text-color:       			@ired;
+		border-radius: 					10px;
+		border: 								5px;
+		border-color: 					@ired;
+}
+element normal.active {
+	background-color: 				@black-trans3;
+	text-color:       				@iamber-dark;
+	border-radius: 						10px;
+	border: 									3px;
+	border-color: 						@ilime-trans;
+}
+element selected.normal {
+		background-color: 				@black-trans3;
+    text-color:       				@iamber;
+		border-radius: 						10px;
+		border: 									1px;
+		border-color: 						@iamber-trans;
+}
+element selected.urgent {
+		background-color: 			@black-trans3;
+		text-color:       			@ired;
+		border-radius: 					10px;
+		border: 								5px;
+		border-color: 					@iamber;
+}
+element selected.active {
+	background-color: 				@white-trans2;
+	text-color:       				@ilime;
+	border-radius: 						10px;
+	border: 									3px;
+	border-color: 						@iamber-trans;
+}
+element alternate.normal {
+    background-color: 			@black-trans2;
+    text-color:       			@white-trans;
+    border:	1px;
+    border-color:       			@ilime;
+}
+element alternate.urgent {
+	background-color: 			@black-trans3;
+	text-color:       			@ired-trans;
+	border-radius: 					10px;
+	border: 								5px;
+	border-color: 					@ired;
+}
+element alternate.active {
+	background-color: 				@black-trans3;
+	text-color:       				@iamber;
+	border-radius: 						10px;
+	border: 									3px;
+	border-color: 						@ilime-trans;
+}
+
+inputbar {
+    background-color: 			@black-trans;
+		border-radius: 					2px;
+		border-color: 					@white-trans;
+	
+}
+
+entry {
+    border-radius:					1px;
+		background-color: 			@white-trans2;
+		border-radius: 					10px;
+		text-color:							@white-trans;
+		border:						1px;
+	border-color:						@white-trans3;
+}
+
+element-text {
+	text-color: inherit;
+	horizontal-align: 0.5;
+	expand:	true;
+}
+element-icon {
+	size:	64;
+	border:	10px;
+	boder-color: @ired;
+	text-color: inherit;
+	horizontal-align: true;
+}
+inputbar{
+	background-color:	@black-trans;
+	}
+case-indicator{
+	enabled:	false;
+}
+

@@ -1,0 +1,18 @@
+* {
+	trans:		#00000000;
+	black-trans:		#00000022;
+	black-trans2:		#00000055;
+	black-trans3:		#00000088;
+	iamber:					#ff9914;
+	iamber-trans:		#ff9914cc;
+	iamber-dark:		#ff9a15;
+	ilime:					#abff4f;
+	ilime-trans:		#abff4fbb;
+	ilime-trans2:		#abff4fce;
+	ired:						#ff0101aa;
+	ired-trans2:		#ff010188;
+	white-trans:		#FFFFFFdd;
+	white-trans2:		#FFFFFF22;
+	white-trans3:		#FFFFFF88;
+	font:						"Cantarell 25";
+}
