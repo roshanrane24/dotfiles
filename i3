@@ -1,0 +1,1 @@
+/home/greenalien/.config/i3
