@@ -15,4 +15,7 @@ compinit
 autoload -Uz promptinit
 promptinit
 prompt spaceship
+
 alias config='/usr/bin/git --git-dir=/home/greenalien/build/dotfiles --work-tree=/home/greenalien'
+alias ls='ls --color=auto'
+alias lsa='ls -la'
