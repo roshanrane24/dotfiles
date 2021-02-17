@@ -1,0 +1,27 @@
+" SETUP
+syntax on
+set autoindent
+set smartindent
+set number
+set mouse=a
+set showmatch
+set smartcase
+set autowrite
+set wrap
+set ttyfast
+set laststatus=2
+set showmode
+set showcmd
+set list
+set listchars=tab:>\ ,trail:•,extends:#,nbsp:.
+set hlsearch
+set incsearch
+set rnu
+set paste
+
+" ALACRITTY
+set ttymouse=sgr
+
+" COLORSCHEME
+colorscheme monokai-bold
+
