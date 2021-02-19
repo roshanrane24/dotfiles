@@ -72,7 +72,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = auto
+    separator_color = '#eeeeee'
 
     # Sort messages by urgency.
     sort = yes
@@ -139,7 +139,7 @@
 
     # Split notifications into multiple lines if they don't fit into
     # geometry.
-    word_wrap = yes
+    word_wrap = no
 
     # When word_wrap is set to no, specify where to make an ellipsis in long lines.
     # Possible values are "start", "middle" and "end".
@@ -275,25 +275,25 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#212121AA"
+    background = "#000000AA"
     foreground = "#E5E5E5"
-    frame_color = "#C2185B"
+    frame_color = "#abff4f88"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
 
 [urgency_normal]
-    background = "#212121AA"
-    foreground = "#FFFFFF"
-    frame_color = "#AEEA00"
+    background = "#000000AA"
+    foreground = "#ffffff"
+    frame_color = "#ff991488"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
+	icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
 
 [urgency_critical]
-    background = "#000000AA"
-    foreground = "#FFFFFF"
-    frame_color = "#D50000"
+    background = "#AAAAAAAA"
+    foreground = "#000000"
+    frame_color = "#f21b3f55"
     timeout = 15
     # Icon for notifications with critical urgency, uncomment to enable
     icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
@@ -418,38 +418,32 @@
 summary="*"
 script = ~/.config/dunst/sound/bell.sh
 
-#[pa-applet]
-#appname = "pasystray"
-#format = "%p"
-#timeout = 2
-#script = ~/.config/dunst/sound/pa.sh
-
-#[pa-detect]
-#appname = "pasystray"
-#summary = "New*"
-#format = "%s"
-#timeout = 2
-#script = ~/.config/dunst/sound/pa-detect.sh
+[pa-applet]
+		appname = "pasystray"
+		format = "%p"
+		timeout = 2
+		script = ~/.config/dunst/sound/pa.sh
+		
+		
+[pa-detect]
+		appname = "pasystray"
+		summary = "New*"
+		format = "%s"
+		timeout = 2
+		script = ~/.config/dunst/sound/pa-detect.sh
 
 [nm-connect]
-appname = "NetworkManager"
-summary = "*Established*"
-format = "%b"
-timeout = 2
-script = ~/.config/dunst/sound/net-con.sh
+		appname = "NetworkManager"
+		summary = "*Established*"
+		format = "%b"
+		timeout = 2
+		script = ~/.config/dunst/sound/net-con.sh
 
 [nm-disconnect]
-appname = "NetworkManager"
-summary = "*Disconnected*"
-format = "%b"
-timeout = 2
-script = ~/.config/dunst/sound/net-dis.sh
-
-[kdeconnect-moneycontrol]
-appname = "kdeconnect"
-summary = "moneycontrol"
-format = "<bold>%s</bold>\n%b"
-timeout = 5
-script = ""
+		appname = "NetworkManager"
+		summary = "*Disconnected*"
+		format = "%b"
+		timeout = 2
+		script = ~/.config/dunst/sound/net-dis.sh
 
 # vim: ft=cfg
