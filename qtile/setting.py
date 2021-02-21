@@ -60,5 +60,6 @@ floating_rules = [
     {'wname': 'Confirm'},  # GPG key password entry
     {'wname': 'Tip of the Day'},  # GPG key password entry
     {'wname': 'Confirm Exit'},  # GPG key password entry
+    {'wname': 'Copying files'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ]
