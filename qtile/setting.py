@@ -44,6 +44,7 @@ workspaces = {
 floating_rules = [
     {'wmclass': 'confirm'},
     {'wmclass': 'dialog'},
+    {'wmclass': 'kvms pro.exe'},
     {'wmclass': 'download'},
     {'wmclass': 'error'},
     {'wmclass': 'file_progress'},
@@ -54,6 +55,7 @@ floating_rules = [
     {'wmclass': 'makebranch'},  # gitk
     {'wmclass': 'maketag'},  # gitk
     {'wmclass': 'QML Timer'},  # Pilorama
+    {'wmclass': 'polkit-mate-authentication-agent-1'},  # Pilorama
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'Terminator Preferences'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
@@ -61,5 +63,7 @@ floating_rules = [
     {'wname': 'Tip of the Day'},  # GPG key password entry
     {'wname': 'Confirm Exit'},  # GPG key password entry
     {'wname': 'Copying files'},  # GPG key password entry
+    {'wname': 'Save File'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ]
+
