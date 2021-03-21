@@ -22,44 +22,6 @@ mid_sep = widget.Sep(
     size_percent=65,
     )
 
-groupbox1 = widget.GroupBox(
-    active=COLORS.LIGHT_PRIMARY,
-    background=COLORS.BACKGROUND,
-    block_highlight_text_color=COLORS.DARK_FONT,
-    borderwidth=0,
-    disable_drag=True,
-    foreground=COLORS.LIGHT_FONT,
-    inactive=COLORS.LIGHT_BACKGROUND,
-    highlight_method="block",
-    other_current_screen_border=COLORS.COMPLEMENTARY,
-    other_screen_border=COLORS.DARK_PRIMARY,
-    this_current_screen_border=COLORS.PRIMARY,
-    this_screen_border=COLORS.LIGHT_COMPLEMENTARY,
-    urgent_alert_method="block",
-    urgent_border=COLORS.URGENT,
-    urgent_text=COLORS.LIGHT_FONT,
-    rounds=False,
-    )
-
-groupbox2 = widget.GroupBox(
-    active=COLORS.LIGHT_PRIMARY,
-    background=COLORS.BACKGROUND,
-    block_highlight_text_color=COLORS.DARK_FONT,
-    borderwidth=0,
-    disable_drag=True,
-    foreground=COLORS.LIGHT_FONT,
-    inactive=COLORS.LIGHT_BACKGROUND,
-    highlight_method="block",
-    other_current_screen_border=COLORS.COMPLEMENTARY,
-    other_screen_border=COLORS.DARK_PRIMARY,
-    this_current_screen_border=COLORS.PRIMARY,
-    this_screen_border=COLORS.LIGHT_COMPLEMENTARY,
-    urgent_alert_method="block",
-    urgent_border=COLORS.URGENT,
-    urgent_text=COLORS.LIGHT_FONT,
-    rounds=False,
-    )
-
 tasklist = widget.TaskList(
     background=COLORS.BACKGROUND,
     border=COLORS.PRIMARY,
@@ -82,13 +44,34 @@ clock = widget.Clock(
     update_interval=5.5,
     )
 
-layout_icon = widget.CurrentLayoutIcon(
+layout_icon1= widget.CurrentLayoutIcon(
+    scale=0.7,
+    )
+
+layout_icon2= widget.CurrentLayoutIcon(
     scale=0.7,
     )
 # Primary screen widget
 main_screen_bar = bar.Bar([
     end_sep,
-    groupbox1,
+    widget.GroupBox(
+    active=COLORS.LIGHT_PRIMARY,
+    background=COLORS.BACKGROUND,
+    block_highlight_text_color=COLORS.DARK_FONT,
+    borderwidth=0,
+    disable_drag=True,
+    foreground=COLORS.LIGHT_FONT,
+    inactive=COLORS.LIGHT_BACKGROUND,
+    highlight_method="block",
+    other_current_screen_border=COLORS.COMPLEMENTARY,
+    other_screen_border=COLORS.DARK_PRIMARY,
+    this_current_screen_border=COLORS.PRIMARY,
+    this_screen_border=COLORS.LIGHT_COMPLEMENTARY,
+    urgent_alert_method="block",
+    urgent_border=COLORS.URGENT,
+    urgent_text=COLORS.LIGHT_FONT,
+    rounds=False,
+    ),
     mid_sep,
     widget.Spacer(),
     widget.TextBox(
@@ -159,7 +142,7 @@ main_screen_bar = bar.Bar([
         text_open="  ",
         text_closed="  ",
     ),
-    layout_icon,
+    layout_icon1,
     end_sep,
     ],
     **bar_config
@@ -167,10 +150,33 @@ main_screen_bar = bar.Bar([
 
 second_screen_bar = bar.Bar([
     end_sep,
-    groupbox2,
+    widget.GroupBox(
+    active=COLORS.LIGHT_PRIMARY,
+    background=COLORS.BACKGROUND,
+    block_highlight_text_color=COLORS.DARK_FONT,
+    borderwidth=0,
+    disable_drag=True,
+    foreground=COLORS.LIGHT_FONT,
+    inactive=COLORS.LIGHT_BACKGROUND,
+    highlight_method="block",
+    other_current_screen_border=COLORS.COMPLEMENTARY,
+    other_screen_border=COLORS.DARK_PRIMARY,
+    this_current_screen_border=COLORS.PRIMARY,
+    this_screen_border=COLORS.LIGHT_COMPLEMENTARY,
+    urgent_alert_method="block",
+    urgent_border=COLORS.URGENT,
+    urgent_text=COLORS.LIGHT_FONT,
+    rounds=False,
+    ),
     mid_sep,
     widget.Spacer(),
     mid_sep,
+    widget.HDDBusyGraph(
+    border_color=COLORS.LIGHT_FONT,
+    fill_color=COLORS.LIGHT_COMPLEMENTARY,
+    graph_color=COLORS.PRIMARY,
+    border_width=1,
+    ),
     widget.BitcoinTicker(),
     widget.TextBox(
         " ",
@@ -197,7 +203,7 @@ second_screen_bar = bar.Bar([
         foreground_alert=COLORS.URGENT,
     ),
     clock,
-    layout_icon,
+    layout_icon2,
     end_sep,
     ],
     **bar_config
