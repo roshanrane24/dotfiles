@@ -275,7 +275,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#000000AA"
+    background = "#212121AA"
     foreground = "#E5E5E5"
     frame_color = "#abff4f88"
     timeout = 5
@@ -283,7 +283,7 @@
     icon = /usr/share/icons/Flat-Remix-Green-Dark/apps/scalable/
 
 [urgency_normal]
-    background = "#000000AA"
+    background = "#212121AA"
     foreground = "#ffffff"
     frame_color = "#ff991488"
     timeout = 10
