@@ -6,13 +6,17 @@ from setting import MODKEY, workspaces
 # Creating Workspace Group
 groups = []
 for ws in workspaces.keys():
-    if workspaces[ws]["matches"] is not None:
-        match = [Match(wm_class=[x for x in list(workspaces[ws]["matches"].values())[0]])]
+    mat = workspaces[ws]["matches"]
+    mat_list = []
+    if mat is not None:
+        if "wm_class" in mat.keys():
+            mat_list.extend([Match(wm_class=mat["wm_class"])])
+        if "wm_name" in mat.keys():
+            mat_list.extend([Match(title=mat["wm_name"])])
     else:
         match = None
     group = Group(name=ws,
                   label=workspaces[ws]["label"],
-                  matches=match)
+                  matches=mat_list)
     groups.append(group)
 
-print(groups[0].label)
