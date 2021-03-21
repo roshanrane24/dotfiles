@@ -9,11 +9,11 @@ from groups import groups
 # Configuration Variables
 auto_fullscreen = True
 bring_front_click = True
-cursor_warp = True
+cursor_warp = False
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 focus_on_window_activation = "smart"
-follow_mouse_focus = True
+follow_mouse_focus = False
 wmname = "LG3D"
 widget_defaults = dict(
     font='Space Mono',
@@ -34,7 +34,7 @@ def autostart():
         ["xset", "b", "off"],
         ["/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"],
         ["kdeconnect-indicator"],
-        ["xmodmap", "-e", "\"keycode", "78=d", "D", "d", "D\""], # for broker `d` key
+        ["xmodmap", "-e", "\"keycode", "78=d", "D", "d", "D\""], # for broken `d` key
     ]
 
     for p in processes:
