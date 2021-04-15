@@ -1,2 +1,9 @@
+# >>> ls shortcuts
 alias ls='ls --color=auto'
-alias lsa='ls -la'
+alias la='ls -la'
+alias lh='ls -lh'
+alias lha='ls -lha'
+# <<< ls
+# >>> ncdu 
+alias ncdu='ncdu --color dark'
+# <<< ncdu
