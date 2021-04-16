@@ -13,7 +13,7 @@ cursor_warp = False
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 focus_on_window_activation = "smart"
-follow_mouse_focus = False
+follow_mouse_focus = True
 wmname = "LG3D"
 widget_defaults = dict(
     font='Space Mono',
@@ -32,7 +32,7 @@ def autostart():
         ['blueman-applet'],
         ["picom"],
         ["xset", "b", "off"],
-        ["/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"],
+        ["/usr/lib/polkit-kde-authentication-agent-1"],
         ["kdeconnect-indicator"],
         ["xmodmap", "-e", "\"keycode", "78=d", "D", "d", "D\""], # for broken `d` key
     ]

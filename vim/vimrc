@@ -16,8 +16,16 @@ set list
 set listchars=tab:>\ ,trail:•,extends:#,nbsp:.
 set hlsearch
 set incsearch
-set rnu
+" set rnu
 set paste
+set ruler
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" StatusLine
+set laststatus=2
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " ALACRITTY
 set ttymouse=sgr
@@ -25,3 +33,10 @@ set ttymouse=sgr
 " COLORSCHEME
 colorscheme monokai-bold
 
+" Plugins
+" let g:jedi#force_py_version=3
+set completeopt+=noselect
+set completeopt+=menuone
+let g:kite_completions=1
+let g:kite_auto_complete=1
+let g:kite_tab_complete=1

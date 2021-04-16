@@ -1,6 +1,6 @@
 [screen]
-primary-monitor =eDP-1 
-secondary-monitor = DP-1
+primary-monitor =eDP1 
+secondary-monitor = DP1
 fallback-secondary-monitor = HDMI-1
 
 [colors]
