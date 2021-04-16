@@ -22,6 +22,7 @@ exec --no-startup-id pasystray -m 150
 exec --no-startup-id picom -b -r 10 -o .9 -m 0.88 -cCf -i 0.95 -D 5
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/scripts/i3lockshot.sh --nofork
 exec --no-startup-id xautolock -time 10 -locker $Locker &
+exec xrandr --output eDP1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --mode 1360x768 --pos 1366x0 --rotate normal --output HDMI1 --off --output HDMI2 --off --output VIRTUAL1 --off
 # Conky
 exec --no-startup-id conky -c ~/.config/conky/conky.conf
 exec_always killall conky && sleep 1 && conky -c ~/.config/conky/conky.conf > /tmp/conky.log
