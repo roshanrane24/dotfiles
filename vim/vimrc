@@ -1,4 +1,4 @@
-" SETUP
+" >>> SETUP >>>
 syntax on
 set autoindent
 set smartindent
@@ -23,20 +23,72 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" StatusLine
-set laststatus=2
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" ALACRITTY
+" >>> ALACRITTY >>>
 set ttymouse=sgr
 
-" COLORSCHEME
+
+" >>> COLORSCHEME >>>
 colorscheme monokai-bold
 
-" Plugins
-" let g:jedi#force_py_version=3
-set completeopt+=noselect
-set completeopt+=menuone
-let g:kite_completions=1
-let g:kite_auto_complete=1
-let g:kite_tab_complete=1
+
+" >>> Plugins >>>
+call plug#begin('~/.vim/plugged')
+" >NERDtree
+Plug 'scrooloose/nerdtree'
+
+" >JEDI-vim
+Plug 'davidhalter/jedi-vim'
+
+" >SimplyFold
+Plug 'tmhedberg/simpylfold'
+
+" >PythonVenv
+Plug 'jmcantrell/vim-virtualenv'
+
+" >Vim-Polyglot
+Plug 'sheerun/vim-polyglot'
+
+" >YouCompleteMe
+Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --system-libclang' }
+
+" >JS Syntax
+Plug 'pangloss/vim-javascript'
+
+" >Json
+Plug 'elzr/vim-json'
+
+" >Docker
+Plug 'ekalinin/dockerfile.vim'
+
+" >Cpp
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" >JSLib
+Plug 'othree/javascript-libraries-syntax.vim'
+
+" >Git
+Plug 'tpope/vim-fugitive'
+
+" >Markdown
+Plug 'plasticboy/vim-markdown'
+
+" >CrystalLinw
+Plug 'rbong/vim-crystalline'
+
+call plug#end()
+
+" >>> NerdTree
+nnoremap <C-n> :NERDtreeToggle
+
+" >>>CrystalLine
+function! StatusLine(...)
+  return crystalline#mode() . crystalline#right_mode_sep('')
+        \ . ' %f%h%w%m%r ' . crystalline#right_sep('', 'Fill') . '%='
+        \ . crystalline#left_sep('', 'Fill') . ' %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}] %l/%L %c%V %P '
+endfunction
+set statusline=%!StatusLine()
+let g:crystalline_enable_sep = 'StatusLine'
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_theme = 'jellybeans'
+set laststatus=2
