@@ -3,8 +3,8 @@
 [[ $- != *i* ]] && return
 
 # >>> source
-source "$HOME/.config/shell-files/.env.sh"
-source "$HOME/.config/shell-files/.alias.sh"
+source "$HOME/.config/shell-files/env.sh"
+source "$HOME/.config/shell-files/alias.sh"
 
 ## Function
 err()
