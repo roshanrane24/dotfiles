@@ -15,3 +15,25 @@ get-temps()
         print "$(hddtemp /dev/sda | cut -d ' ' -f 1,3)"
     fi
 }
+
+
+cppc(){
+    file_base=`echo $1 |cut -d. -f1`;
+    compiled=""
+
+    if [ -n "$3" ]
+    then
+        output="$3/$file_base";
+    else
+        output="$PWD/bin/$file_base";
+    fi
+    
+    echo "Output file $output"
+    clang++ $1 -o $output && compiled=1;
+
+    if [ $2 -eq 1 ] && [ "$compiled" -eq 1 ]
+    then
+        echo "executing $output"
+        dash -c "$output";
+    fi
+}
