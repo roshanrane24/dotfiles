@@ -37,3 +37,18 @@ cppc(){
         dash -c "$output";
     fi
 }
+
+
+pvenv(){
+    working_directory=$PWD
+    for directory in `ls -d $working_directory/*/`
+    do
+        echo `test -e $directory/`
+        if [ -e "$directory/bin/activate" ]
+        then
+            `source "directory/bin/activate"`
+            echo "$directory activated."
+        fi
+    done
+    echo 'No Python VENV available in current location.'
+}
