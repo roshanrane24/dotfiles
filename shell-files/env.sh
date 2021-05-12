@@ -4,9 +4,9 @@ export LS_COLORS="$(vivid generate jellybeans)"
 # >>> Path
 export PATH=$PATH:$HOME/.local/bin
 
-# >>> ex
-export POSTGRES_USER="greenalien"
-export POSTGRES_PASS="greenAlien@24"
+# >>> Locale
+export LC_ALL="en_US.UTF-8"
+
 
 # >>> prompt
 PS1='\e[32m\w\n\e[031m>\e[m '

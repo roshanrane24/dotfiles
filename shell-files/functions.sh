@@ -27,7 +27,7 @@ cppc(){
     else
         output="$PWD/bin/$file_base";
     fi
-    
+
     echo "Output file $output"
     clang++ $1 -o $output && compiled=1;
 
@@ -52,3 +52,26 @@ pvenv(){
     done
     echo 'No Python VENV available in current location.'
 }
+
+function zle-keymap-select zle-line-init
+{
+    # change cursor shape in iTerm2
+    case $KEYMAP in
+        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    esac
+
+    zle reset-prompt
+    zle -R
+}
+
+function zle-line-finish
+{
+    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+
+
