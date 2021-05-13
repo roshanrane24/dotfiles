@@ -114,7 +114,7 @@ Plug 'preservim/tagbar'
 Plug 'chrisbra/csv.vim'
 
 " >IndentGuide
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 
 " >AutoFormat
 Plug 'chiel92/vim-autoformat'
