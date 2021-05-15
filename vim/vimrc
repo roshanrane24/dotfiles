@@ -127,7 +127,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='badwolf'
 ">>> CoC
-let g:coc_global_extensions = ['coc-json', 'coc-jedi']
+let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-html', 'coc-tsserver', 'coc-clangd', 'coc-sh', 'coc-java']
 ">>> Vim-Plug
 call plug#begin('~/.vim/plugged')
 
