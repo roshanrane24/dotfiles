@@ -52,13 +52,13 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: SpaceMono Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Regular
 
   # Bold font face
   bold:
     # If the bold family is not specified, it will fall back to the value specified for the normal font.
-    family: SpaceMono Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Bold
 
   # Italic font face
@@ -70,7 +70,7 @@ font:
   # Bold italic font face
   bold_italic:
     # If the bold italic family is not specified, it will fall back to the value specified for the normal font.
-    family: SpaceMono Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Bold Italic
 
   # Point size
