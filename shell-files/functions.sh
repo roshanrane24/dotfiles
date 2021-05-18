@@ -53,25 +53,37 @@ pvenv(){
     echo 'No Python VENV available in current location.'
 }
 
-function zle-keymap-select zle-line-init
-{
-    # change cursor shape in iTerm2
-    case $KEYMAP in
-        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-    esac
 
-    zle reset-prompt
-    zle -R
+function _set_cursor() {
+    if [[ $TMUX = '' ]]
+    then
+        echo -ne $1
+    else
+        echo -ne "\ePtmux;\e\e$1\e\\"
+    fi
 }
 
-function zle-line-finish
-{
-    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+# Remove mode switching delay.
+KEYTIMEOUT=5
+
+function _set_block_cursor() { _set_cursor '\e[2 q' }
+function _set_beam_cursor() { _set_cursor '\e[0 q' }
+
+function zle-keymap-select {
+if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    _set_block_cursor
+else
+    _set_beam_cursor
+fi
 }
 
-zle -N zle-line-init
-zle -N zle-line-finish
+
 zle -N zle-keymap-select
 
+# ensure beam cursor when starting new terminal
+precmd_functions+=(_set_beam_cursor) #
 
+# ensure insert mode and beam cursor when exiting vim
+zle-line-init() { zle -K viins; _set_beam_cursor }
+zle-line-finish() { _set_block_cursor }
+zle -N zle-line-finish

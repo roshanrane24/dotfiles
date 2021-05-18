@@ -37,3 +37,38 @@ def mouse_call(action):
     def _wrapper():
         lazy.spawn(action)
     return _wrapper
+
+class Brightness:
+    BACKLIGHT = "/sys/class/backlight/intel_backlight"
+    STEP = 5
+
+    def __init__(self, backlight_path="/sys/class/backlight", step=5):
+        set_backlight_path(backlight_path)
+        set_steps(step)
+
+    @classmethod
+    def set_backlight_path(cls, path):
+        cls.BACKLIGHT = path
+
+    @classmethod
+    def set_steps(cls, step):
+        cls.STEP = path
+
+    @classmethod
+    def get_max_brightness():
+        with open(f'{BACKLIGHT}/max_brightness', 'r') as mb:
+            return mb.readline()
+
+    @classmethod
+    def get_current_brightness():
+        with open(f'{BACKLIGHT}/brightness', 'r') as b:
+            return b.readline()
+
+    @classmethod
+    def set_brightness(value):
+        with open(f'{BACKLIGHT}/brightness', 'w') as b:
+            b.write(value)
+
+    @classmethod
+    def increase_brightness():
+        pass

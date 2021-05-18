@@ -1,9 +1,7 @@
-from libqtile import widget, bar
-from libqtile.lazy import lazy
-from colors import COLORS
-from setting import bar_config
-from functions import mouse_call
-
+from libqtile import widget, bar, qtile
+#from libqtile.lazy import lazy
+from .colors import COLORS
+from .setting import bar_config
 
 # Common Widgets
 end_sep = widget.Sep(
@@ -13,7 +11,6 @@ end_sep = widget.Sep(
     padding=3,
     size_percent=80,
     )
-
 mid_sep = widget.Sep(
     background=COLORS.BACKGROUND,
     foreground=COLORS.LIGHT_BACKGROUND,
@@ -22,21 +19,21 @@ mid_sep = widget.Sep(
     size_percent=65,
     )
 
-tasklist = widget.TaskList(
-    background=COLORS.BACKGROUND,
-    border=COLORS.PRIMARY,
-    borderwidth=1,
-    foreground=COLORS.DARK_FONT,
-    highlight_method="block",
-    rounded=False,
-    spacing=1,
-    title_width_method="uniform",
-    txt_floating="~) ",
-    txt_maximized="+) ",
-    txt_minimized="-) ",
-    unfocused_border=COLORS.DARK_PRIMARY,
-    urgent_border=COLORS.LIGHT_URGENT,
-    )
+# tasklist = widget.TaskList(
+#     background=COLORS.BACKGROUND,
+#     border=COLORS.PRIMARY,
+#     borderwidth=1,
+#     foreground=COLORS.DARK_FONT,
+#     highlight_method="block",
+#     rounded=False,
+#     spacing=1,
+#     title_width_method="uniform",
+#     txt_floating="~) ",
+#     txt_maximized="+) ",
+#     txt_minimized="-) ",
+#     unfocused_border=COLORS.DARK_PRIMARY,
+#     urgent_border=COLORS.LIGHT_URGENT,
+#     )
 
 clock = widget.Clock(
     timezone="Asia/Kolkata",
@@ -44,13 +41,6 @@ clock = widget.Clock(
     update_interval=5.5,
     )
 
-layout_icon1= widget.CurrentLayoutIcon(
-    scale=0.7,
-    )
-
-layout_icon2= widget.CurrentLayoutIcon(
-    scale=0.7,
-    )
 # Primary screen widget
 main_screen_bar = bar.Bar([
     end_sep,
@@ -61,6 +51,7 @@ main_screen_bar = bar.Bar([
     borderwidth=0,
     disable_drag=True,
     foreground=COLORS.LIGHT_FONT,
+    hide_unused=True,
     inactive=COLORS.LIGHT_BACKGROUND,
     highlight_method="block",
     other_current_screen_border=COLORS.COMPLEMENTARY,
@@ -87,6 +78,10 @@ main_screen_bar = bar.Bar([
         ""
     ),
     widget.PulseVolume(),
+    widget.Wlan(
+        disconnected_message="xxx",
+
+    ),
     widget.Battery(
         charge_char=" ",
         discharge_char=" ",
@@ -99,50 +94,12 @@ main_screen_bar = bar.Bar([
     ),
     widget.Systray(),
     clock,
-    widget.WidgetBox(
-        widgets=[
-            widget.TextBox(
-                "",
-                mouse_callback={
-                    "Button1": mouse_call("systemctl poweroff")
-                    }
-            ),
-            widget.TextBox(
-                "",
-                mouse_callback={
-                    "Button1": mouse_call("systemctl reboot")
-                    }
-            ),
-            widget.TextBox(
-                "",
-                mouse_callback={
-                    "Button1": mouse_call("systemctl hibernate")
-                    }
-            ),
-            widget.TextBox(
-                "",
-                mouse_callback={
-                    "Button1": mouse_call("systemctl suspend")
-                    }
-            ),
-            widget.TextBox(
-                "",
-                mouse_callback={
-                    "Button1": mouse_call("slock")
-                    }
-            ),
-            widget.TextBox(
-                "",
-                mouse_callback={
-                    "Button1": lazy.shutdown()
-                    }
-            ),
-        ],
-        close_button_location='right',
-        text_open="  ",
-        text_closed="  ",
+    widget.LaunchBar(
+        [('', 'wlogout', 'Wayland Logout Menu')]
     ),
-    layout_icon1,
+    widget.CurrentLayoutIcon(
+    scale=0.7
+    ),
     end_sep,
     ],
     **bar_config
@@ -151,22 +108,23 @@ main_screen_bar = bar.Bar([
 second_screen_bar = bar.Bar([
     end_sep,
     widget.GroupBox(
-    active=COLORS.LIGHT_PRIMARY,
-    background=COLORS.BACKGROUND,
-    block_highlight_text_color=COLORS.DARK_FONT,
-    borderwidth=0,
-    disable_drag=True,
-    foreground=COLORS.LIGHT_FONT,
-    inactive=COLORS.LIGHT_BACKGROUND,
-    highlight_method="block",
-    other_current_screen_border=COLORS.COMPLEMENTARY,
-    other_screen_border=COLORS.DARK_PRIMARY,
-    this_current_screen_border=COLORS.PRIMARY,
-    this_screen_border=COLORS.LIGHT_COMPLEMENTARY,
-    urgent_alert_method="block",
-    urgent_border=COLORS.URGENT,
-    urgent_text=COLORS.LIGHT_FONT,
-    rounds=False,
+        active=COLORS.LIGHT_PRIMARY,
+        background=COLORS.BACKGROUND,
+        block_highlight_text_color=COLORS.DARK_FONT,
+        borderwidth=0,
+        disable_drag=True,
+        foreground=COLORS.LIGHT_FONT,
+        hide_unused=True,
+        inactive=COLORS.LIGHT_BACKGROUND,
+        highlight_method="block",
+        other_current_screen_border=COLORS.COMPLEMENTARY,
+        other_screen_border=COLORS.DARK_PRIMARY,
+        this_current_screen_border=COLORS.PRIMARY,
+        this_screen_border=COLORS.LIGHT_COMPLEMENTARY,
+        urgent_alert_method="block",
+        urgent_border=COLORS.URGENT,
+        urgent_text=COLORS.LIGHT_FONT,
+        rounds=False,
     ),
     mid_sep,
     widget.Spacer(),
@@ -203,7 +161,9 @@ second_screen_bar = bar.Bar([
         foreground_alert=COLORS.URGENT,
     ),
     clock,
-    layout_icon2,
+    widget.CurrentLayoutIcon(
+    scale=0.7
+    ),
     end_sep,
     ],
     **bar_config

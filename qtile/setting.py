@@ -55,7 +55,9 @@ floating_rules = [
     {'wmclass': 'makebranch'},  # gitk
     {'wmclass': 'maketag'},  # gitk
     {'wmclass': 'QML Timer'},  # Pilorama
-    {'wmclass': 'polkit-mate-authentication-agent-1'},  # Pilorama
+    {'wmclass': 'polkit-kde-authentication-agent-1'},  # Pilorama
+    {'wmclass': 'kdialog'},  # Pilorama
+    {'wmclass': 'kdesu'},  # Pilorama
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'Terminator Preferences'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
