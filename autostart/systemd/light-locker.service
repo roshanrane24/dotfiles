@@ -1,0 +1,12 @@
+[Unit]
+Description=Light-Locker Daemon
+After=multi-user.target
+
+[Service]
+EnvironmentFile=/home/greenalien/.config/environment.d/01-light-locker.conf
+ExecStart=/usr/bin/light-locker --lock-after-screensaver=5 --lock-on-suspend --lock-on-lid
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
