@@ -1,0 +1,11 @@
+[Unit]
+Description=Picom Compositor
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/picom
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
