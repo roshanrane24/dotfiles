@@ -47,9 +47,9 @@ main_screen_bar = bar.Bar([
         # Inactive Screen Bar > Inactive Screen Group
         other_screen_border=COLORS.DARK_PRIMARY,
         # Active Screen Bar > Active Screen Group
-        this_current_screen_border=COLORS.PRIMARY,
+        this_current_screen_border=COLORS.LIGHT_PRIMARY,
         # Active Screen Bar > Inactive Screen Group
-        this_screen_border=COLORS.LIGHT_PRIMARY,
+        this_screen_border=COLORS.PRIMARY,
         urgent_alert_method="block",
         urgent_border=COLORS.URGENT,
         urgent_text=COLORS.LIGHT_FONT,
@@ -92,6 +92,7 @@ main_screen_bar = bar.Bar([
     mid_sep,
     widget.PulseVolume(
         background=COLORS.LIGHT_BACKGROUND,
+        theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
         emoji=True,
         font='SpaceMono Nerd Font',
         foreground=COLORS.LIGHT_FONT,
@@ -172,9 +173,9 @@ second_screen_bar = bar.Bar([
         # Inactive Screen Bar > Inactive Screen Group
         other_screen_border=COLORS.DARK_PRIMARY,
         # Active Screen Bar > Active Screen Group
-        this_current_screen_border=COLORS.PRIMARY,
+        this_current_screen_border=COLORS.LIGHT_PRIMARY,
         # Active Screen Bar > Inactive Screen Group
-        this_screen_border=COLORS.LIGHT_PRIMARY,
+        this_screen_border=COLORS.PRIMARY,
         urgent_alert_method="block",
         urgent_border=COLORS.URGENT,
         urgent_text=COLORS.LIGHT_FONT,
