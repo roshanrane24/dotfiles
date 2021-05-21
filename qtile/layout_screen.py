@@ -78,4 +78,5 @@ floating_layout = layout.Floating(
 screens = [Screen(top=main_screen_bar)]
 
 if display.get_connect_display_count() > 1:
-    screens.append(Screen(top=second_screen_bar))
+    for s in range(1, display.get_connect_display_count()):
+        screens.append(Screen(top=second_screen_bar))
