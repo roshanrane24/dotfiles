@@ -1,6 +1,8 @@
 import os
 from libqtile.utils import guess_terminal
 from colors import COLORS
+
+
 # Applications
 TERMINAL = guess_terminal()
 BROWSER = "brave"
@@ -27,13 +29,13 @@ workspaces = {
     "1": {"label": "",
           "matches": {"wm_class": ["Terminator", "Alacritty"]}},
     "2": {"label": "",
-          "matches": {"wm_class": ["Brave-browser"]}},
+          "matches": {"wm_class": ["Brave-browser", "Chromium"]}},
     "3": {"label": "",
-          "matches": {"wm_class": ["Thunar"]}},
+          "matches": {"wm_class": ["Thunar", "dolphin"]}},
     "4": {"label": "",
           "matches": {"wm_class": ["code-oss", "jetbrains-pycharm-ce"]}},
     "5": {"label": "",
-          "matches": {"wm_class": ["mpv"]}},
+          "matches": {"wm_class": ["mpv", "vlc"]}},
     "6": {"label": "",
           "matches": {"wm_class": ["Spotify"]}},
     "7": {"label": "",
@@ -54,6 +56,7 @@ floating_rules = [
     {'wmclass': 'error'},
     {'wmclass': 'file_progress'},
     {'wmclass': 'notification'},
+    {'wmclass': 'Pulseeffects'},
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
     {'wmclass': 'confirmreset'},  # gitk

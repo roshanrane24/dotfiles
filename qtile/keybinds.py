@@ -1,6 +1,6 @@
 from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
-from setting import (BROWSER, MODKEY, TERMINAL,
+from setting import (BROWSER, MODKEY, TERMINAL, EDITOR_GUI,
                      FILE_MANAGER, FILE_MANAGER_2, SCRIPTS)
 from groups import groups
 import os
@@ -221,7 +221,7 @@ keys = [
         lazy.spawn(FILE_MANAGER_2),
         desc="Launch File Manager (Alt)"),
     Key([MODKEY, "control"], "4",
-        lazy.spawn("code"),
+        lazy.spawn(EDITOR_GUI),
         desc="Launch Editor (Code)"),
     Key([MODKEY, "control"], "5",
         lazy.spawn("vlc"),
