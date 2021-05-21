@@ -3,18 +3,23 @@ from libqtile.utils import guess_terminal
 from colors import COLORS
 # Applications
 TERMINAL = guess_terminal()
-BROWSER = 'brave'
+BROWSER = "brave"
+FILE_MANAGER = "dolphin"
+FILE_MANAGER_2 = ""
+EDITOR_GUI = ""
 MODKEY = "mod4"
 
 # Enviroment
 HOME = os.environ["HOME"]
+CONFIG = os.path.join(HOME, ".config")
+SCRIPTS = os.path.join(CONFIG, "shell-files")
 
 # Config
 bar_config = {
     "size": 25,
     "background": COLORS.BACKGROUND,
     "margin": 0,
-    "opacity": 0.85,
+    "opacity": 0.99,
 }
 
 # Worspaces/Group
