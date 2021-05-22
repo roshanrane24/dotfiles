@@ -1,6 +1,5 @@
-from libqtile.config import Match, Key, Group
-from libqtile.command import lazy
-from setting import MODKEY, workspaces
+from libqtile.config import Match, Group, ScratchPad
+from setting import workspaces
 
 
 # Creating Workspace Group
@@ -20,3 +19,9 @@ for ws in workspaces.keys():
                   matches=mat_list)
     groups.append(group)
 
+groups.append(
+    ScratchPad(
+            name="grave",
+            label="~"
+        )
+    )
