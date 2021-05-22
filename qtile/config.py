@@ -11,7 +11,7 @@ auto_fullscreen = True
 bring_front_click = True
 cursor_warp = False
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
+dgroups_app_rules = []
 focus_on_window_activation = "smart"
 follow_mouse_focus = True
 wmname = "LG3D"
@@ -21,6 +21,11 @@ widget_defaults = dict(
     padding=8,
 )
 extension_defaults = widget_defaults.copy()
+keys = keys
+layouts = layouts
+floating_layout = floating_layout
+screens = screens
+groups = groups
 
 
 # Calling Hooks
@@ -28,18 +33,15 @@ extension_defaults = widget_defaults.copy()
 def autostart():
     processes = [
         ["numlockx", "on"],
-        ["nm-applet"],
-        ['blueman-applet'],
-        ["picom"],
         ["xset", "b", "off"],
-        ["/usr/lib/polkit-kde-authentication-agent-1"],
-        ["kdeconnect-indicator"],
-        ["xmodmap", "-e", "\"keycode", "78=d", "D", "d", "D\""], # for broken `d` key
     ]
 
     for p in processes:
-        subprocess.Popen(p)
-        print(f"succefully ran {' '.join(p)}")
+        try:
+            subprocess.Popen(p)
+            print(f"succefully ran {' '.join(p)}")
+        except Exception as e:
+            print(e)
 
 
 @hook.subscribe.startup_complete
@@ -50,3 +52,10 @@ def wallpaper():
 @hook.subscribe.startup_complete
 def randr():
     display.set_extend_all()
+
+
+@hook.subscribe.client_new
+def floating_dialogs(window):
+    if ((window.window.get_wm_type() == 'dialog') or
+       (window.window.get_wm_transient_for())):
+        window.floating = True
