@@ -92,7 +92,7 @@ main_screen_bar = bar.Bar([
     mid_sep,
     widget.PulseVolume(
         background=COLORS.LIGHT_BACKGROUND,
-        theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
+        # theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
         emoji=True,
         font='SpaceMono Nerd Font',
         foreground=COLORS.LIGHT_FONT,
