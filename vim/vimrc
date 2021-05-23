@@ -65,6 +65,8 @@ set updatetime=300
 set splitbelow
 set splitright
 set signcolumn=number
+"set termguicolors
+set background=dark
 "set shortmess+=c
 ">>> ALACRITTY
 set ttymouse=sgr            "Termianl Mouse Supoort
@@ -75,6 +77,13 @@ colorscheme monokai
 ">>> PLUGINS >>>
 " >>> NerdTree
 let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', 'node_modules']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 ">>> SimplyFold
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_docstring=1
@@ -86,8 +95,7 @@ let b:SimpylFold_fold_blank=0
 ">>> ALE
 let g:ale_linter={
 	\ 'python': ['flake8', 'pylint']}
-let g:ale_fixers={
-	\ 'python': ['nayvy#ale_fixer', 'autopep8', 'isort']}
+let g:ale_fixers = {'python':['nayvy#ale_fixer', 'autopep8', 'isort']}
 ">>> FZF
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -118,7 +126,7 @@ endif
 ">>> Rainbow
 let g:rainbow_active = 1
 ">>> Polyglot
-let g:polyglot_disabled = ['autoindent']
+"let g:polyglot_disabled = ['autoindent']
 let g:polyglot_disabled = ['sensible']
 ">>> AirLine
 let g:airline#extensions#tabline#enabled = 1
@@ -127,14 +135,10 @@ let g:airline_powerline_fonts = 1
 "let g:airline_statusline_ontop = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='badwolf'
-">>> YCM
-let g:ycm_python_interpreter_path = ''
-let g:ycm_python_sys_path = []
-let g:ycm_extra_conf_vim_data = [
-  \  'g:ycm_python_interpreter_path',
-  \  'g:ycm_python_sys_path'
-  \]
-let g:ycm_global_ycm_extra_conf = '~/.vim/global_extra_conf.py'
+">>> Deoplete
+let g:deoplete#enable_at_startup = 1
+
+
 ">>> Vim-Plug
 call plug#begin('~/.vim/plugged')
 
@@ -148,13 +152,19 @@ Plug 'luochen1990/rainbow'						    "Rainbow Brackets
 Plug 'tpope/vim-surround'							"Surround
 Plug 'relastle/vim-nayvy'							"Python Fixer
 Plug 'preservim/tagbar'								"Tagbar
-Plug 'tmsvg/pear-tree'							    "AutoComplete Brackets&Quotes
+Plug 'Shougo/neopairs.vim'                          "AutoComplete Brackets&Quotes
 Plug 'sheerun/vim-polyglot'							"Language Pack
 Plug 'jeetsukumaran/vim-buffergator'				"Buffer Window
 Plug 'vim-airline/vim-airline'                      "Airline Status
 Plug 'vim-airline/vim-airline-themes'               "Airline Status Themes
 Plug 'preservim/nerdcommenter'                      "NERDCommentator
-Plug 'ycm-core/YouCompleteMe', {'do': './install.py --go-completer --ts-completer --clangd-completer'}                       "YCM
+Plug 'Shougo/deoplete.nvim'                         "Deoplete
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'xavierd/clang_complete'                       "Deoplete Clang
+Plug 'deoplete-plugins/deoplete-go'                 "Deoplete Go
+Plug 'deoplete-plugins/deoplete-jedi'               "Deoplete Python
+Plug 'SevereOverfl0w/deoplete-github'               "Deoplete Git
 
 call plug#end()
 "<<< PLUGINS <<<
@@ -164,9 +174,17 @@ call plug#end()
 nmap <F10> :NERDTreeToggle<CR>
 ">>> FZF
 nnoremap <silent> <Leader>p :FZF<CR>
+">>> Splits
+" navigate split screens easily
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 ">>> Buffers
 nnoremap <C-b>c :BufCurOnly<CR>
 nnoremap <C-b>k :bd<CR>
+nnoremap <C-b>n :bn<CR>
+nnoremap <C-b>p :bp<CR>
 ">>> Git Fugitive
 nnoremap <C-g>b :call <SID>ToggleBlame()<CR>
 nnoremap <C-g>a :Git add %<CR>
@@ -175,41 +193,23 @@ nnoremap <C-g>s :Gstatus<CR>
 nnoremap <C-g>d :Gvdiff<CR>
 nnoremap <C-g>i :Gedit :0<CR>
 ">>> ALE
-nnoremap <leader><F5> :ALEFix<CR>
+nnoremap <F5> :ALEFix<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <F6> :ALEGoToDefinition<CR>
-nnoremap <F7> :ALEHover<CR>
+nnoremap <leader><F6> :ALEGoToDefinition<CR>
+nnoremap <leader><F7> :ALEHover<CR>
 ">>> NayVy
 nnoremap <leader><F8> :NayvyImportFZF<CR>
 nnoremap <F8> :NayvyImport<CR>
 nnoremap <leader><F9> :NayvyTestGenerateFZF<CR>
 nnoremap <F9> :NayvyTestGenerate<CR>
 ">>> Tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <leader><F4> :TagbarToggle<CR>
 ">>> Ex
 nnoremap <silent> <esc> :noh<cr><esc>
 "<<< KEYBINDS <<<
 
 ">>> EX >>>
-"au Filetype python set
-"    \ tabstop=4
-"    \ softtabstop=4
-"    \ shiftwidth=4
-"    \ textwidth=79
-"    \ expandtab
-"    \ autoindent
-"    \ fileformat=unix
-
-"au BufNewFile,BufRead *.js, *.html, *.css
-"    \ set tabstop=2
-"    \ set softtabstop=2
-"    \ set shiftwidth=2
-"<<< EX <<<
-">>> Dark Backgropund on GUI
-if has('gui_running')
-  set background=dark
-endif
 ">>> Buffers
 command! BufCurOnly execute '%bdelete|edit#|bdelete#'
 ">>> Git
@@ -221,4 +221,10 @@ function! s:ToggleBlame()
     endif
 endfunction
 ">>> NayVy
+">>> Deoplete
+call deoplete#custom#option({
+\ 'auto_complete_delay': 20,
+\ 'auto_complete_popup': "auto",
+\ 'smart_case': v:true,
+\ })
 "<<< Ex <<<
