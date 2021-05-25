@@ -98,4 +98,8 @@ zinit load b4b4r07/enhancd
 autoload -Uz promptinit
 promptinit
 # <<< eol prompt engine
-
+#>>> Ex
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+      source "${VIRTUAL_ENV}/bin/activate"
+fi
+# <<< Ex
