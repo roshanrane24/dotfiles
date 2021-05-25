@@ -1,3 +1,4 @@
+from libqtile.lazy import lazy
 import subprocess
 
 
@@ -31,3 +32,16 @@ class Display:
                 cmd += f" --output {screen} --same-as {self.PRIMARY}"
         print(f"[INFO]:(mirror) running xrandr commad {cmd}")
         subprocess.Popen(cmd.split())
+
+
+def move_group_to_next_screen(*args):
+    group = lazy.group.currentGroup()
+    lazy.next_screen()
+    lazy.group[group].toscreen()
+
+
+def move_group_to_prev_screen(*args):
+    group = lazy.group.currentGroup()
+    print(group)
+    lazy.prev_screen()
+    lazy.group[group].toscreen()
