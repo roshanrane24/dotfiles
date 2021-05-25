@@ -3,6 +3,7 @@ from libqtile.lazy import lazy
 from setting import (BROWSER, MODKEY, TERMINAL, EDITOR_GUI,
                      FILE_MANAGER, FILE_MANAGER_2, SCRIPTS)
 from groups import groups
+from functions import move_group_to_next_screen, move_group_to_prev_screen
 import os
 
 
@@ -155,10 +156,10 @@ keys = [
         lazy.next_urgent(),
         desc="next urgent layouts"),
     Key([MODKEY, "control", "mod1"], "Right",
-        lazy.next_screen(),
+        move_group_to_next_screen(),
         desc="next screen"),
     Key([MODKEY, "control", "mod1"], "Left",
-        lazy.prev_screen(),
+        move_group_to_prev_screen(),
         desc="previous screen"),
     Key([MODKEY, "control", "mod1"], "l",
         lazy.next_screen(),
