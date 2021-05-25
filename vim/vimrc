@@ -45,7 +45,7 @@ set foldnestmax=3           "Only fold up to three nested levels.
 set nobackup                "Disable Backup Files
 set nowritebackup           "Disable Backup
 set noswapfile              "Diasble Swap Files
-set cmdheight=1             "Commad Line height
+set cmdheight=2             "Commad Line height
 set autoread                "Automatically re-read files if unmodified inside Vim
 set backspace=indent,eol,start "Allow backspacing over indention, line breaks and insertion start.
 set backupdir=~/.cache/vim: "Directory to store backup files
@@ -60,16 +60,18 @@ set ttyfast                 "More Chars to screen for redrawing
 set showcmd
 set list                    "show hidden characters
 set listchars=tab:,trail:,extends:>,nbsp:#,precedes:<
-set paste                   "Paste from clipboard
+"set paste                   "Paste from clipboard
 set updatetime=300
 set splitbelow
 set splitright
-set signcolumn=number
 "set termguicolors
 set background=dark
 "set shortmess+=c
 ">>> ALACRITTY
-set ttymouse=sgr            "Termianl Mouse Supoort
+if !has('nvim')
+  set ttymouse=sgr            "Termianl Mouse Supoort
+  set signcolumn=number
+endif
 ">>> COLORSCHEME
 colorscheme monokai
 "<<< OPTIONS <<<
@@ -137,7 +139,6 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='badwolf'
 ">>> Deoplete
 let g:deoplete#enable_at_startup = 1
-
 
 ">>> Vim-Plug
 call plug#begin('~/.vim/plugged')
@@ -207,6 +208,13 @@ nnoremap <F9> :NayvyTestGenerate<CR>
 nmap <leader><F4> :TagbarToggle<CR>
 ">>> Ex
 nnoremap <silent> <esc> :noh<cr><esc>
+">>> Deoplete
+" use tab to forward cycle
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" use tab to backward cycle
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+" Close the documentation window when completion is done
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "<<< KEYBINDS <<<
 
 ">>> EX >>>
@@ -224,6 +232,7 @@ endfunction
 ">>> Deoplete
 call deoplete#custom#option({
 \ 'auto_complete_delay': 20,
+\ 'auto_complete': v:true,
 \ 'auto_complete_popup': "auto",
 \ 'smart_case': v:true,
 \ })
