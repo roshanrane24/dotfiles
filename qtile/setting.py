@@ -37,7 +37,7 @@ workspaces = {
     "5": {"label": "",
           "matches": {"wm_class": ["mpv", "vlc"]}},
     "6": {"label": "",
-          "matches": {"wm_class": ["Spotify"]}},
+          "matches": {"wm_class": ["Spotify", "spotify"]}},
     "7": {"label": "",
           "matches": {"wm_class": ["Discord"]}},
     "8": {"label": "",
