@@ -1,9 +1,10 @@
-from libqtile import hook
+from libqtile import hook, qtile
+from libqtile.lazy import lazy
 import subprocess
 import os
 from keybinds import keys
 from setting import HOME
-from layout_screen import layouts, floating_layout, screens, display
+from layout_screen import display, floating_layout, layouts, screens
 from groups import groups
 
 # Configuration Variables
@@ -34,6 +35,8 @@ def autostart():
     processes = [
         ["numlockx", "on"],
         ["xset", "b", "off"],
+        ["/usr/bin/light-locker", "--lock-after-screensaver=5",
+         "--lock-on-suspend", "--lock-on-lid"],
     ]
 
     for p in processes:
@@ -59,3 +62,10 @@ def floating_dialogs(window):
     if ((window.window.get_wm_type() == 'dialog') or
        (window.window.get_wm_transient_for())):
         window.floating = True
+
+
+@hook.subscribe.client_new
+def spotify_6(window):
+    print(window)
+    if window.name == 'Spotify Free':
+        window.togroup('6')
