@@ -4,7 +4,7 @@ import subprocess
 
 class Display:
     def __init__(self):
-        self.xrandr = subprocess.getoutput(["xrandr"])
+        self.xrandr = subprocess.getoutput("xrandr")
         self.display = [line.split()[0]
                         for line in self.xrandr.split('\n')
                         if ("connected" in line.split())]
@@ -34,13 +34,13 @@ class Display:
         subprocess.Popen(cmd.split())
 
 
-def move_group_to_next_screen(*args):
+def move_group_to_next_screen():
     group = lazy.group.currentGroup()
     lazy.next_screen()
     lazy.group[group].toscreen()
 
 
-def move_group_to_prev_screen(*args):
+def move_group_to_prev_screen():
     group = lazy.group.currentGroup()
     print(group)
     lazy.prev_screen()
