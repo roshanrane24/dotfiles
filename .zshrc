@@ -56,6 +56,9 @@ zinit light ascii-soup/zsh-url-highlighter
 #Autosuggetion
 zinit light zsh-users/zsh-autosuggestions
 
+# AutoEnv
+zinit load wookayin/zsh-autoswitch-virtualenv
+zinit load gimbo/venv-lite.zsh
 #AGKOZAK Prompt
 #zinit light agkozak/agkozak-zsh-prompt
 #AGKOZAK_BLANK_LINES=1
