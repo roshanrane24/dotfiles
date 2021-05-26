@@ -55,7 +55,7 @@ set history=1000            "Increase the undo limit
 set shell=/bin/sh           "Shell to execute commad
 set hidden                  "Hide files in the background instead of closing them.
 set showmatch               "Use % to jump between matching brackets
-set autowrite               "Save when switching between 
+set autowrite               "Save when switching between
 set ttyfast                 "More Chars to screen for redrawing
 set showcmd
 set list                    "show hidden characters
@@ -64,13 +64,19 @@ set listchars=tab:,trail:,extends:>,nbsp:#,precedes:<
 set updatetime=300
 set splitbelow
 set splitright
+set completeopt+=noinsert,menuone,noselect
 "set termguicolors
 set background=dark
-"set shortmess+=c
+set shortmess+=c
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 ">>> ALACRITTY
 if !has('nvim')
   set ttymouse=sgr            "Termianl Mouse Supoort
-  set signcolumn=number
 endif
 ">>> COLORSCHEME
 colorscheme monokai
@@ -95,9 +101,27 @@ let b:SimpylFold_fold_import=1
 let g:SimpylFold_fold_blank=0
 let b:SimpylFold_fold_blank=0
 ">>> ALE
-let g:ale_linter={
-	\ 'python': ['flake8', 'pylint']}
-let g:ale_fixers = {'python':['nayvy#ale_fixer', 'autopep8', 'isort']}
+" let g:ale_linter={
+"       \ 'python': ['flake8', 'pylint'],
+"       \ 'javascript': ['prettier', 'eslint'],
+"       \ 'typescript': ['prettier', 'eslint']}
+" "      \ 'css': ['prettier'],
+" "      \ 'html': ['prettier'],
+" "      \ 'vue': ['prettier'],
+" "      \ 'yaml': ['prettier'],
+" "      \ 'sql': ['sql-lint'],
+" "      \ 'vim': ['vimls'],
+" "      \ 'docker': ['docker-lint'],
+" "      \ 'go': ['bingo'],
+" "      \ 'shell': ['shellcheck'],
+" "      \ 'c++': ['clangd'],
+" "      \ 'c': ['clangd'],
+" "      \ 'markdown': ['prettier']
+" 
+" let g:ale_fixers = {'python':['autopep8', 'isort'],
+"       \ 'javascript':['prettier']}
+" let g:ale_disable_lsp = 1
+" let g:ale_virtualenv_dir_names = []
 ">>> FZF
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -137,21 +161,27 @@ let g:airline_powerline_fonts = 1
 "let g:airline_statusline_ontop = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme='badwolf'
-">>> Deoplete
-let g:deoplete#enable_at_startup = 1
+">>> COC
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html',
+                          \ 'coc-sh', 'coc-sql', 'coc-clangd',
+                          \ 'coc-clang-format-style-options',
+                          \ 'coc-cmake', 'coc-css', 'coc-flutter',
+                          \ 'coc-fzf-preview', 'coc-go', 'coc-graphql',
+                          \ 'coc-htmldjango', 'coc-java', 'coc-tsserver',
+                          \ 'coc-xml', 'coc-yaml', 'coc-pydocstring',
+                          \ 'coc-pyright']
 
 ">>> Vim-Plug
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'                          "NERDtree
 Plug 'tmhedberg/SimpylFold'							"Code Follding
-Plug 'dense-analysis/ale'							"SyantaxChecking
+"Plug 'dense-analysis/ale'							"SyantaxChecking
 Plug 'nvie/vim-flake8'								"PEP-8 Python Syntax
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	"Fuzzy Finder
 Plug 'tpope/vim-fugitive'							"Git
 Plug 'luochen1990/rainbow'						    "Rainbow Brackets
 Plug 'tpope/vim-surround'							"Surround
-Plug 'relastle/vim-nayvy'							"Python Fixer
 Plug 'preservim/tagbar'								"Tagbar
 Plug 'Shougo/neopairs.vim'                          "AutoComplete Brackets&Quotes
 Plug 'sheerun/vim-polyglot'							"Language Pack
@@ -159,13 +189,9 @@ Plug 'jeetsukumaran/vim-buffergator'				"Buffer Window
 Plug 'vim-airline/vim-airline'                      "Airline Status
 Plug 'vim-airline/vim-airline-themes'               "Airline Status Themes
 Plug 'preservim/nerdcommenter'                      "NERDCommentator
-Plug 'Shougo/deoplete.nvim'                         "Deoplete
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'xavierd/clang_complete'                       "Deoplete Clang
-Plug 'deoplete-plugins/deoplete-go'                 "Deoplete Go
-Plug 'deoplete-plugins/deoplete-jedi'               "Deoplete Python
-Plug 'SevereOverfl0w/deoplete-github'               "Deoplete Git
+"COC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 call plug#end()
 "<<< PLUGINS <<<
@@ -174,7 +200,7 @@ call plug#end()
 ">>> NERDtree
 nmap <F10> :NERDTreeToggle<CR>
 ">>> FZF
-nnoremap <silent> <Leader>p :FZF<CR>
+nnoremap <silent> <c-p> :FZF<CR>
 ">>> Splits
 " navigate split screens easily
 nmap <silent> <c-k> :wincmd k<CR>
@@ -197,8 +223,8 @@ nnoremap <C-g>i :Gedit :0<CR>
 nnoremap <F5> :ALEFix<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <leader><F6> :ALEGoToDefinition<CR>
-nnoremap <leader><F7> :ALEHover<CR>
+nnoremap <F6> :ALEGoToDefinition<CR>
+nnoremap <F7> :ALEHover<CR>
 ">>> NayVy
 nnoremap <leader><F8> :NayvyImportFZF<CR>
 nnoremap <F8> :NayvyImport<CR>
@@ -208,16 +234,47 @@ nnoremap <F9> :NayvyTestGenerate<CR>
 nmap <leader><F4> :TagbarToggle<CR>
 ">>> Ex
 nnoremap <silent> <esc> :noh<cr><esc>
-">>> Deoplete
-" use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" use tab to backward cycle
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-" Close the documentation window when completion is done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+">>> COC
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> <F1> :call <SID>show_documentation()<CR>
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <F2> <Plug>(coc-rename)
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
 "<<< KEYBINDS <<<
 
 ">>> EX >>>
+:au FocusLost * silent! wa
 ">>> Buffers
 command! BufCurOnly execute '%bdelete|edit#|bdelete#'
 ">>> Git
@@ -229,11 +286,19 @@ function! s:ToggleBlame()
     endif
 endfunction
 ">>> NayVy
-">>> Deoplete
-call deoplete#custom#option({
-\ 'auto_complete_delay': 20,
-\ 'auto_complete': v:true,
-\ 'auto_complete_popup': "auto",
-\ 'smart_case': v:true,
-\ })
+">>> COC
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 "<<< Ex <<<
