@@ -1,3 +1,11 @@
 {
-    "diagnostic.displayByAle": true
+    "diagnostic.refreshOnInsertMode": true,
+    "diagnostic.displayByAle": false,
+    "pyright.enable": true,
+    "python.venvPath": "./",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "pyright.completion.snippetSupport": true,
+    "python.linting.flake8Path": "/bin/flake8"
 }
