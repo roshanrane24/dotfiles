@@ -169,7 +169,8 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html',
                           \ 'coc-fzf-preview', 'coc-go', 'coc-graphql',
                           \ 'coc-htmldjango', 'coc-java', 'coc-tsserver',
                           \ 'coc-xml', 'coc-yaml', 'coc-pydocstring',
-                          \ 'coc-pyright']
+                          \ 'coc-pyright', 'coc-snippets', 'coc-diagnostic',
+                          \ 'coc-java']
 
 ">>> Vim-Plug
 call plug#begin('~/.vim/plugged')
@@ -188,10 +189,20 @@ Plug 'sheerun/vim-polyglot'							"Language Pack
 Plug 'jeetsukumaran/vim-buffergator'				"Buffer Window
 Plug 'vim-airline/vim-airline'                      "Airline Status
 Plug 'vim-airline/vim-airline-themes'               "Airline Status Themes
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'                      "NERDCommentator
 "COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+"COLORSCHEME
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'altercation/solarized'
+Plug 'ajh17/spacegray.vim'
+Plug 'zeis/vim-kolor'
+Plug 'sainnhe/vim-color-forest-night'
 
 call plug#end()
 "<<< PLUGINS <<<
