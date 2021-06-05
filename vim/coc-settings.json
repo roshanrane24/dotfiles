@@ -2,7 +2,7 @@
     "diagnostic.refreshOnInsertMode": true,
     "diagnostic.displayByAle": false,
     "pyright.enable": true,
-    "python.venvPath": "./",
+    "python.venvPath": "./bin",
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
