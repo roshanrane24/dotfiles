@@ -20,11 +20,11 @@ mid_sep = widget.Sep(
 
 clock = widget.Clock(
     timezone="Asia/Kolkata",
-    background=COLORS.LIGHT_BACKGROUND,
+    background=COLORS.PRIMARY,
     font='SpaceMono Nerd Font',
-    foreground=COLORS.LIGHT_FONT,
     format="%H:%M",
     update_interval=5.5,
+    foreground=COLORS.DARK_FONT,
     )
 
 # Primary screen widget
@@ -86,21 +86,23 @@ main_screen_bar = bar.Bar([
         step=2,
         padding=5,
         font='SpaceMono Nerd Font',
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         format=' {percent:2.0%}'
     ),
     mid_sep,
     widget.PulseVolume(
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
         # theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
         emoji=True,
         font='SpaceMono Nerd Font',
-        foreground=COLORS.LIGHT_FONT,
+        foreground=COLORS.DARK_FONT,
         padding=2,
         update_interval=0.1
     ),
     widget.PulseVolume(
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
         padding=5,
         update_interval=0.1
@@ -108,14 +110,16 @@ main_screen_bar = bar.Bar([
     mid_sep,
     widget.Wlan(
         disconnected_message="睊",
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
         format="{essid} {quality}"
     ),
     mid_sep,
     widget.BatteryIcon(
         update_interval=20,
-        background=COLORS.LIGHT_BACKGROUND,
+        foreground=COLORS.DARK_FONT,
+        background=COLORS.PRIMARY,
         theme_path='/usr/share/icons/Papirus-Dark/16x16/panel',
     ),
     widget.Battery(
@@ -127,13 +131,15 @@ main_screen_bar = bar.Bar([
         # low_percent=0.15,
         # notify_below=15,
         # show_short_text=False,
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
         padding=0,
     ),
     mid_sep,
     widget.Systray(
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         icon_size=25,
         padding=0
     ),
@@ -142,7 +148,8 @@ main_screen_bar = bar.Bar([
     mid_sep,
     widget.TextBox(
         '',
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
@@ -222,38 +229,41 @@ second_screen_bar = bar.Bar([
     # mid_sep,
     widget.CPU(
         format=" {load_percent}%",
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
     ),
     mid_sep,
     widget.Memory(
         format=" {MemPercent}%",
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='Font Awesome 5 Free,Font Awesome 5 Free Regular'
     ),
     mid_sep,
     widget.Memory(
         format=" {SwapPercent}%",
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
     ),
     mid_sep,
     widget.ThermalSensor(
         font='SpaceMono Nerd Font',
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         foreground_alert=COLORS.URGENT,
-        tag_sensor="Package id 0",
         threshold=59
     ),
     mid_sep,
     widget.HDDBusyGraph(
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
         font='SpaceMono Nerd Font',
-        border_color=COLORS.LIGHT_FONT,
-        fill_color=COLORS.LIGHT_URGENT,
-        graph_color=COLORS.PRIMARY,
+        border_color=COLORS.DARK_FONT,
+        fill_color=COLORS.DARK_PRIMARY,
+        graph_color=COLORS.LIGHT_BACKGROUND,
         border_width=1,
-        linewidth=1,
+        linewidth=0,
         margin_y=1,
     ),
     mid_sep,
@@ -261,7 +271,8 @@ second_screen_bar = bar.Bar([
     mid_sep,
     widget.TextBox(
         '',
-        background=COLORS.LIGHT_BACKGROUND,
+        background=COLORS.PRIMARY,
+        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
