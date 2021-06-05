@@ -87,5 +87,3 @@ precmd_functions+=(_set_beam_cursor) #
 zle-line-init() { zle -K viins; _set_beam_cursor }
 zle-line-finish() { _set_block_cursor }
 zle -N zle-line-finish
-
-
