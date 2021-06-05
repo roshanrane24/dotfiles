@@ -168,7 +168,7 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html',
                           \ 'coc-htmldjango', 'coc-java', 'coc-tsserver',
                           \ 'coc-xml', 'coc-yaml', 'coc-pydocstring',
                           \ 'coc-pyright', 'coc-snippets', 'coc-diagnostic',
-                          \ 'coc-java']
+                          \ 'coc-java', 'coc-toml']
 
 ">>> Vim-Plug
 call plug#begin('~/.vim/plugged')
