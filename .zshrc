@@ -57,7 +57,7 @@ zinit light ascii-soup/zsh-url-highlighter
 zinit light zsh-users/zsh-autosuggestions
 
 # AutoEnv
-zinit load wookayin/zsh-autoswitch-virtualenv
+#zinit load wookayin/zsh-autoswitch-virtualenv
 zinit load gimbo/venv-lite.zsh
 #AGKOZAK Prompt
 #zinit light agkozak/agkozak-zsh-prompt
@@ -102,7 +102,7 @@ autoload -Uz promptinit
 promptinit
 # <<< eol prompt engine
 #>>> Ex
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-      source "${VIRTUAL_ENV}/bin/activate"
+if [[ -n $VIRTUAL_ENV && -e "./bin/activate" ]]; then
+      source "./bin/activate"
 fi
 # <<< Ex

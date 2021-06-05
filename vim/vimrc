@@ -78,8 +78,6 @@ endif
 if !has('nvim')
   set ttymouse=sgr            "Termianl Mouse Supoort
 endif
-">>> COLORSCHEME
-colorscheme monokai
 "<<< OPTIONS <<<
 
 ">>> PLUGINS >>>
@@ -313,3 +311,5 @@ function! s:show_documentation()
   endif
 endfunction
 "<<< Ex <<<
+">>> COLORSCHEME
+colorscheme everforest
