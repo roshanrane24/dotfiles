@@ -59,21 +59,6 @@ zinit light zsh-users/zsh-autosuggestions
 # AutoEnv
 #zinit load wookayin/zsh-autoswitch-virtualenv
 zinit load gimbo/venv-lite.zsh
-#AGKOZAK Prompt
-#zinit light agkozak/agkozak-zsh-prompt
-#AGKOZAK_BLANK_LINES=1
-#AGKOZAK_COLORS_PATH=190
-#AGKOZAK_COLORS_BRANCH_STATUS=219
-#AGKOZAK_COLORS_EXIT_STATUS=202
-#AGKOZAK_COLORS_CMD_EXEC_TIME=46
-#AGKOZAK_COLORS_PROMPT_CHAR=156
-#AGKOZAK_PROMPT_CHAR=( '%F{green}❯%f' '%F{red}❯%f' '%F{blue}❮%f' )
-#AGKOZAK_CMD_EXEC_TIME=1
-#AGKOZAK_LEFT_PROMPT_ONLY=1
-#if [ -z $SSH_TTY ]
-#then
-#    AGKOZAK_USER_HOST_DISPLAY=0
-#fi
 
 # Spaceship Prompt
 #zinit light denysdovhan/spaceship-prompt
@@ -87,7 +72,7 @@ export AUTO_NOTIFY_THRESHOLD=300
 export AUTO_NOTIFY_TITLE="%command has just finished."
 export AUTO_NOTIFY_BODY="in %elapsed seconds.[%exit_code]"
 export AUTO_NOTIFY_EXPIRE_TIME=5000
-AUTO_NOTIFY_IGNORE+=("docker", "man", "sleep", "info")
+AUTO_NOTIFY_IGNORE+=("docker", "man", "sleep", "info", "python")
 
 # ZVim
 #zinit ice depth=1
@@ -102,7 +87,4 @@ autoload -Uz promptinit
 promptinit
 # <<< eol prompt engine
 #>>> Ex
-if [[ -n $VIRTUAL_ENV && -e "./bin/activate" ]]; then
-      source "./bin/activate"
-fi
 # <<< Ex
