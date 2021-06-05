@@ -21,7 +21,8 @@ bar_config = {
     "size": 25,
     "background": COLORS.BACKGROUND,
     "margin": 0,
-    "opacity": 1,
+    "opacity": 0.85,
+    "font": "Space Mono"
 }
 
 # Worspaces/Group
