@@ -1,3 +1,6 @@
+dynamic = True
+
+
 class Colors:
     BLACK = "#000000"
     DARK_GRAY = "#212121"
@@ -26,13 +29,23 @@ class Colors:
     WHITE = "#FFFFFF"
 
 
+if dynamic:
+    from myFunctions import DynamicColors
+    dc = DynamicColors()
+    dark_primary, primary, light_primary = dc.get_colors()
+else:
+    dark_primary, primary, light_primary = (Colors.LIGHT_GREEN,
+                                            Colors.GREEN,
+                                            Colors.DARK_GREEN)
+
+
 class COLORS:
     LIGHT_BACKGROUND = Colors.GRAY
     BACKGROUND = Colors.DARK_GRAY
     DARK_BACKGROUND = Colors.BLACK
-    LIGHT_PRIMARY = Colors.LIGHT_GREEN
-    PRIMARY = Colors.GREEN
-    DARK_PRIMARY = Colors.DARK_GREEN
+    LIGHT_PRIMARY = light_primary
+    PRIMARY = primary
+    DARK_PRIMARY = dark_primary
     LIGHT_COMPLEMENTARY = Colors.LIGHT_PINK
     COMPLEMENTARY = Colors.PINK
     DARK_COMPLEMENTARY = Colors.DARK_PINK
