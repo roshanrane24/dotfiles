@@ -60,7 +60,6 @@ class DynamicColors:
     @staticmethod
     def get_variants(primary: ndarray) -> ndarray:
         H, S, L = Colors.rgb2hsl(primary).astype(float64)
-        # H = H + 120 if (H + 120) < 360 else 0 + (120 - (360 - H))
 
         if S < 20:
             S = 20
