@@ -1,11 +1,11 @@
-from libqtile import hook, qtile
-from libqtile.lazy import lazy
-import subprocess
 import os
-from keybinds import keys
+import subprocess
+
 from setting import HOME
-from layout_screen import display, floating_layout, layouts, screens
 from groups import groups
+from keybinds import keys
+from layout_screen import display, floating_layout, layouts, screens
+from libqtile import hook
 
 # Configuration Variables
 auto_fullscreen = True
