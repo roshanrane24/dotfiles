@@ -189,6 +189,7 @@ Plug 'vim-airline/vim-airline'                      "Airline Status
 Plug 'vim-airline/vim-airline-themes'               "Airline Status Themes
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'                      "NERDCommentator
+Plug 'RRethy/vim-hexokinase'                        "Colorizer from code
 "COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "COLORSCHEME
