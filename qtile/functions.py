@@ -1,5 +1,11 @@
-from libqtile.lazy import lazy
 import subprocess
+import dominant_colors
+import os
+import json
+from typing import List, Tuple
+if __name__ != "__main__":
+    from libqtile.lazy import lazy
+HOME = os.environ["HOME"]
 
 
 class Display:
