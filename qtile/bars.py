@@ -65,7 +65,7 @@ main_screen_bar = bar.Bar([
     widget.CurrentScreen(
         active_color=COLORS.PRIMARY,
         active_text="",
-        inactive_color=COLORS.URGENT,
+        inactive_color=COLORS.BACKGROUND,
         inactive_text="ﴹ",
         font='SpaceMono Nerd Font Mono',
         background=COLORS.LIGHT_BACKGROUND,
@@ -198,7 +198,7 @@ second_screen_bar = bar.Bar([
     widget.CurrentScreen(
         active_color=COLORS.PRIMARY,
         active_text="",
-        inactive_color=COLORS.URGENT,
+        inactive_color=COLORS.BACKGROUND,
         inactive_text="ﴹ",
         font='SpaceMono Nerd Font Mono',
         background=COLORS.LIGHT_BACKGROUND,
