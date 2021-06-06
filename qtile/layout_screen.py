@@ -1,4 +1,4 @@
-from libqtile import layout, bar
+from libqtile import layout
 from libqtile.config import Screen
 from setting import floating_rules
 from colors import COLORS
@@ -10,16 +10,16 @@ display = Display()
 
 layouts = [
     layout.Bsp(
-        border_focus=COLORS.PRIMARY,
-        border_normal=COLORS.LIGHT_COMPLEMENTARY,
+        border_focus=COLORS.LIGHT_PRIMARY,
+        border_normal=COLORS.DARK_PRIMARY,
         border_width=1,
         grow_amount=2,
         margin=4,
     ),
     layout.Max(),
     layout.MonadTall(
-        border_focus=COLORS.PRIMARY,
-        border_normal=COLORS.LIGHT_COMPLEMENTARY,
+        border_focus=COLORS.LIGHT_PRIMARY,
+        border_normal=COLORS.DARK_PRIMARY,
         border_width=1,
         change_size=4,
         margin=2,
@@ -27,8 +27,8 @@ layouts = [
         single_margin=4,
     ),
     layout.MonadWide(
-        border_focus=COLORS.PRIMARY,
-        border_normal=COLORS.LIGHT_COMPLEMENTARY,
+        border_focus=COLORS.LIGHT_PRIMARY,
+        border_normal=COLORS.DARK_PRIMARY,
         border_width=1,
         change_size=4,
         margin=2,
@@ -36,17 +36,17 @@ layouts = [
         single_margin=4,
     ),
     layout.RatioTile(
-        border_focus=COLORS.PRIMARY,
-        border_normal=COLORS.LIGHT_COMPLEMENTARY,
+        border_focus=COLORS.LIGHT_PRIMARY,
+        border_normal=COLORS.DARK_PRIMARY,
         border_width=1,
         margin=1,
     ),
     layout.TreeTab(
-        active_bg=COLORS.PRIMARY,
+        active_bg=COLORS.LIGHT_PRIMARY,
         active_fg=COLORS.DARK_FONT,
         bg_color=COLORS.DARK_BACKGROUND,
         border_width=0,
-        inactive_bg=COLORS.DARK_COMPLEMENTARY,
+        inactive_bg=COLORS.DARK_PRIMARY,
         inactive_fg=COLORS.LIGHT_FONT,
         level_shift=1,
         margin_y=18,
@@ -71,7 +71,7 @@ layouts = [
 floating_layout = layout.Floating(
     float_rules=floating_rules,
     border_focus=COLORS.LIGHT_PRIMARY,
-    border_normal=COLORS.LIGHT_COMPLEMENTARY,
+    border_normal=COLORS.DARK_PRIMARY,
     border_width=3,
 )
 
