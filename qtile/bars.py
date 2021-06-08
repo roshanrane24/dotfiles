@@ -2,17 +2,21 @@ from libqtile import bar, widget, qtile
 from colors import COLORS
 from setting import bar_config
 
+
+widget_background = COLORS.BACKGROUND
+widget_foreground = COLORS.PRIMARY
+
 # Common Widgets
 end_sep = widget.Sep(
-    background=COLORS.BACKGROUND,
-    foreground=COLORS.LIGHT_BACKGROUND,
-    linewidth=3,
+    background=widget_background,
+    foreground=widget_foreground,
+    linewidth=2,
     padding=3,
     size_percent=80,
     )
 mid_sep = widget.Sep(
-    background=COLORS.BACKGROUND,
-    foreground=COLORS.LIGHT_BACKGROUND,
+    background=widget_background,
+    foreground=widget_foreground,
     linewidth=1,
     padding=3,
     size_percent=65,
@@ -20,11 +24,11 @@ mid_sep = widget.Sep(
 
 clock = widget.Clock(
     timezone="Asia/Kolkata",
-    background=COLORS.PRIMARY,
+    background=widget_background,
+    foreground=widget_foreground,
     font='SpaceMono Nerd Font',
     format="%H:%M",
     update_interval=5.5,
-    foreground=COLORS.DARK_FONT,
     )
 
 # Primary screen widget
@@ -33,15 +37,18 @@ main_screen_bar = bar.Bar([
     end_sep,
     # Group Box
     widget.GroupBox(
-        active=COLORS.LIGHT_PRIMARY,
-        background=COLORS.LIGHT_BACKGROUND,
-        block_highlight_text_color=COLORS.DARK_FONT,
-        borderwidth=0,
+        active=COLORS.DARK_PRIMARY,
+        background=widget_background,
+        block_highlight_text_color=COLORS.PRIMARY,
+        borderwidth=3,
+        center_aligned=True,
         disable_drag=True,
+        font='Font Awesome 5 Free,Font Awesome 5 Free Regular',
         foreground=COLORS.LIGHT_FONT,                      # For unused groups
         hide_unused=True,
+        highlight_color=[COLORS.DARK_BACKGROUND],
+        highlight_method="line",
         inactive=COLORS.LIGHT_BACKGROUND,
-        highlight_method="block",
         # Inactive Screen Bar > Active Screen Group
         other_current_screen_border=COLORS.DARK_PRIMARY,
         # Inactive Screen Bar > Inactive Screen Group
@@ -54,31 +61,30 @@ main_screen_bar = bar.Bar([
         urgent_border=COLORS.URGENT,
         urgent_text=COLORS.LIGHT_FONT,
         rounds=False,
-        font='Font Awesome 5 Free,Font Awesome 5 Free Regular'
     ),
     mid_sep,
     widget.CurrentLayoutIcon(
         scale=0.6,
-        background=COLORS.LIGHT_BACKGROUND
+        background=widget_background
     ),
     mid_sep,
     widget.CurrentScreen(
         active_color=COLORS.PRIMARY,
         active_text="",
-        inactive_color=COLORS.BACKGROUND,
+        inactive_color=COLORS.DARK_BACKGROUND,
         inactive_text="ﴹ",
         font='SpaceMono Nerd Font Mono',
-        background=COLORS.LIGHT_BACKGROUND,
+        background=widget_background,
         fontsize=25
     ),
-    mid_sep,
     widget.WindowCount(
-        background=COLORS.LIGHT_BACKGROUND,
-        foreground=COLORS.LIGHT_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font'
     ),
     mid_sep,
     widget.Spacer(),
+    mid_sep,
     widget.Backlight(
         brightness_file="/sys/class/backlight/intel_backlight/brightness",
         max_brightness_file="/sys/class/backlight/intel_backlight/"\
@@ -86,40 +92,40 @@ main_screen_bar = bar.Bar([
         step=2,
         padding=5,
         font='SpaceMono Nerd Font',
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         format=' {percent:2.0%}'
     ),
     mid_sep,
     widget.PulseVolume(
-        background=COLORS.PRIMARY,
+        background=widget_background,
+        foreground=widget_foreground,
         # theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
         emoji=True,
         font='SpaceMono Nerd Font',
-        foreground=COLORS.DARK_FONT,
         padding=2,
         update_interval=0.1
     ),
     widget.PulseVolume(
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
         padding=5,
         update_interval=0.1
     ),
     mid_sep,
     widget.Wlan(
+        background=widget_background,
+        foreground=widget_foreground,
         disconnected_message="睊",
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
         font='SpaceMono Nerd Font',
         format="{essid} {quality}"
     ),
     mid_sep,
     widget.BatteryIcon(
+        background=widget_background,
+        foreground=widget_foreground,
         update_interval=20,
-        foreground=COLORS.DARK_FONT,
-        background=COLORS.PRIMARY,
         theme_path='/usr/share/icons/Papirus-Dark/16x16/panel',
     ),
     widget.Battery(
@@ -131,15 +137,15 @@ main_screen_bar = bar.Bar([
         # low_percent=0.15,
         # notify_below=15,
         # show_short_text=False,
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
         padding=0,
     ),
     mid_sep,
     widget.Systray(
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         icon_size=25,
         padding=0
     ),
@@ -148,8 +154,8 @@ main_screen_bar = bar.Bar([
     mid_sep,
     widget.TextBox(
         '',
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
@@ -166,15 +172,18 @@ main_screen_bar = bar.Bar([
 second_screen_bar = bar.Bar([
     end_sep,
     widget.GroupBox(
-        active=COLORS.LIGHT_PRIMARY,
-        background=COLORS.LIGHT_BACKGROUND,
-        block_highlight_text_color=COLORS.DARK_FONT,
-        borderwidth=0,
+        active=COLORS.DARK_PRIMARY,
+        background=widget_background,
+        block_highlight_text_color=COLORS.PRIMARY,
+        borderwidth=3,
+        center_aligned=True,
         disable_drag=True,
+        font='Font Awesome 5 Free,Font Awesome 5 Free Regular',
         foreground=COLORS.LIGHT_FONT,                      # For unused groups
         hide_unused=True,
+        highlight_color=[COLORS.DARK_BACKGROUND],
+        highlight_method="line",
         inactive=COLORS.LIGHT_BACKGROUND,
-        highlight_method="block",
         # Inactive Screen Bar > Active Screen Group
         other_current_screen_border=COLORS.DARK_PRIMARY,
         # Inactive Screen Bar > Inactive Screen Group
@@ -187,32 +196,30 @@ second_screen_bar = bar.Bar([
         urgent_border=COLORS.URGENT,
         urgent_text=COLORS.LIGHT_FONT,
         rounds=False,
-        font='Font Awesome 5 Free,Font Awesome 5 Free Regular'
     ),
     mid_sep,
     widget.CurrentLayoutIcon(
         scale=0.6,
-        background=COLORS.LIGHT_BACKGROUND
+        background=widget_background
     ),
     mid_sep,
     widget.CurrentScreen(
         active_color=COLORS.PRIMARY,
         active_text="",
-        inactive_color=COLORS.BACKGROUND,
+        inactive_color=COLORS.DARK_BACKGROUND,
         inactive_text="ﴹ",
         font='SpaceMono Nerd Font Mono',
-        background=COLORS.LIGHT_BACKGROUND,
+        background=widget_background,
         fontsize=25
     ),
-    mid_sep,
     widget.WindowCount(
-        background=COLORS.LIGHT_BACKGROUND,
-        foreground=COLORS.LIGHT_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font'
     ),
     mid_sep,
     widget.Spacer(),
-    # mid_sep,
+     mid_sep,
     # widget.WidgetBox(
     #     widget=[widget.BitcoinTicker(font='SpaceMono Nerd Font',
     #             background=COLORS.LIGHT_BACKGROUND,
@@ -229,39 +236,40 @@ second_screen_bar = bar.Bar([
     # mid_sep,
     widget.CPU(
         format=" {load_percent}%",
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
     ),
     mid_sep,
     widget.Memory(
         format=" {MemPercent}%",
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='Font Awesome 5 Free,Font Awesome 5 Free Regular'
     ),
     mid_sep,
     widget.Memory(
         format=" {SwapPercent}%",
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
     ),
     mid_sep,
     widget.ThermalSensor(
         font='SpaceMono Nerd Font',
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         foreground_alert=COLORS.URGENT,
         threshold=59
     ),
     mid_sep,
     widget.HDDBusyGraph(
-        background=COLORS.PRIMARY,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
-        border_color=COLORS.DARK_FONT,
+        border_color=COLORS.DARK_PRIMARY,
         fill_color=COLORS.DARK_PRIMARY,
-        graph_color=COLORS.LIGHT_BACKGROUND,
+        graph_color=COLORS.LIGHT_PRIMARY,
         border_width=1,
         linewidth=0,
         margin_y=1,
@@ -271,8 +279,8 @@ second_screen_bar = bar.Bar([
     mid_sep,
     widget.TextBox(
         '',
-        background=COLORS.PRIMARY,
-        foreground=COLORS.DARK_FONT,
+        background=widget_background,
+        foreground=widget_foreground,
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
