@@ -18,5 +18,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:hibernate*:history*"}
 
 # GOLANG
+export GOROOT=/usr/lib/go
 export GOPATH="$HOME/.local/lib/golib"
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
