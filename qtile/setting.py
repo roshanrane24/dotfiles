@@ -26,6 +26,7 @@ bar_config = {
     "opacity": 1,
     "font": "Space Mono"
 }
+SCREEN = 'extend'  # extend, mirror
 
 # Worspaces/Group
 workspaces = {
@@ -71,4 +72,4 @@ floating_rules = [*layout.Floating.default_float_rules,
                   Match(title='Copying files'),
                   Match(title='Save File'),
                   Match(title='Delete Permanently'),
-                ]
+                  ]
