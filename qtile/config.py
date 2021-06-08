@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from setting import HOME
+from setting import HOME, SCREEN
 from groups import groups
 from keybinds import keys
 from layout_screen import display, floating_layout, layouts, screens
@@ -30,6 +30,13 @@ groups = groups
 
 
 # Calling Hooks
+def randr():
+    if SCREEN == 'extend':
+        display.set_extend_all()
+    elif SCREEN == 'mirror':
+        display.set_mirror_all()
+
+
 @hook.subscribe.startup_once
 def autostart():
     processes = [
@@ -53,8 +60,8 @@ def wallpaper():
 
 
 @hook.subscribe.startup_complete
-def randr():
-    display.set_extend_all()
+def randr_scom():
+    randr()
 
 
 @hook.subscribe.client_new
@@ -69,3 +76,8 @@ def spotify_6(window):
     print(window)
     if window.name == 'Spotify Free':
         window.togroup('6')
+
+
+@hook.subscribe.screen_change
+def randr_sc():
+    randr()
