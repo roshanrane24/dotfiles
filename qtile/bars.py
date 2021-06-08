@@ -126,7 +126,8 @@ main_screen_bar = bar.Bar([
         background=widget_background,
         foreground=widget_foreground,
         update_interval=20,
-        theme_path='/usr/share/icons/Papirus-Dark/16x16/panel',
+        # theme_path='/usr/share/icons/Papirus-Dark/16x16/panel',
+        theme_path='/usr/share/icons/Flat-Remix-Green-Dark/panel',
     ),
     widget.Battery(
         # charge_char=" ",
