@@ -133,6 +133,7 @@ def get_theme(primary: ndarray) -> ndarray:
 def change_config(theme: ndarray) -> None:
     qt = os.path.join(HOME, '.config/qt5ct/qt5ct.conf')
     gtk = os.path.join(HOME, '.config/gtk-3.0/settings.ini')
+    gtk2 = os.path.join(HOME, '.gtkrc-2.0')
 
     # QT
     try:
@@ -156,4 +157,21 @@ def change_config(theme: ndarray) -> None:
             gtk_settings.write(gtkw)
     except Exception as e:
         print("Exception:", e)
+
+    with open(gtk2, 'r') as file:
+        newlines = []
+        for line in file.readlines():
+            if line.split('=')[0] == 'gtk-theme-name':
+                x = line.split('=')
+                x[1] = f'"{theme[0]}"\n'
+                newlines.append('='.join(x))
+            elif line.split('=')[0] == 'gtk-icon-theme-name':
+                x = line.split('=')
+                x[1] = f'"{theme[1]}"\n'
+                newlines.append('='.join(x))
+            else:
+                newlines.append(line)
+
+    with open(gtk2, 'w') as gtk2w:
+        gtk2w.writelines(newlines)
 
