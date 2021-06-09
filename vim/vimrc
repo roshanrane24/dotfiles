@@ -40,7 +40,7 @@ set showmode                "Show mode on statusbar
 ">>> Code Folding
 set foldmethod=indent       "Fold based on indention levels.
 set foldnestmax=3           "Only fold up to three nested levels.
-"set nofoldenable            "Disable folding by default.
+set nofoldenable            "Disable folding by default.
 ">>> Misc
 set nobackup                "Disable Backup Files
 set nowritebackup           "Disable Backup
@@ -65,7 +65,7 @@ set updatetime=300
 set splitbelow
 set splitright
 set completeopt+=noinsert,menuone,noselect
-"set termguicolors
+set termguicolors
 set background=dark
 set shortmess+=c
 if has("nvim-0.5.0") || has("patch-8.1.1564")
