@@ -2,14 +2,17 @@ import os
 from libqtile import layout
 from libqtile.config import Match
 from libqtile.utils import guess_terminal
-from colors import COLORS
 
+
+# Set
+SCREEN: str = 'extend'  # extend, mirror
+DYNAMIC_COLORS: bool = True
 
 # Applications
 TERMINAL = guess_terminal()
 BROWSER = "brave"
 FILE_MANAGER = "dolphin"
-FILE_MANAGER_2 = ""
+FILE_MANAGER_2 = "nautilus"
 EDITOR_GUI = ""
 MODKEY = "mod4"
 
@@ -21,12 +24,10 @@ SCRIPTS = os.path.join(CONFIG, "shell-files")
 # Config
 bar_config = {
     "size": 25,
-    "background": COLORS.BACKGROUND,
     "margin": 0,
     "opacity": 1,
     "font": "Space Mono"
 }
-SCREEN = 'extend'  # extend, mirror
 
 # Worspaces/Group
 workspaces = {
@@ -45,7 +46,7 @@ workspaces = {
     "7": {"label": "",
           "matches": {"wm_class": ["Discord"]}},
     "8": {"label": "",
-          "matches": {"wm_class": ["qBitorrent"]}},
+          "matches": {"wm_class": ["qbitorrent"]}},
     "9": {"label": "1",
           "matches": None},
     "0": {"label": "2",

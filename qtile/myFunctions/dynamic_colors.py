@@ -1,5 +1,6 @@
 import os
 import json
+import configparser
 from typing import Any
 from numpy import array, float64, ndarray
 from dominant_colors import DominantColors
@@ -19,15 +20,14 @@ class DynamicColors:
             self.dominant: DominantColors = DominantColors(self.wallpaper,
                                                            no_of_colors=3)
             self.primary_color: ndarray = self.get_primary()
-            with open(DynamicColors.CACHE+"primary", 'w') as fp:
-                json.dump({"primary": list(self.primary_color)}, fp)
 
     def get_colors(self) -> ndarray:
         if self.is_cache:
+            self.primary_color = array(list(self.cache.values())[1])
             return array(list(self.cache.values())[0])
         else:
             colors: ndarray = self.get_hex_varient()
-            self.write_cache(self.wallpaper, colors)
+            self.write_cache(self.wallpaper, colors, self.primary_color)
             self.is_cache: bool = self.check_cache()
             return colors
 
@@ -43,9 +43,11 @@ class DynamicColors:
             return False
 
     @classmethod
-    def write_cache(cls, path: str, colors: ndarray) -> None:
+    def write_cache(cls, path: str, colors: ndarray, primary: ndarray) -> None:
         with open(cls.CACHE, 'w') as cache:
-            json.dump({path: colors.tolist()}, cache)
+            json.dump({path: colors.tolist(),
+                       "Primary": primary.astype(int).tolist()},
+                      cache)
 
     @staticmethod
     def get_wallpaper_path() -> str:
@@ -85,3 +87,73 @@ class DynamicColors:
         return array([Colors.hsl2hex(varients[0]),
                       Colors.hsl2hex(varients[1]),
                       Colors.hsl2hex(varients[2])])
+
+
+def set_theme(primary: ndarray) -> None:
+    primary = Colors.rgb2hsl(primary)
+    theme: ndarray = get_theme(primary)
+    change_config(theme)
+
+
+def get_theme(primary: ndarray) -> ndarray:
+    H, S, _ = primary
+    H = round(H / 30)
+
+    if S < 25:
+        return array(["Flat-Remix-GTK-Blue-Dark", "Flat-Remix-Grey-Dark"])
+    else:
+        return {0: array(["Flat-Remix-GTK-Red-Dark",
+                          "Flat-Remix-Red-Dark"]),
+                1: array(["Flat-Remix-GTK-Yellow-Dark",
+                          "Flat-Remix-Orange-Dark"]),
+                2: array(["Flat-Remix-GTK-Yellow-Dark",
+                          "Flat-Remix-Yellow-Dark"]),
+                3: array(["Flat-Remix-GTK-Green-Dark",
+                          "Flat-Remix-Green-Dark"]),
+                4: array(["Flat-Remix-GTK-Green-Dark",
+                          "Flat-Remix-Green-Dark"]),
+                5: array(["Flat-Remix-GTK-Green-Dark",
+                          "Flat-Remix-Teal-Dark"]),
+                6: array(["Flat-Remix-GTK-Blue-Dark",
+                          "Flat-Remix-Cyan-Dark"]),
+                7: array(["Flat-Remix-GTK-Blue-Dark",
+                          "Flat-Remix-Blue-Dark"]),
+                8: array(["Flat-Remix-GTK-Blue-Dark",
+                          "Flat-Remix-Blue-Dark"]),
+                9: array(["Flat-Remix-GTK-Blue-Dark",
+                          "Flat-Remix-Violet-Dark"]),
+                10: array(["Flat-Remix-GTK-Red-Dark",
+                           "Flat-Remix-Magenta-Dark"]),
+                11: array(["Flat-Remix-GTK-Red-Dark",
+                           "Flat-Remix-Magenta-Dark"]),
+                12: array(["Flat-Remix-GTK-Red-Dark",
+                           "Flat-Remix-Red-Dark"])}[H]
+
+
+def change_config(theme: ndarray) -> None:
+    qt = os.path.join(HOME, '.config/qt5ct/qt5ct.conf')
+    gtk = os.path.join(HOME, '.config/gtk-3.0/settings.ini')
+
+    # QT
+    try:
+        qt5ct = configparser.ConfigParser()
+        qt5ct.read(qt)
+        qt5ct['Appearance']['icon_theme'] = theme[1]
+
+        with open(qt, 'w') as qtw:
+            qt5ct.write(qtw)
+    except Exception as e:
+        print("Exception:", e)
+
+    # GTK
+    try:
+        gtk_settings = configparser.ConfigParser()
+        gtk_settings.read(gtk)
+        gtk_settings['Settings']['gtk-icon-theme-name'] = theme[1]
+        gtk_settings['Settings']['gtk-theme-name'] = theme[0]
+
+        with open(gtk, 'w') as gtkw:
+            gtk_settings.write(gtkw)
+    except Exception as e:
+        print("Exception:", e)
+

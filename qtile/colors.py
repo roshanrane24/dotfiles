@@ -1,4 +1,4 @@
-dynamic = True
+from setting import DYNAMIC_COLORS
 
 
 class Colors:
@@ -29,10 +29,12 @@ class Colors:
     WHITE = "#FFFFFF"
 
 
-if dynamic:
+if DYNAMIC_COLORS:
     from myFunctions import DynamicColors
+    from myFunctions import set_theme
     dc = DynamicColors()
     dark_primary, primary, light_primary = dc.get_colors()
+    set_theme(dc.primary_color)
 else:
     dark_primary, primary, light_primary = (Colors.LIGHT_GREEN,
                                             Colors.GREEN,

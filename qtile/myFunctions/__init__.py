@@ -1,1 +1,1 @@
-from .dynamic_colors import DynamicColors
+from .dynamic_colors import DynamicColors, set_theme
