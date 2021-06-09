@@ -3,8 +3,10 @@ from colors import COLORS
 from setting import bar_config
 
 
-widget_background = COLORS.BACKGROUND
+widget_background = COLORS.DARK_BACKGROUND
 widget_foreground = COLORS.PRIMARY
+bar_background = COLORS.DARK_BACKGROUND
+
 
 # Common Widgets
 end_sep = widget.Sep(
@@ -46,7 +48,7 @@ main_screen_bar = bar.Bar([
         font='Font Awesome 5 Free,Font Awesome 5 Free Regular',
         foreground=COLORS.LIGHT_FONT,                      # For unused groups
         hide_unused=True,
-        highlight_color=[COLORS.DARK_BACKGROUND],
+        highlight_color=[COLORS.BACKGROUND],
         highlight_method="line",
         inactive=COLORS.LIGHT_BACKGROUND,
         # Inactive Screen Bar > Active Screen Group
@@ -71,7 +73,7 @@ main_screen_bar = bar.Bar([
     widget.CurrentScreen(
         active_color=COLORS.PRIMARY,
         active_text="",
-        inactive_color=COLORS.DARK_BACKGROUND,
+        inactive_color=COLORS.BACKGROUND,
         inactive_text="ﴹ",
         font='SpaceMono Nerd Font Mono',
         background=widget_background,
@@ -167,7 +169,8 @@ main_screen_bar = bar.Bar([
     ),
     end_sep,
     ],
-    **bar_config
+    **bar_config,
+    background=bar_background
 )
 
 second_screen_bar = bar.Bar([
@@ -182,7 +185,7 @@ second_screen_bar = bar.Bar([
         font='Font Awesome 5 Free,Font Awesome 5 Free Regular',
         foreground=COLORS.LIGHT_FONT,                      # For unused groups
         hide_unused=True,
-        highlight_color=[COLORS.DARK_BACKGROUND],
+        highlight_color=[COLORS.BACKGROUND],
         highlight_method="line",
         inactive=COLORS.LIGHT_BACKGROUND,
         # Inactive Screen Bar > Active Screen Group
@@ -207,7 +210,7 @@ second_screen_bar = bar.Bar([
     widget.CurrentScreen(
         active_color=COLORS.PRIMARY,
         active_text="",
-        inactive_color=COLORS.DARK_BACKGROUND,
+        inactive_color=COLORS.BACKGROUND,
         inactive_text="ﴹ",
         font='SpaceMono Nerd Font Mono',
         background=widget_background,
@@ -292,5 +295,6 @@ second_screen_bar = bar.Bar([
     ),
     end_sep,
     ],
-    **bar_config
+    **bar_config,
+    background=bar_background
 )
