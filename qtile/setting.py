@@ -46,7 +46,8 @@ workspaces = {
     "7": {"label": "",
           "matches": {"wm_class": ["Discord"]}},
     "8": {"label": "",
-          "matches": {"wm_class": ["qbitorrent"]}},
+          "matches": {"wm_class": ["qBittorrent", "qbittorrent"]}},
+
     "9": {"label": "1",
           "matches": None},
     "0": {"label": "2",
