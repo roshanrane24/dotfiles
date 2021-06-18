@@ -18,6 +18,7 @@ export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:hibernate*:history*"}
 
 # GOLANG
 export GOROOT=/usr/lib/go
+export GO111MODULE=on
 export GOPATH="$HOME/.local/lib/golib"
 export GOPATH="$HOME/Build/gocode"
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
