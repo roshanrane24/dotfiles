@@ -1,73 +1,76 @@
 ">>> OPTIONS >>>
 set nocompatible
 ">>> Search
-set hlsearch                "Search Highlighting
-set incsearch               "Increamental Search
-set ignorecase              "Ignore case while searching
-set smartcase               "Auto Case sensitive
+set hlsearch                    "Search Highlighting
+set incsearch                   "Increamental Search
+set ignorecase                  "Ignore case while searching
+set smartcase                   "Auto Case sensitive
 ">>> Indentation
-set autoindent              "New lines inherit the indentation of previous lines.
-set expandtab               "Convert Tabs into Spaces
-set tabstop=4               "Indent using four spaces.
-set smarttab                "Insert “tabstop” number of spaces when the “tab” key is pressed.
-set shiftwidth=4            "When shifting, indent using four spaces
-set shiftround              "When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
-filetype indent on			"Indent based on file
+set autoindent                  "New lines inherit the indentation of previous lines.
+set expandtab                   "Convert Tabs into Spaces
+set tabstop=4                   "Indent using four spaces.
+set smarttab                    "Insert “tabstop” number of spaces when the “tab” key is pressed.
+set shiftwidth=4                "When shifting, indent using four spaces
+set shiftround                  "When shifting lines, round the indentation to the nearest multiple of “shiftwidth.”
+filetype indent on              "Indent based on file
 "set smartindent
 ">>> Performance
-"set complete-=1            "Limit the files searched for auto-completes.
-"set lazydraw               "Don’t update screen during macro and script execution.
+"set complete-=1                "Limit the files searched for auto-completes.
+"set lazydraw                   "Don’t update screen during macro and script execution.
 ">>> Text Rendering
-set encoding=utf-8          "Use an encoding that supports unicode.
-set linebreak               "Avoid wrapping a line in the middle of a word.
-syntax enable               "Syantax Highlighting
-set wrap                    "Enable line wrapping.
-set display+=lastline       "Always try to show a paragraph’s last line.
-set scrolloff=1             "The number of screen lines to keep above and below the cursor
-set sidescrolloff=5         "The number of screen columns to keep to the left and right of the cursor.
-"set spell                  "spell Check
+set encoding=utf-8              "Use an encoding that supports unicode.
+set linebreak                   "Avoid wrapping a line in the middle of a word.
+syntax enable                   "Syantax Highlighting
+set wrap                        "Enable line wrapping.
+set display+=lastline           "Always try to show a paragraph’s last line.
+set scrolloff=1                 "The number of screen lines to keep above and below the cursor
+set sidescrolloff=5             "The number of screen columns to keep to the left and right of the cursor.
+"set spell                      "spell Check
 ">>> UI
-set laststatus=2            "Alway show statusbar
-set ruler                   "Line No. & Column No.(Cursor Position)
-set wildmenu                "Display command line’s tab complete options as a menu.
-set relativenumber          "Show line number on the current line and relative numbers on all other lines
-set number          "Show line number on the current line
-set mouse=a                 "Enable mouse for scrolling and resizing
-set cursorline              "Highlight the line currently under cursor
-set tabpagemax=50           "Maximum number of tab pages that can be opened from the command line.
-set background=dark         "Use colors that suit a dark background
-set showmode                "Show mode on statusbar
+set laststatus=2                "Alway show statusbar
+set ruler                       "Line No. & Column No.(Cursor Position)
+set wildmenu                    "Display command line’s tab complete options as a menu.
+set relativenumber              "Show line number on the current line and relative numbers on all other lines
+set number                      "Show line number on the current line
+set mouse=a                     "Enable mouse for scrolling and resizing
+set cursorline                  "Highlight the line currently under cursor
+set tabpagemax=50               "Maximum number of tab pages that can be opened from the command line.
+set background=dark             "Use colors that suit a dark background
+set showmode                    "Show mode on statusbar
 ">>> Code Folding
-set foldmethod=indent       "Fold based on indention levels.
-set foldnestmax=3           "Only fold up to three nested levels.
-set nofoldenable            "Disable folding by default.
+set foldmethod=indent           "Fold based on indention levels.
+set foldnestmax=3               "Only fold up to three nested levels.
+set nofoldenable                "Disable folding by default.
 ">>> Misc
-set nobackup                "Disable Backup Files
-set nowritebackup           "Disable Backup
-set noswapfile              "Diasble Swap Files
-set cmdheight=2             "Commad Line height
-set autoread                "Automatically re-read files if unmodified inside Vim
-set backspace=indent,eol,start "Allow backspacing over indention, line breaks and insertion start.
-set backupdir=~/.cache/vim: "Directory to store backup files
-set dir=~/.cache/vim        "Directory to store swap files.
-set formatoptions+=j        "Delete comment characters when joining lines.
-set history=1000            "Increase the undo limit
-set shell=/bin/sh           "Shell to execute commad
-set hidden                  "Hide files in the background instead of closing them.
-set showmatch               "Use % to jump between matching brackets
-set autowrite               "Save when switching between
-set ttyfast                 "More Chars to screen for redrawing
+set nobackup                    "Disable Backup Files
+set nowritebackup               "Disable Backup
+set noswapfile                  "Diasble Swap Files
+set cmdheight=2                 "Commad Line height
+set autoread                    "Automatically re-read files if unmodified inside Vim
+set backspace=indent,eol,start  "Allow backspacing over indention, line breaks and insertion start.
+set backupdir=~/.cache/vim:     "Directory to store backup files
+set dir=~/.cache/vim            "Directory to store swap files.
+set formatoptions+=j            "Delete comment characters when joining lines.
+set history=1000                "Increase the undo limit
+set shell=/bin/sh               "Shell to execute commad
+set hidden                      "Hide files in the background instead of closing them.
+set showmatch                   "Use % to jump between matching brackets
+set autowrite                   "Save when switching between
+set ttyfast                     "More Chars to screen for redrawing
 set showcmd
-set list                    "show hidden characters
+set list                        "show hidden characters
 set listchars=tab:,trail:,extends:>,nbsp:#,precedes:<
-"set paste                   "Paste from clipboard
-set updatetime=300
+"set paste                      "Paste from clipboard
+set updatetime=200
 set splitbelow
 set splitright
 set completeopt+=noinsert,menuone,noselect
-set termguicolors
+if has('nvim')
+  set termguicolors
+endif
 set background=dark
 set shortmess+=c
+set rtp+=$GOROOT/misc/vim
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
@@ -76,7 +79,7 @@ else
 endif
 ">>> ALACRITTY
 if !has('nvim')
-  set ttymouse=sgr            "Termianl Mouse Supoort
+  set ttymouse=sgr                      "Termianl Mouse Supoort
 endif
 "<<< OPTIONS <<<
 
@@ -98,28 +101,6 @@ let g:SimpylFold_fold_import=1
 let b:SimpylFold_fold_import=1
 let g:SimpylFold_fold_blank=0
 let b:SimpylFold_fold_blank=0
-">>> ALE
-" let g:ale_linter={
-"       \ 'python': ['flake8', 'pylint'],
-"       \ 'javascript': ['prettier', 'eslint'],
-"       \ 'typescript': ['prettier', 'eslint']}
-" "      \ 'css': ['prettier'],
-" "      \ 'html': ['prettier'],
-" "      \ 'vue': ['prettier'],
-" "      \ 'yaml': ['prettier'],
-" "      \ 'sql': ['sql-lint'],
-" "      \ 'vim': ['vimls'],
-" "      \ 'docker': ['docker-lint'],
-" "      \ 'go': ['bingo'],
-" "      \ 'shell': ['shellcheck'],
-" "      \ 'c++': ['clangd'],
-" "      \ 'c': ['clangd'],
-" "      \ 'markdown': ['prettier']
-" 
-" let g:ale_fixers = {'python':['autopep8', 'isort'],
-"       \ 'javascript':['prettier']}
-" let g:ale_disable_lsp = 1
-" let g:ale_virtualenv_dir_names = []
 ">>> FZF
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -168,45 +149,61 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html',
                           \ 'coc-htmldjango', 'coc-java', 'coc-tsserver',
                           \ 'coc-xml', 'coc-yaml', 'coc-pydocstring',
                           \ 'coc-pyright', 'coc-snippets', 'coc-diagnostic',
-                          \ 'coc-java', 'coc-toml']
+                          \ 'coc-java', 'coc-toml', 'coc-markdownlint',
+                          \ 'coc-lua']
 
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+">>> LSP Rooter
+"lua << EOF
+  "require("lsp-rooter").setup {
+    "-- your configuration comes here
+    "-- or leave it empty to use the default settings
+    "-- refer to the configuration section below
+  "}
+"EOF
 ">>> Vim-Plug
-call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'                          "NERDtree
-Plug 'tmhedberg/SimpylFold'							"Code Follding
-"Plug 'dense-analysis/ale'							"SyantaxChecking
-Plug 'nvie/vim-flake8'								"PEP-8 Python Syntax
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	"Fuzzy Finder
-Plug 'tpope/vim-fugitive'							"Git
-Plug 'luochen1990/rainbow'						    "Rainbow Brackets
-Plug 'tpope/vim-surround'							"Surround
-Plug 'preservim/tagbar'								"Tagbar
-Plug 'Shougo/neopairs.vim'                          "AutoComplete Brackets&Quotes
-Plug 'sheerun/vim-polyglot'							"Language Pack
-Plug 'jeetsukumaran/vim-buffergator'				"Buffer Window
-Plug 'vim-airline/vim-airline'                      "Airline Status
-Plug 'vim-airline/vim-airline-themes'               "Airline Status Themes
+call plug#begin('~/.config/nvim/plugins')
+
+"Plug 'dense-analysis/ale'                                  "SyantaxChecking
+Plug 'scrooloose/nerdtree'                                  "NERDtree
+Plug 'tmhedberg/SimpylFold'                                 "Code Follding
+Plug 'nvie/vim-flake8'                                      "PEP-8 Python Syntax
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }         "Fuzzy Finder
+Plug 'tpope/vim-fugitive'                                   "Git
+Plug 'luochen1990/rainbow'                                  "Rainbow Brackets
+Plug 'tpope/vim-surround'                                   "Surround
+Plug 'preservim/tagbar'                                     "Tagbar
+Plug 'Shougo/neopairs.vim'                                  "AutoComplete Brackets&Quotes
+Plug 'sheerun/vim-polyglot'                                 "Language Pack
+Plug 'jeetsukumaran/vim-buffergator'                        "Buffer Window
+Plug 'vim-airline/vim-airline'                              "Airline Status
+Plug 'vim-airline/vim-airline-themes'                       "Airline Status Themes
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'preservim/nerdcommenter'                      "NERDCommentator
-Plug 'RRethy/vim-hexokinase'                        "Colorizer from code
+Plug 'preservim/nerdcommenter'                              "NERDCommentator
+Plug 'norcalli/nvim-colorizer.lua'                          "Colorizer from code
+"Plug 'RRethy/vim-hexokinase'                                "Colorizer from code
+Plug 'rafamadriz/neon'
+Plug 'nvim-lua/popup.nvim'
+"Plug 'ahmedkhalf/lsp-rooter.nvim'
 "COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "COLORSCHEME
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'joshdick/onedark.vim'
-Plug 'nanotech/jellybeans.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'altercation/solarized'
-Plug 'ajh17/spacegray.vim'
-Plug 'zeis/vim-kolor'
+Plug 'marko-cerovac/material.nvim'
+Plug 'folke/tokyonight.nvim'
 Plug 'sainnhe/vim-color-forest-night'
 
 call plug#end()
 "<<< PLUGINS <<<
 
 ">>> KEYBINDS >>>
+let mapleader = " "
 ">>> NERDtree
 nmap <F10> :NERDTreeToggle<CR>
 ">>> FZF
@@ -218,30 +215,17 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 ">>> Buffers
-nnoremap <C-b>c :BufCurOnly<CR>
-nnoremap <C-b>k :bd<CR>
-nnoremap <C-b>n :bn<CR>
-nnoremap <C-b>p :bp<CR>
+nnoremap <leader>bc :BufCurOnly<CR>
+nnoremap <leader>bk :bd<CR>
 ">>> Git Fugitive
 nnoremap <C-g>b :call <SID>ToggleBlame()<CR>
 nnoremap <C-g>a :Git add %<CR>
 nnoremap <C-g>c :Git commit %<CR>
-nnoremap <C-g>s :Gstatus<CR>
+nnoremap <C-g>s :Git status<CR>
 nnoremap <C-g>d :Gvdiff<CR>
 nnoremap <C-g>i :Gedit :0<CR>
-">>> ALE
-nnoremap <F5> :ALEFix<CR>
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <F6> :ALEGoToDefinition<CR>
-nnoremap <F7> :ALEHover<CR>
-">>> NayVy
-nnoremap <leader><F8> :NayvyImportFZF<CR>
-nnoremap <F8> :NayvyImport<CR>
-nnoremap <leader><F9> :NayvyTestGenerateFZF<CR>
-nnoremap <F9> :NayvyTestGenerate<CR>
 ">>> Tagbar
-nmap <leader><F4> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 ">>> Ex
 nnoremap <silent> <esc> :noh<cr><esc>
 ">>> COC
@@ -260,8 +244,8 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <F6> <Plug>(coc-diagnostic-prev)
+nmap <silent> <F7> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -280,6 +264,35 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Applying codeAction to the selected region.
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+
 
 "<<< KEYBINDS <<<
 
@@ -311,6 +324,21 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 "<<< Ex <<<
 ">>> COLORSCHEME
 colorscheme everforest
