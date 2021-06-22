@@ -11,6 +11,8 @@ HOME = os.environ["HOME"]
 
 class DynamicColors:
     CACHE: str = os.path.join(HOME, ".cache/dynamicaccent")
+    CSS: str = os.path.join(HOME, ".cache/dynamic-rofi.rasi")
+
 
     def __init__(self):
         self.cache: Any = None
@@ -48,6 +50,14 @@ class DynamicColors:
             json.dump({path: colors.tolist(),
                        "Primary": primary.astype(int).tolist()},
                       cache)
+
+        with open(cls.CSS, 'w') as css:
+            lines = ["* {\n",
+                   f"dark-primary: {colors[0]};\n",
+                   f"primary: {colors[1]};\n",
+                   f"light-primary: {colors[2]};\n",
+                   "}"]
+            css.writelines(lines)
 
     @staticmethod
     def get_wallpaper_path() -> str:
