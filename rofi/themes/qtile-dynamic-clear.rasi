@@ -1,0 +1,237 @@
+configuration {
+	display-drun: 		"";
+	display-run: 		"";
+	display-window: 	"";
+	show-icons:			true;
+}
+
+@import "~/.cache/dynamic-rofi.rasi"
+@import "globals.rasi"
+
+/*|------------------------------------------------------------------------------------|*/
+/*| window {BOX:vertical}                                                              |*/
+/*| |-------------------------------------------------------------------------------|  |*/
+/*| | mainbox  {BOX:vertical}                                                       |  |*/
+/*| | |---------------------------------------------------------------------------| |  |*/
+/*| | | inputbar {BOX:horizontal}                                                 | |  |*/
+/*| | | |---------| |-----------------------------------------------------| |---| | |  |*/
+/*| | | | prompt  | | entry                                               | |ci | | |  |*/
+/*| | | |---------| |-----------------------------------------------------| |---| | |  |*/
+/*| | |---------------------------------------------------------------------------| |  |*/
+/*| |                                                                               |  |*/
+/*| | |---------------------------------------------------------------------------| |  |*/
+/*| | | message                                                                   | |  |*/
+/*| | | |-----------------------------------------------------------------------| | |  |*/
+/*| | | | textbox                                                               | | |  |*/
+/*| | | |-----------------------------------------------------------------------| | |  |*/
+/*| | |---------------------------------------------------------------------------| |  |*/
+/*| |                                                                               |  |*/
+/*| | |-----------------------------------------------------------------------------|  |*/
+/*| | | listview                                                                    |  |*/
+/*| | |-----------------------------------------------------------------------------|  |*/
+/*| |                                                                               |  |*/
+/*| | |---------------------------------------------------------------------------| |  |*/
+/*| | |  mode-switcher {BOX:horizontal}                                           | |  |*/
+/*| | | |---------------|   |---------------|  |--------------| |---------------| | |  |*/
+/*| | | | Button        |   | Button        |  | Button       | | Button        | | |  |*/
+/*| | | |---------------|   |---------------|  |--------------| |---------------| | |  |*/
+/*| | |---------------------------------------------------------------------------| |  |*/
+/*| |-------------------------------------------------------------------------------|  |*/
+/*|------------------------------------------------------------------------------------|*/
+
+*{
+	font:				"Space Mono 15";
+	columns: 4;
+}
+
+/* window */
+window {
+	background-color:	transparent;
+	width:				100%;
+	height:				100%;
+	fullscreen:			true;
+	padding:			25px 0 0 0;
+}
+
+/* window.overlay */
+overlay {
+}
+
+/* window.mainbox */
+mainbox {
+	background-color:	transparent;
+	/*border-radius:	2%;*/
+	border:				0px;
+	border-color:		@primary;
+	padding:			1% 1% 1% 1%;
+}
+/* window.mainbox.inputbar */
+inputbar {
+	background-color:	transparent;
+	border:				0px;
+	border-radius:		0px;
+	border-color:		@primary;
+	margin:				0.5%;
+	padding:			0.5%;
+	opacity: 0.5;
+}
+/* window.mainbox.inputbar.box */
+box {
+}
+/* window.mainbox.inputbar.case-indicator */
+case-indicator {
+	enabled:			false;
+}
+/* window.mainbox.inputbar.prompt */
+prompt {
+	enabled:			true;
+	background-color:	@dark-primary;
+	text-color:			@light-primary;
+	/*border-radius: 		5px;*/
+	border:				1px;
+	border-color:		@primary;
+	margin:				0.5%;
+	padding:			1% 1% 1% 1%;
+}
+/* window.mainbox.inputbar.entry */
+entry {
+	background-color:	@dark-primary;
+	text-color:			@light-primary;
+	border-radius:		0px;
+	border:				1px;
+	border-color:		@primary;
+	margin:				0.5%;
+}
+/* window.mainbox.inputbar.num-rows */
+num-rows {
+}
+/* window.mainbox.inputbar.num-filtered-rows */
+num-filtered-rows {
+}
+/* window.mainbox.listview */
+listview {
+	background-color:	transparent;
+	/*border-radius: 		1px;*/
+	border-color: 		@primary;
+	border: 			0px;
+	dynamic: 			false;
+	padding:			1% 1% 1% 1%;
+	margin:				0.5%;
+	/*fixed-columns:		true;*/
+}
+/* window.mainbox.listview.scrollbar */
+scrollbar {
+	enabled: false;
+}
+/* window.mainbox.listview.element */
+element {
+	background-color:	@dark-primary;
+	orientation:		vertical;
+	padding:			2%;
+	margin:				1.7%;
+	border-radius:		0px;
+	
+}
+/* window.mainbox.listview.element.normal */
+element normal.normal {
+	background-color:	@dark-primary;
+	text-color:			@light-primary;
+	border:				1px;
+	border-color:		@primary;
+	border-radius:		0px;
+}
+element alternate.normal {
+	background-color:	@dark-primary;
+	text-color:			@light-primary;
+	border:				1px;
+	border-color:		@primary;
+	border-radius:		0px;
+}
+element selected.normal {
+	background-color: 	@primary;
+	text-color:			@white;
+	border-radius:		0px;
+	border:				1px;
+	border-color:		@light-primary;
+}
+/* window.mainbox.listview.element.urgent */
+element normal.urgent {
+	background-color:	@dark-primary;
+	text-color:			@red;
+	border:				1px;
+	border-color:		@ired;
+}
+element alternate.urgent {
+	background-color:	@dark-primary;
+	text-color:			@red;
+	border-radius:		0px;
+	border:				1px;
+	border-color:		@ired;
+}
+element selected.urgent {
+	background-color:	@primary;
+	text-color:			@red;
+	border-radius:		0px;
+	border:				1px;
+	border-color:		@ired-trans;
+}
+/* window.mainbox.listview.element.active */
+element normal.active {
+	background-color:	@light-primary;
+	text-color:			@dark-primary;
+	border-radius:		0px;
+	border:				1px;
+	border-color:		@primary;
+}
+element alternate.active {
+	background-color: 	@light-primary;
+	text-color:			@dark-primary;
+	border-radius:		0px;
+	border:				1px;
+	border-color:		@primary;
+}
+element selected.active {
+	background-color:	@light-primary;
+	text-color:			@primary;
+	border-radius:		0px;
+	border:				2px;
+	border-color:		@light-primary;
+	highlight: 			bold white;
+}
+/* window.mainbox.listview.element.element-icon */
+element-icon {
+	size:				64;
+	border:				0px;
+	boder-color:		inherit;
+	text-color:			inherit;
+	horizontal-align:	true;
+}
+/* window.mainbox.listview.element.element-index */
+element-index {
+}
+/* window.mainbox.listview.element.element-text */
+element-text {
+	text-color:			inherit;
+	horizontal-align:	0.5;
+	expand:				true;
+}
+/* window.mainbox.mode-switcher */
+mode-switcher {
+	border:				1px;
+	border-color:		@primary;
+	background:			@white;
+}
+/* window.mainbox.mode-switcher.button */
+button {
+}
+/* window.mainbox.message */
+message {
+}
+/* window.mainbox.message.textbox */
+textbox {
+	/*border-radius:	0px;*/
+	background-color: 	@dark-primary;
+	border:				1px;
+	border-color:		@primary;
+	text-color:			@light-primary;
+}
