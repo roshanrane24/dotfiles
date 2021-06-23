@@ -1,0 +1,11 @@
+[Unit]
+Description=Dunst Notification Server
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/dunst
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
