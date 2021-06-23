@@ -3,22 +3,24 @@
 SYSTEM=$()
 # Show Main Menu
 function main_menu () {
+    clear
+
     echo "Select Config You Want to Install:"
-    echo "0: Exit"
-    echo "1: Alacritty"
-    echo "2: Bash"
-    echo "3: BSPWM"
-    echo "4: Deadd"
-    echo "5: Dunst"
-    echo "6: i3"
-    echo "7: MPV"
-    echo "8: Picom"
-    echo "9: QTile"
-    echo "10: Rofi"
-    echo "11: Tmux"
-    echo "12: Vim"
-    echo "13: ZSH"
-    echo "A: All"
+    echo "A:   All"
+    echo "0:   Exit"
+    echo "1:   Alacritty"
+    echo "2:   Bash"
+    echo "3:   BSPWM"
+    echo "4:   Deadd"
+    echo "5:   Dunst"
+    echo "6:   i3"
+    echo "7:   MPV"
+    echo "8:   Picom"
+    echo "9:   QTile"
+    echo "10:  Rofi"
+    echo "11:  Tmux"
+    echo "12:  Vim"
+    echo "13:  ZSH"
 
     printf "SELECT e.g.(1 5 10) :"
     read -a OPTIONS
@@ -42,78 +44,91 @@ function install() {
            echo
            install_alacritty
            echo
+           any_key
            main_menu
             ;;
         2)
            echo
            install_bash
            echo
+           any_key
            main_menu
             ;;
         3)
            echo
            install_bspwm
            echo
+           any_key
            main_menu
             ;;
         4)
            echo
            install_deadd
            echo
+           any_key
            main_menu
             ;;
         5)
            echo
            install_dunst
            echo
+           any_key
            main_menu
             ;;
         6)
            echo
            install_i3
            echo
+           any_key
            main_menu
             ;;
         7)
            echo
            install_mpv
            echo
+           any_key
            main_menu
             ;;
         8)
            echo
            install_picom
            echo
+           any_key
            main_menu
             ;;
         9)
            echo
            install_qtile
            echo
+           any_key
            main_menu
             ;;
         10)
            echo
            install_rofi
            echo
+           any_key
            main_menu
             ;;
         11)
            echo
            install_tmux
            echo
+           any_key
            main_menu
             ;;
         12)
            echo
            install_vim
            echo
+           any_key
            main_menu
             ;;
         13)
            echo
            install_zsh
            echo
+           any_key
            main_menu
             ;;
         A)
@@ -144,10 +159,12 @@ function install() {
            echo
            install_zsh
            echo
+           any_key
            main_menu
             ;;
         *)
            echo "$1 is not a valid option."
+           read
            main_menu
             ;;
     esac
@@ -167,7 +184,7 @@ function install_alacritty() {
     alacritty_dir="$HOME/.config/alacritty"
     mkdir -p $alacritty_dir
 
-    link_file "$PWD/alacritty/*" "$alacritty_dir"
+    link_file "$PWD/alacritty" "$alacritty_dir"
 
     echo "Done Setting Up Alacritty"
 }
@@ -177,7 +194,7 @@ function install_bash() {
     link_file "$PWD/.bashrc" "$HOME"
 
     shell_dir="$HOME/.config/shell-files"
-    link_file "$PWD/shell-files/*" $shell_dir
+    link_file "$PWD/shell-files" $shell_dir
 
     echo "Bashrc Config Setup Complete"
 }
@@ -195,28 +212,26 @@ function install_bspwm() {
     mkdir -p $bspwm_dir
     mkdir -p $sxhkd_dir
 
-    link_file "$PWD/bspwm/*" $bspwm_dir
-    link_file "$PWD/sxhkd/*" $sxhkd_dir
+    link_file "$PWD/bspwm" $bspwm_dir
+    link_file "$PWD/sxhkd" $sxhkd_dir
 
     echo "Done Setiing Up BSPWM"
 }
 
 function install_deadd() {
-    echo "Setting Up Deadd"
-    if [[ ! -e "/bin/deadd-notification-center" ]]; then
-        echo "deadd-notification-center is Not Installed"
-        echo "Install deadd-notification-center."
-        return
-    fi
+   echo "Setting Up Deadd"
+   if [[ ! -e "/bin/deadd-notification-center" ]]; then
+      echo "deadd-notification-center is Not Installed"
+      echo "Install deadd-notification-center."
+      return
+   fi
 
-    deadd_dir="$HOME/.config/deadd"
-    if [[ ! -d $deadd_dir ]]; then
-        mkdir -p $deadd_dir
-    fi
+   deadd_dir="$HOME/.config/deadd"
+   mkdir -p $deadd_dir
 
-    link_file "$PWD/deadd/*" $deadd_dir
+   link_file "$PWD/deadd" $deadd_dir
 
-    echo "Done Setiing Up Deadd"
+   echo "Done Setiing Up Deadd"
 }
 
 function install_dunst() {
@@ -287,10 +302,10 @@ function install_i3() {
     mkdir -p $i3_extra_dir
     mkdir -p $polybar_dir
 
-    link_file "$PWD/i3/*" $i3_dir
-    link_file "$PWD/i3/scripts/*" $i3_extra_dir
-    link_file "$PWD/polybar/*" $polybar_dir
-    link_file "$PWD/polybar/scripts/*" $polybar_extra_dir
+    link_file "$PWD/i3" $i3_dir
+    link_file "$PWD/i3/scripts" $i3_extra_dir
+    link_file "$PWD/polybar" $polybar_dir
+    link_file "$PWD/polybar/scripts" $polybar_extra_dir
 
     echo "Done Setting Up i3WM"
 }
@@ -304,7 +319,7 @@ function install_mpv() {
     fi
 
     mpv_dir="$HOME/.config/mpv"
-    link_file "$PWD/mpv/*" $mpv_dir
+    link_file "$PWD/mpv" $mpv_dir
 
     echo "Done Setting Up MPV"
 }
@@ -320,7 +335,7 @@ function install_picom() {
     picom_dir="$HOME/.config/picom"
     mkdir -p $picom_dir
 
-    link_file "$PWD/picom/*" $picom_dir
+    link_file "$PWD/picom" $picom_dir
 }
 
 function install_qtile() {
@@ -388,8 +403,10 @@ function install_rofi() {
         package_install rofi
     fi
 
-    rofi_dir="$HOME/.config/rofi"
-    link_file "$PWD/rofi/*" $rofi_dir
+    rofi_theme_dir="$HOME/.config/rofi/themes"
+    rofi_script_dir="$HOME/.config/rofi/scripts"
+    link_file "$PWD/rofi/themes" $rofi_theme_dir
+    link_file "$PWD/rofi/scripts" $rofi_script_dir
 
     echo "Done Setting Up Rofi"
 }
@@ -446,7 +463,7 @@ function install_zsh() {
     link_file "$PWD/.zshrc" "$HOME"
 
     shell_dir="$HOME/.config/shell-files"
-    link_file "$PWD/shell-files/*" $shell_dir
+    link_file "$PWD/shell-files" $shell_dir
 
     zinit_dir="$HOME/.zinit"
     mkdir -p $zinit_dir
@@ -468,28 +485,37 @@ function package_install() {
 }
 
 function link_file(){
-    if [[ -e  $2 ]]; then
-        echo "$2 File Already Exist"
+   if [[ ! -d $1 ]]; then
+      echo "Source Directory Doesn't Exist"
+      return
+   fi
+   for file in $(ls -p $1 | grep -v /); do
+      if [[ -e  "$2/$file" ]]; then
+        echo "$file File Already Exist"
         printf "Do you want to replace file with new link? [y/N]"
         confirm=`read`
 
         case $confirm in
             Y|y|yes|Yes|YES)
-                rm -f $2
-                ln $1 $2
+                rm -f "$2/$file"
+                ln "$1/$file" "$2/$file"
                 ;;
             N|n|no|No|NO)
-                echo "$2 file unchanged"
-                return
+                echo "$file file unchanged"
                 ;;
             *)
-                echo "$2 file unchanged"
-                return
+                echo "$file file unchanged"
                 ;;
         esac
-    else
-        ln $1 $2
-    fi
+      else
+        ln "$1/$file" "$2/$file"
+      fi
+   done
+}
+
+function any_key() {
+   echo "Press Any Key to Continue..."
+   read
 }
 
 main_menu
