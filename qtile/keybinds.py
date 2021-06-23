@@ -1,7 +1,8 @@
 from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
 from setting import (BROWSER, MODKEY, TERMINAL, EDITOR_GUI,
-                     FILE_MANAGER, FILE_MANAGER_2, SCRIPTS)
+                     FILE_MANAGER, FILE_MANAGER_2, SCRIPTS,
+                     ROFI_THEME)
 from groups import groups
 from functions import move_group_to_next_screen, move_group_to_prev_screen
 import os
@@ -197,14 +198,13 @@ keys = [
 
     # Run Command/Application Launcher
     Key([MODKEY, "control"], "g",
-        lazy.spawn('rofi -show run -theme lime-amber'),
+        lazy.spawn(f'rofi -show run -theme {ROFI_THEME}'),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY], "g",
-        lazy.spawn('rofi -show drun -theme lime-amber -show-icons -icon-theme'\
-                   ' Papirus-Dark -display-drun ""'),
+        lazy.spawn(f'rofi -show drun -theme {ROFI_THEME}'),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY, "mod1"], "g",
-        lazy.spawn('rofi -show window -theme lime-amber -display-window ""'),
+        lazy.spawn(f'rofi -show window -theme {ROFI_THEME}'),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY], "Return",
         lazy.spawn(TERMINAL),
