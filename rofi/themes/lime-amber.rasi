@@ -4,7 +4,7 @@ configuration{
 
 @import "globals.rasi"
 *{
-	font:											"Cantarell 25";
+	font:					"Space Mono 20";
 	columns: 4;
 
 }
@@ -51,8 +51,8 @@ listview {
 
 element {
 	orientation:	vertical;
-	padding:3px;
-	margin:	3px;
+	padding:0px;
+	margin:	15px;
 	border-radius:					20px;
 }
 
@@ -146,9 +146,6 @@ element-icon {
 	text-color: inherit;
 	horizontal-align: true;
 }
-inputbar{
-	background-color:	@black-trans;
-	}
 case-indicator{
 	enabled:	false;
 }

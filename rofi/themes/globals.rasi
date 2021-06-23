@@ -1,0 +1,20 @@
+* {
+	black:				#222222;
+	black-trans:		#22222222;
+	black-trans2:		#22222255;
+	black-trans3:		#22222288;
+	iamber:				#ff9914;
+	iamber-trans:		#ff9914cc;
+	iamber-dark:		#ff9a15;
+	ilime:				#abff4f;
+	ilime-trans:		#abff4fbb;
+	ilime-trans2:		#abff4fce;
+	red:				#ff0101;
+	ired:				#ff0101aa;
+	ired-trans2:		#ff010188;
+	white:				#f5fffa;
+	white-trans:		#FFFFFFdd;
+	white-trans2:		#FFFFFF22;
+	white-trans3:		#FFFFFF88;
+	font:				"Space Mono 25";
+}
