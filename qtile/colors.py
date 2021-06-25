@@ -4,6 +4,7 @@ from setting import DYNAMIC_COLORS
 class Colors:
     BLACK = "#000000"
     DARK_GRAY = "#212121"
+    MATERIAL_GRAY = "#222222"
     GRAY = "#383838"
     LIGHT_RED = "#FF5131"
     RED = "#D50000"
@@ -43,7 +44,7 @@ else:
 
 class COLORS:
     LIGHT_BACKGROUND = Colors.GRAY
-    BACKGROUND = Colors.DARK_GRAY
+    BACKGROUND = Colors.MATERIAL_GRAY
     DARK_BACKGROUND = Colors.BLACK
     LIGHT_PRIMARY = light_primary
     PRIMARY = primary
