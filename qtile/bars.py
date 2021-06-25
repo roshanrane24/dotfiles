@@ -162,7 +162,7 @@ main_screen_bar = bar.Bar([
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
-                "zsh -c 'kill -s USR1 $(pidof deadd-notification-center)'"
+                "sh -c '~/.config/dunst/scripts/notification-center'"
             )
         },
         padding=7
