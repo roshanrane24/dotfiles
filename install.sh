@@ -247,7 +247,7 @@ function install_dunst() {
     mkdir -p $dunst_dir
     mkdir -p $dunst_extra_dir
 
-    link_file "$PWD/dunst/dunstrc" $dunst_dir
+    link_file "$PWD/dunst" $dunst_dir
     link_file "$PWD/dunst/scripts" $dunst_extra_dir
 
     echo "Done Setiing Up Dunst"
@@ -389,8 +389,8 @@ function install_qtile() {
     mkdir -p $qtile_dir
     mkdir -p $qtile_fun_dir
 
-    link_file "$PWD/qtile/*.py" $qtile_dir
-    link_file "$PWD/qtile/myFunctions/*.py" $qtile_fun_dir
+    link_file "$PWD/qtile/" $qtile_dir
+    link_file "$PWD/qtile/myFunctions/" $qtile_fun_dir
 
     echo "Finish Setting Up QTile"
 }
@@ -485,7 +485,7 @@ function package_install() {
 }
 
 function link_file(){
-   if [[ ! -d $1 ]]; then
+   if [[ ! -d $(ls -d $1) ]]; then
       echo "Source Directory Doesn't Exist"
       return
    fi

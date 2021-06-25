@@ -1,0 +1,13 @@
+[Unit]
+Description=NetworkD Notification
+Require=systemd-networkd.service
+Require=systemd-resolved.service
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/networkd-notify
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target
