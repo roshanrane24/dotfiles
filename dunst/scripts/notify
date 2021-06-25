@@ -1,0 +1,34 @@
+#!/bin/bash
+
+case $DUNST_APP_NAME in
+    NetworkManager)
+        case $DUNST_SUMMARY in
+            *Established*)
+                ~/.config/shell-files/sound.sh net-connect
+                ;;
+            *Disconnected*)
+                ~/.config/shell-files/sound.sh net-disconnect
+                ;;
+            *)
+                exit
+        esac
+        ;;
+    networkd)
+        case $DUNST_BODY in
+            *online*)
+                ~/.config/shell-files/sound.sh net-connect
+                    ;;
+            offline)
+                ~/.config/shell-files/sound.sh net-disconnect
+                    ;;
+            disconnected)
+                ~/.config/shell-files/sound.sh net-disconnect
+                ;;
+            *)
+                exit
+        esac
+        ;;
+    *)
+        ~/.config/shell-files/sound.sh notify
+        ;;
+esac
