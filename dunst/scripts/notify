@@ -29,6 +29,17 @@ case $DUNST_APP_NAME in
         esac
         ;;
     *)
-        ~/.config/shell-files/sound.sh notify
+        case $DUNST_SUMMARY in
+            WhatsApp)
+                ~/.config/shell-files/sound.sh message
+                ;;
+            *)
+                case $DUNST_BODY in
+                    *)
+                        ~/.config/shell-files/sound.sh notify
+                        ;;
+                esac
+                ;;
+        esac
         ;;
 esac
