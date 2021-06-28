@@ -1,4 +1,4 @@
-from setting import DYNAMIC_COLORS
+from setting import DYNAMIC_COLORS, THEME
 
 
 class Colors:
@@ -15,9 +15,9 @@ class Colors:
     LIGHT_PURPLE = "#C158DC"
     PURPLE = "#8E24AA"
     DARK_PURPLE = "#5C007A"
-    LIGHT_DEEP_PURPLE = "#B085F5"
-    DEEP_PURPLE = "7E57C2"
-    DARK_DEEP_PURPLE = "4D2C91"
+    LIGHT_VOILET = "#B085F5"
+    VOILET = "#7E57C2"
+    DARK_VOILET = "#4D2C91"
     LIGHT_INDIGO = "#757DE8"
     INDIGO = "#3F51B5"
     DARK_INDIGO = "#002984"
@@ -29,6 +29,15 @@ class Colors:
     DARK_GREEN = "#79B700"  # DARK
     WHITE = "#FFFFFF"
 
+THEME_LIGHT, THEME_PRIMARY, THEME_DARK = {
+    "Red":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Pink":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Purple":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Voilet":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Indigo":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Blue":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Green":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+                                          }[THEME]
 
 if DYNAMIC_COLORS:
     from myFunctions import DynamicColors
@@ -37,9 +46,9 @@ if DYNAMIC_COLORS:
     dark_primary, primary, light_primary = dc.get_colors()
     set_theme(dc.primary_color)
 else:
-    dark_primary, primary, light_primary = (Colors.LIGHT_GREEN,
-                                            Colors.GREEN,
-                                            Colors.DARK_GREEN)
+    dark_primary, primary, light_primary = (Colors.THEME_LIGHT,
+                                            Colors.THEME_PRIMARY,
+                                            Colors.THEME_DARK)
 
 
 class COLORS:

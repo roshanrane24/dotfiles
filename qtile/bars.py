@@ -3,24 +3,25 @@ from colors import COLORS
 from setting import bar_config
 
 
-widget_background = COLORS.DARK_BACKGROUND
+widget_background = COLORS.BACKGROUND
 widget_foreground = COLORS.PRIMARY
-bar_background = COLORS.DARK_BACKGROUND
+bar_background = COLORS.BACKGROUND
 
 
 # Common Widgets
 end_sep = widget.Sep(
     background=widget_background,
-    foreground=widget_foreground,
-    linewidth=2,
+    foreground=COLORS.LIGHT_BACKGROUND,
+    linewidth=1,
     padding=3,
     size_percent=80,
     )
 mid_sep = widget.Sep(
     background=widget_background,
-    foreground=widget_foreground,
+    foreground=COLORS.LIGHT_BACKGROUND,
     linewidth=1,
     padding=3,
+    margin=5,
     size_percent=65,
     )
 
@@ -29,7 +30,7 @@ clock = widget.Clock(
     background=widget_background,
     foreground=widget_foreground,
     font='SpaceMono Nerd Font',
-    format="%H:%M",
+    format="%a %d %b %Y %H:%M",
     update_interval=5.5,
     )
 
@@ -65,20 +66,25 @@ main_screen_bar = bar.Bar([
         rounds=False,
     ),
     mid_sep,
-    widget.CurrentLayoutIcon(
-        scale=0.6,
-        background=widget_background
+    # widget.CurrentLayoutIcon(
+        # scale=0.6,
+        # background=widget_background,
+        # foreground=widget_foreground
+    # ),
+    widget.CurrentLayout(
+        background=widget_background,
+        foreground=widget_foreground
     ),
     mid_sep,
-    widget.CurrentScreen(
-        active_color=COLORS.PRIMARY,
-        active_text="",
-        inactive_color=COLORS.BACKGROUND,
-        inactive_text="ﴹ",
-        font='SpaceMono Nerd Font Mono',
-        background=widget_background,
-        fontsize=25
-    ),
+    # widget.CurrentScreen(
+        # active_color=COLORS.PRIMARY,
+        # active_text="",
+        # inactive_color=COLORS.BACKGROUND,
+        # inactive_text="ﴹ",
+        # font='SpaceMono Nerd Font Mono',
+        # background=widget_background,
+        # fontsize=25
+    # ),
     widget.WindowCount(
         background=widget_background,
         foreground=widget_foreground,
@@ -169,8 +175,8 @@ main_screen_bar = bar.Bar([
     ),
     end_sep,
     ],
+    background=bar_background,
     **bar_config,
-    background=bar_background
 )
 
 second_screen_bar = bar.Bar([
@@ -202,20 +208,24 @@ second_screen_bar = bar.Bar([
         rounds=False,
     ),
     mid_sep,
-    widget.CurrentLayoutIcon(
-        scale=0.6,
-        background=widget_background
+    # widget.CurrentLayoutIcon(
+        # scale=0.6,
+        # background=widget_background
+    # ),
+    widget.CurrentLayout(
+        background=widget_background,
+        foreground=widget_foreground
     ),
     mid_sep,
-    widget.CurrentScreen(
-        active_color=COLORS.PRIMARY,
-        active_text="",
-        inactive_color=COLORS.BACKGROUND,
-        inactive_text="ﴹ",
-        font='SpaceMono Nerd Font Mono',
-        background=widget_background,
-        fontsize=25
-    ),
+    # widget.CurrentScreen(
+        # active_color=COLORS.PRIMARY,
+        # active_text="",
+        # inactive_color=COLORS.BACKGROUND,
+        # inactive_text="ﴹ",
+        # font='SpaceMono Nerd Font Mono',
+        # background=widget_background,
+        # fontsize=25
+    # ),
     widget.WindowCount(
         background=widget_background,
         foreground=widget_foreground,
