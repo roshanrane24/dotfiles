@@ -1,6 +1,7 @@
 #!/bin/env bash
 
 SYSTEM=$()
+cwd=$PWD
 # Show Main Menu
 function main_menu () {
     clear
@@ -358,31 +359,41 @@ function install_qtile() {
     fi
 
     # Install FlatRemix
-    echo "Flat Remix"
-    cwd=$PWD
-    cd /tmp
-    git clone 'https://github.com/daniruiz/flat-remix-gtk.git'
-    cd flat-remix-gtk
-    make
-    sudo make install
-    cd ..
-    git clone 'https://github.com/daniruiz/flat-remix.git'
-    cd flat-remix
-    make
-    sudo make install
-    cd ..
+    if [[ ! -d "/usr/share/themes/Flat-Remix-GTK-Blue" ]]; then
+      echo "Flat Remix GTK"
+      cd /tmp
+      git clone 'https://github.com/daniruiz/flat-remix-gtk.git'
+      cd flat-remix-gtk
+      make
+      sudo make install
+      cd $cwd
+    fi
+    if [[ ! -d "/usr/share/icons/Flat-Remix-Blue-Dark" ]]; then
+       echo "Flat Remix GTK"
+       cd /tmp
+       git clone 'https://github.com/daniruiz/flat-remix.git'
+       cd flat-remix
+       make
+       sudo make install
+       cd $cwd
+    fi
 
     # Dynamic Colors
     # Installing OpenCv
-    echo "Installing OpenCv"
-    pip install opencv-python
-    pip install json
-    echo "Installing DominantColors"
-    git clone 'https://github.com/roshanrane24/DominantColors.git'
-    cd DominantColors
-    pip install setuptools wheel sklearn numpy
-    python setup.py bdist_wheel
-    pip install dist/*.whl
+    if [[ ! $(pip list | grep opencv) > 0 ]]; then
+       echo "Installing OpenCv"
+       pip install opencv-python
+    fi
+    if [[ ! $(pip list | grep DominantColors) > 0 ]]; then
+      echo "Installing DominantColors"
+      cd /tmp
+      git clone 'https://github.com/roshanrane24/DominantColors.git'
+      cd DominantColors
+      pip install setuptools wheel sklearn numpy json
+      python setup.py bdist_wheel
+      pip install dist/*.whl
+      cd $cwd
+    fi
 
     qtile_dir="$HOME/.config/qtile"
     qtile_fun_dir="$qtile_dir/myFunctions"
