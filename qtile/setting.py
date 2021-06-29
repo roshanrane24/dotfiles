@@ -8,7 +8,7 @@ from libqtile.utils import guess_terminal
 SCREEN: str = 'extend'  # extend, mirror
 DYNAMIC_COLORS: bool = True
 if DYNAMIC_COLORS:
-    ROFI_THEME = 'qtile-dynamic'
+    ROFI_THEME = 'qtile-dynamic-solid'
     THEME = 'Green'
 else:
     ROFI_THEME = 'lime-amber'
