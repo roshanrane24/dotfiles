@@ -198,10 +198,8 @@ keys = [
 
     # Run Command/Application Launcher
     Key([MODKEY], "g",
-        lazy.spawn(f'rofi -show drun -matching fuzzy -modi run,ssh -theme {ROFI_THEME}'),
-        desc="Spawn a command using a prompt widget"),
-    Key([MODKEY, "mod1"], "g",
-        lazy.spawn(f'rofi -show window -modi windowcd -window-thumbnail -theme {ROFI_THEME}'),
+        lazy.spawn("rofi -show drun -matching fuzzy -modi" \
+                   f"run,ssh,window,windowcd -theme {ROFI_THEME}"),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY], "Return",
         lazy.spawn(TERMINAL),
