@@ -197,14 +197,11 @@ keys = [
         desc="Shutdown qtile"),
 
     # Run Command/Application Launcher
-    Key([MODKEY, "control"], "g",
-        lazy.spawn(f'rofi -show run -theme {ROFI_THEME}'),
-        desc="Spawn a command using a prompt widget"),
     Key([MODKEY], "g",
-        lazy.spawn(f'rofi -show drun -theme {ROFI_THEME}'),
+        lazy.spawn(f'rofi -show drun -matching fuzzy -modi run,ssh -theme {ROFI_THEME}'),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY, "mod1"], "g",
-        lazy.spawn(f'rofi -show window -theme {ROFI_THEME}'),
+        lazy.spawn(f'rofi -show window -modi windowcd -window-thumbnail -theme {ROFI_THEME}'),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY], "Return",
         lazy.spawn(TERMINAL),
