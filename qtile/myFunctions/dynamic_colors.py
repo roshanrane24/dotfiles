@@ -13,7 +13,6 @@ class DynamicColors:
     CACHE: str = os.path.join(HOME, ".cache/dynamicaccent")
     CSS: str = os.path.join(HOME, ".cache/dynamic-rofi.rasi")
 
-
     def __init__(self):
         self.cache: Any = None
         self.wallpaper = DynamicColors.get_wallpaper_path()
@@ -53,10 +52,19 @@ class DynamicColors:
 
         with open(cls.CSS, 'w') as css:
             lines = ["* {\n",
-                   f"dark-primary: {colors[0]};\n",
-                   f"primary: {colors[1]};\n",
-                   f"light-primary: {colors[2]};\n",
-                   "}"]
+                     f"dark-primary: {colors[0]};\n",
+                     f"dark-primary-trans: {colors[0]}44;\n",
+                     f"dark-primary-trans1: {colors[0]}88;\n",
+                     f"dark-primary-trans2: {colors[0]}BB;\n",
+                     f"primary: {colors[1]};\n",
+                     f"primary-trans: {colors[1]}44;\n",
+                     f"primary-trans1: {colors[1]}88;\n",
+                     f"primary-trans2: {colors[1]}BB;\n",
+                     f"light-primary: {colors[2]};\n",
+                     f"light-primary-trans: {colors[2]}44;\n",
+                     f"light-primary-trans1: {colors[2]}88;\n",
+                     f"light-primary-trans2: {colors[2]}BB;\n",
+                     "}"]
             css.writelines(lines)
 
     @staticmethod
@@ -184,4 +192,3 @@ def change_config(theme: ndarray) -> None:
 
     with open(gtk2, 'w') as gtk2w:
         gtk2w.writelines(newlines)
-
