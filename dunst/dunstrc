@@ -187,7 +187,7 @@
     verbosity = mesg
 
     # Define the corner radius of the notification window
-    corner_radius = 0
+    corner_radius = 10
 
     ### Legacy
     # Use the Xinerama extension instead of RandR for multi-monitor support.
