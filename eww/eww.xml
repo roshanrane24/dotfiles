@@ -1,0 +1,20 @@
+<eww>
+    <definitions>
+        <!--BackGround-->
+        <def name="bg">
+            <box class="bg"></box>
+        </def>
+    </definitions>
+    <variables>
+
+    </variables>
+    <windows>
+        <!-- BackGround-->
+        <window name="background" stacking="fg" focusable="false" screen="0">
+            <geometry x="0" y="3%" width="100%" height="97%"/>
+            <widget>
+                <bg/>
+            </widget>
+        </window>>
+    </windows>
+</eww>
