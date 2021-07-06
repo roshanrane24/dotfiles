@@ -1,20 +1,138 @@
 <eww>
+    <variables>
+        <!-- User-->
+        <script-var name="IMAGE" interval="6h">ls ~/.face</script-var>
+        <script-var name="NAME" interval="6h">echo "Roshan Rane"</script-var>
+        <script-var name="UNAME" interval="6h">whoami</script-var>
+        <!-- System-Info-->
+        <script-var name="CPU" interval="1s">~/.config/eww/scripts/sys-info cpu</script-var>
+        <script-var name="MEM" interval="1s">~/.config/eww/scripts/sys-info mem</script-var>
+        <script-var name="BRI" interval="1s">~/.config/eww/scripts/sys-info brightness</script-var>
+        <script-var name="BAT" interval="1s">~/.config/eww/scripts/sys-info battery</script-var>
+        <!-- TIME & DATE-->
+        <script-var name="DATE" interval="10m">date +%d</script-var>
+        <script-var name="MONTH" interval="10m">date +%b</script-var>
+        <script-var name="HOUR" interval="1m">date +%H</script-var>
+        <script-var name="MINUTE" interval="1m">date +%M</script-var>
+        <script-var name="SECOND" interval="1s">date +%S</script-var>
+        <script-var name="DAY" interval="1s">date +%A</script-var>
+        <!-- Weather-->
+        <script-var name="WTRICON" interval="5m">scripts/weather -unit metric icon</script-var>
+        <script-var name="WTRDSC" interval="5m">scripts/weather -unit metric description</script-var>
+        <script-var name="WTRTMP" interval="5m">scripts/weather -unit metric temp</script-var>
+        <script-var name="WTRATMP" interval="5m">scripts/weather -unit metric actual</script-var>
+        <script-var name="WTRHUMID" interval="5m">scripts/weather -unit metric humidity</script-var>
+        <script-var name="WTRWSPD" interval="5m">scripts/weather -unit metric wind-speed</script-var>
+        <script-var name="WTRWDIR" interval="5m">scripts/weather -unit metric wind-direction</script-var>
+        <script-var name="WTRHMD" interval="5m">scripts/weather -unit metric humidity</script-var>
+        <script-var name="WTRPSR" interval="5m">scripts/weather -unit metric pressure</script-var>
+        <script-var name="WTRLCT" interval="5m">scripts/weather -unit metric location</script-var>
+    </variables>
+<!-- /////////////////////////////////////////////////////////////// -->
     <definitions>
         <!--BackGround-->
         <def name="bg">
             <box class="bg"></box>
         </def>
-    </definitions>
-    <variables>
+        <!-- User-->
+        <def name="user">
+            <box class="gen-win" orientation="v" spacing="10" space-evenly="false" vexpand="false" hexpand="false">
+                <image class="face" style="background-image: url({{IMAGE}});" halign="center"/>
+                <label class="fullname" halign="center" wrap="true" limit-width="25" text="{{NAME}}"/>
+                <label class="username" halign="center" wrap="true" limit-width="25" text="{{UNAME}}"/>
+            </box>
+        </def>
+        <!-- System-Info-->
+        <def name="sys-info">
+            <box class="gen-win" vexpand="false" hexpand="false">
 
-    </variables>
+            </box>
+        </def>
+        <!-- Time & Date-->
+        <def name="date">
+            <box class="gen-win" orientation="v" halign="fill" valign="fill" spacing="-10" vexpand="false" hexpand="false" space-evenly="false">
+                    <label wrap="true" class="date-day" text="{{DATE}}"></label>
+                    <label wrap="true" class="date-month" text="{{MONTH}}"></label>
+            </box>
+        </def>
+        <def name="time">
+            <box class="gen-win" orientation="v" halign="fill" valign="fill" spacing="-10" vexpand="false" hexpand="false" space-evenly="false">
+                <box class="time-box" orientation="h" spacing="-10">
+                    <label wrap="true" class="time-hour" text="{{HOUR}}"/>
+                    <label wrap="true" class="time-minute" text="{{MINUTE}}"/>
+                    <label wrap="true" class="time-second" text="{{SECOND}}"/>
+                </box>
+                <label wrap="true" class="time-day" text="{{DAY}}"/>
+            </box>
+        </def>
+        <!-- Weather-->
+        <def name="weather">
+            <box class="gen-win" orientation="v" halign="fill" valign="fill" spacing="" vexpand="false" hexpand="false" space-evenly="false">
+                <box class="weather-1" orientation="h" halign="center" valign="center" space-evenly="false" spacing="0">
+                    <box style="background-image: url('{{WTRICON}}');" class="weather-icon" halign="center"/>
+                    <label class="weather-temp" wrap="true" text="{{WTRTMP}}"/>
+                    <label class="weather-temp-unit" wrap="true" text=""/>
+                    <box orientation="v" >
+                        <label class="weather-description" halign="start" limit-width="20" wrap="true" text="{{WTRDSC}}"/>
+                        <box class="weather-atemp-box" orientation="h" space-evenly="false">
+                            <label class="weather-atemp-text" halign="start" wrap="true" text="Feels Like "/>
+                            <label class="weather-atemp" halign="start" text="{{WTRATMP}}"/>
+                            <label class="weather-atemp-unit" halign="start" wrap="true" text=""/>
+                        </box>
+                    </box>
+                </box>
+                <box class="weather-2" orientation="h" halign="center" valign="center" spacing="5" space-evenly="false">
+                    <label class="wind-icon" halign="start" wrap="true" text=""/>
+                    <label class="wind-speed" halign="start" wrap="true" text="{{WTRWSPD}}"/>
+                    <label class="wind-direction-icon" halign="start" wrap="true" text=""/>
+                    <label class="wind-direction" halign="start" wrap="true" text="{{WTRWDIR}}"/>
+                    <label class="wind-direction-deg" halign="start" wrap="true" text=" "/>
+                    <label class="humidity-icon" halign="start" wrap="true" text=""/>
+                    <label class="humidity" halign="start" wrap="true" text="{{WTRHMD}}"/>
+                    <label class="pressure-icon" halign="start" wrap="true" text=""/>
+                    <label class="pressure" halign="start" wrap="true" text="{{WTRPSR}}"/>
+                    <label class="location-icon" halign="start" wrap="true" text=""/>
+                    <label class="location" halign="start" wrap="true" text="{{WTRLCT}}"/>
+                </box>
+            </box>
+        </def>
+    </definitions>
+<!-- /////////////////////////////////////////////////////////////// -->
     <windows>
         <!-- BackGround-->
         <window name="background" stacking="fg" focusable="false" screen="0">
             <geometry x="0" y="3%" width="100%" height="97%"/>
             <widget>
                 <bg/>
+ </widget>
+        </window>>
+        <!-- TIME & DATE-->
+        <window name="date" stacking="fg" focusable="false" screen="0">
+            <geometry x="4%" y="5%" width="10%" height="20%"/>
+            <widget>
+                <date/>
             </widget>
         </window>>
+        <window name="time" stacking="fg" focusable="false" screen="0">
+            <geometry x="15%" y="5%" width="30%" height="20%"/>
+            <widget>
+                <time/>
+            </widget>
+        </window>>
+        <!-- Weather-->
+        <window name="weather" stacking="fg" focusable="false" screen="0">
+            <geometry x="4%" y="26%" width="41%" height="20%"/>
+            <widget>
+                <weather/>
+            </widget>
+        </window>>
+
+        <!-- System-Info-->
+        <!--<window name="sys-info" stacking="fg" focusable="false" screen="0">-->
+            <!--<geometry x="5%" y="45%" width="15%" height="35%"/>-->
+            <!--<widget>-->
+                <!--<sys-info/>-->
+            <!--</widget>-->
+        <!--</window>>-->
     </windows>
 </eww>

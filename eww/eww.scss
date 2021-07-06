@@ -1,10 +1,232 @@
+$material-black: #222222;
+$material-grey: #757575;
+$color-green1: #6ACF3A;
+$color-red1: #A32310;
+$color-blue1: #8FBCBB;
+
 // general
 * {
     all: unset;
+    font-family: Space Mono;
 }
 
-//@import "~/.config/rofi/themes/globals.rasi";
+
 .bg {
-    background-color:   #222222;
-    opacity: 0.25;
+    background-color: $material-grey;
+    opacity: 0.3;
+}
+
+.gen-win {
+    background-color: $material-black;
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+// Time & Date
+.date {
+	margin: 0;
+}
+.date-day {
+	color: $color-red1;
+	font-size: 72px;
+	font-weight: bold;
+}
+
+.date-month {
+	color: $color-blue1;
+	font-size: 28px;
+}
+
+.time-box {
+	font-size: 72px;
+	font-weight: bold;
+}
+.time-day {
+	color: $color-blue1;
+	font-size: 28px;
+}
+
+// Weather
+.weather-1 {
+	margin-top: 25px;
+}
+.weather-icon {
+	background-size: 110px;
+	min-height: 100px;
+	min-width: 100px;
+	margin-top: -30px;
+	margin-left: -30px;
+}
+
+.weather-temp {
+	color: cyan;
+	font-size: 75px;
+	margin-top: -45px;
+	margin-left: 20px;
+}
+
+.weather-temp-unit {
+	font-size: 95px;
+	margin-top: -45px;
+}
+
+.weather-description {
+	color: $color-blue1;
+	font-size: 25px;
+	margin-top: -35px;
+	margin-left: 40px;
+}
+
+.weather-atemp-box {
+	margin-top: -65px;
+	margin-left: 35px;
+}
+
+.weather-atemp, .weather-atemp-text {
+	font-size: 25px;
+}
+
+.weather-atemp {
+	color: cyan;
+}
+
+.weather-atemp-unit {
+	font-size: 35px;
+}
+
+.weather-2  {
+	margin-top: -30px;
+	margin-bottom: -25px;
+}
+
+.wind-icon {
+	font-size: 40px;
+	margin-right: 5px;
+}
+
+.wind-speed  {
+	color: cyan;
+	font-size: 20px;
+}
+
+.wind-direction-icon {
+	font-size: 30px;
+	margin-left: 15px;
+	margin-right: 5px;
+}
+
+.wind-direction {
+	color: cyan;
+	font-size: 20px;
+}
+
+.wind-direction-deg {
+	font-size: 10px;
+	margin-left: -3px;
+	margin-top: -10px;
+}
+
+.humidity-icon {
+	font-size: 25px;
+	margin-right: 5px;
+	margin-left: 15px;
+}
+
+.humidity {
+	color: cyan;
+	font-size: 20px;
+}
+
+.pressure-icon {
+	font-size: 25px;
+	margin-right: 5px;
+	margin-left: 15px;
+}
+
+.pressure {
+	color: cyan;
+	font-size: 20px;
+}
+
+.location-icon {
+	font-size: 25px;
+	margin-right: 5px;
+	margin-left: 15px;
+}
+
+.location {
+	color: cyan;
+	font-size: 20px;
+}
+
+// User
+.face {
+	background-size: 150%;
+	min-height: 150px;
+	min-width: 150px;
+	margin: 15px 10px 0px 10px;
+	border-radius: 100%;
+}
+
+.fullname {
+	color: $color-green1;
+	font-size : 150%;
+	font-weight : bold;
+}
+
+.username {
+	color: $color-blue1;
+	font-size : 120%;
+	margin : -15px 0px 0px 0px;
+}
+
+// Sys-info
+
+.cpu-bar-icon, .mem-bar-icon, .bri-bar-icon, .bat-bar-icon {
+	font-size: 28px;
+	font-weight: normal;
+}
+
+.cpu-bar-icon {
+	color: #BF616A;
+}
+.mem-bar-icon {
+	color: #A3BE8C;
+}
+
+.bri-bar-icon {
+	color: #EBCB8B;
+}
+
+.bat-bar-icon {
+	color: #1C9F9C;
+}
+
+.cpu-bar, .mem-bar, .bri-bar, .bat-bar, scale through {
+	all: unset;
+	background-color: #34404C;
+	border-radius: 16px;
+	min-height: 28px;
+	min-width: 240px;
+}
+
+.cpu-bar, .mem-bar, .bri-bar, .bat-bar, scale through  highlight {
+	all: unset;
+	border-radius: 16px;
+}
+
+.cpu-bar, scale through  highlight {
+	background-color: #BF616A;
+}
+
+.mem-bar, scale through  highlight {
+	background-color: #A3BE8C;
+}
+
+.bri-bar, scale through  highlight {
+	background-color: #EBCB8B;
+}
+
+.bat-bar, scale through  highlight {
+	background-color: #1C9F9C;
 }
