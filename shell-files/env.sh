@@ -25,3 +25,7 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # EDITOR
 export EDITOR=vim
+# SECRETE
+if [[ -e ~/.config/shell-files/secret.sh ]]; then
+    source ~/.config/shell-files/secret.sh
+fi
