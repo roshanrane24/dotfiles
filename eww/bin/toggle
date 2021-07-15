@@ -1,0 +1,130 @@
+#!/bin/bash
+
+icon_path="/usr/share/icons/Flat-Remix-Blue-Dark"
+
+function wifiActive() {
+    if [[ `ip link show wlan0 | cut -d ' ' -f 9` == 'DOWN' ]]
+    then
+        wifi=0
+    elif [[ `ip link show wlan0 | cut -d ' ' -f 9` == 'UP' ]]
+    then
+        wifi=1
+    else
+        wifi=0
+    fi
+
+    if [[ $wifi -eq 1 ]]; then
+        wifi_icon="$icon_path/apps/scalable/network-wireless.svg"
+    else
+        wifi_icon="$icon_path/apps/scalable/network-wireless-disconnected.svg"
+    fi
+}
+
+
+function ethernetActive() {
+    if [[ `ip link show enp2s0 | cut -d ' ' -f 9` == 'DOWN' ]]
+    then
+        ethernet=0
+    elif [[ `ip link show enp2s0 | cut -d ' ' -f 9` == 'UP' ]]
+    then
+        ethernet=1
+    else
+        ethernet=0
+    fi
+
+    if [[ $ethernet -eq 1 ]]; then
+         ethernet_icon="$icon_path/apps/scalable/network-wired.svg"
+    else
+         ethernet_icon="$icon_path/apps/scalable/network-offline.svg"
+    fi
+}
+
+
+function bluetoothActive() {
+    if [[ `bluetoothctl show | grep Powered | cut -d ':' -f 2` == ' no`' ]]
+    then
+        bluetooth=0
+    elif [[ `bluetoothctl show | grep Powered | cut -d ':' -f 2` == ' yes' ]]
+    then
+        bluetooth=1
+    else
+        bluetooth=0
+    fi
+
+    if [[ $bluetooth -eq 1 ]]; then
+         bluetooth_icon="$icon_path/apps/scalable/bluetooth.svg"
+    else
+         bluetooth_icon="$icon_path/apps/scalable/bluetooth-disabled.svg"
+    fi
+}
+
+
+case $1 in
+    wifi)
+        wifiActive
+        case $2 in
+            icon)
+                printf "$wifi_icon"
+                ;;
+            label)
+                if [[ $wifi -eq 1 ]]; then
+                    printf $(iwctl station wlan0 get-networks | grep '>' | sed 's/psk.\+//g' | cut -d ' ' -f 4) $(ip addr show wlan0 | grep 'inet ' | cut -d ' ' -f 6 | sed 's/\/24//g')
+                else
+                    printf "Disconnected"
+                fi
+                ;;
+            toggle)
+                if [[ $wifi -eq 1 ]]; then
+                    sudo ip link set wlan0 down
+                else
+                    sudo ip link set wlan0 up
+                fi
+                ;;
+        esac
+        ;;
+    ethernet)
+        ethernetActive
+        case $2 in
+            icon)
+                printf "$ethernet_icon"
+                ;;
+            label)
+                if [[ $ethernet -eq 1 ]]; then
+                    printf $(ip addr show enp2s0 | grep "inet " | cut -d " " -f 6 | sed "s/\/24//g")
+                else
+                    printf "Disconnected"
+                fi
+                ;;
+            toggle)
+                if [[ $ethernet -eq 1 ]]; then
+                    sudo ip link set enp2s0 down
+                else
+                    sudo ip link set enp2s0 up
+                fi
+                ;;
+        esac
+        ;;
+    bluetooth)
+        bluetoothActive
+        case $2 in
+            icon)
+                printf "$bluetooth_icon"
+                ;;
+            label)
+                if [[ $bluetooth -eq 1 ]]; then
+                    printf "Bluetooth On"
+                else
+                    printf "Bluetooth Off"
+                fi
+                ;;
+            toggle)
+                if [[ $bluetooth -eq 1 ]]; then
+                    bluetoothctl power off
+                else
+                    bluetoothctl power on
+                fi
+                ;;
+        esac
+        ;;
+esac
+

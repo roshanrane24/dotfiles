@@ -1,0 +1,47 @@
+#!/bin/env bash
+
+mkdir -p ~/.cache/eww
+
+function openMain() {
+    touch ~/.cache/eww/main
+
+    eww open background
+    eww open exit
+    eww open date
+    eww open time
+    eww open weather
+    eww open sys-info
+    eww open files
+    eww open switches
+    eww open user
+
+    sleep 180
+
+    if [[ -e "$HOME/.cache/eww/main" ]]; then
+        closeMain
+    fi
+}
+
+function closeMain() {
+    rm ~/.cache/eww/main
+
+    eww close background
+    eww close exit
+    eww close date
+    eww close time
+    eww close weather
+    eww close sys-info
+    eww close files
+    eww close switches
+    eww close user
+}
+
+case $1 in
+    main)
+        if [[ -e "$HOME/.cache/eww/main" ]]; then
+            closeMain
+        else
+            openMain
+        fi
+        ;;
+esac

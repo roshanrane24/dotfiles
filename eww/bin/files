@@ -1,0 +1,47 @@
+#!/bin/sh
+
+icon_theme=$(cat /home/greenalien/.gtkrc-2.0 | grep icon-theme | sed "s/.\+=//g" | sed "s/\"//g")
+icon_theme_path=/usr/share/icons/$icon_theme/apps/scalable/gnome-disks.svg
+
+case $1 in
+    icon)
+        printf $icon_theme_path
+        ;;
+    storage_percent)
+        printf $(df -H --output="pcent,target" | grep /$ | cut -d " " -f 2)\b
+        ;;
+    storage_max)
+        printf $(df -H --output="size,target" | grep /$ | cut -d " " -f 2)
+        ;;
+    storage_used)
+        printf $(df -H --output="used,target" | grep /$ | cut -d " " -f 3)
+        ;;
+    storage_free)
+        printf $(df -H --output="avail,target" | grep /$ | cut -d " " -f 3)
+        ;;
+    file_user)
+        printf "/usr/share/icons/$icon_theme/places/scalable/user-home.svg"
+        ;;
+    file_desktop)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-desktop.svg"
+        ;;
+    file_documents)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-documents.svg"
+        ;;
+    file_downloads)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-downloads.svg"
+        ;;
+    file_music)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-music.svg"
+        ;;
+    file_pictures)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-pictures.svg"
+        ;;
+    file_video)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-video.svg"
+        ;;
+    file_build)
+        printf "/usr/share/icons/$icon_theme/places/scalable/folder-script.svg"
+        ;;
+esac
+

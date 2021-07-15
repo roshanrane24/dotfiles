@@ -1,0 +1,13 @@
+[Unit]
+Description=Elkowar's Wacky Widgets
+After=multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/bin/eww daemon
+ExecStop=/bin/eww close-all
+ExecStop=/bin/eww kill
+
+[Install]
+Alias=eww
+WantedBy=default.target
