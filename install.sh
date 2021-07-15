@@ -22,6 +22,7 @@ function main_menu () {
     echo "11:  Tmux"
     echo "12:  Vim"
     echo "13:  ZSH"
+    echo "14:  EWW"
 
     printf "SELECT e.g.(1 5 10) :"
     read -a OPTIONS
@@ -132,6 +133,13 @@ o          install_bash
            any_key
            main_menu
             ;;
+         14)
+            echo
+            install_eww
+            echo
+            any_key
+            main_menu
+            ;;
         A)
            echo
            install_alacritty
@@ -159,6 +167,8 @@ o          install_bash
            install_vim
            echo
            install_zsh
+           echo
+           install_eww
            echo
            any_key
            main_menu
@@ -481,6 +491,31 @@ function install_zsh() {
     git clone https://github.com/zdharma/zinit.git
 
     echo "Zshrc Config Setup Complete"
+}
+
+function install_eww() {
+   if [[ $(eww -V) == "" ]]; then
+        echo "eww is not installed"
+        exit
+   fi
+
+
+    eww_dir="$HOME/.config/eww"
+    eww_script_dir="$eww_dir/bin"
+
+    mkdir -p $eww_dir
+    mkdir -p $eww_script_dir
+
+    link_file "$PWD/eww/" $eww_dir
+    link_file "$PWD/eww/bin/" $eww_script_dir
+
+    cwd=$PWD
+    cd $eww_script_dir
+    go build *.go
+    rm $eww_script_dir/*.go
+    cd $cwd
+
+    echo "eww Config Setup Complete"
 }
 
 # Tools
