@@ -13,12 +13,24 @@ $color-blue1: #8FBCBB;
 
 .bg {
     background-color: $material-grey;
-    opacity: 0.3;
+    opacity: 0.4;
+}
+
+.close-box {
+    background-color: $material-black;
+    opacity: 0.5;
+}
+
+.close-box-label {
+	font-size: 2em;
+	font-weight: bold;
+	opacity: 1;
+	color: $material-grey;
 }
 
 .gen-win {
     background-color: $material-black;
-    border-radius: 10px;
+    border-radius: 1em;
     opacity: 0.9;
 }
 
@@ -48,7 +60,7 @@ $color-blue1: #8FBCBB;
 
 // Weather
 .weather-1 {
-	margin-top: 25px;
+	margin-top: 35px;
 }
 .weather-icon {
 	background-size: 110px;
@@ -159,74 +171,156 @@ $color-blue1: #8FBCBB;
 	font-size: 20px;
 }
 
+// Sys-info
+.cpu-icon, .mem-icon, .swap-icon, .bat-icon, .bri-icon {
+	margin-left: 1ex;
+	margin-right: 1ex;
+	margin-top: -1ex;
+	margin-bottom: -1ex;
+	font-size: 3em;
+}
+
+.cpu-icon {
+	color: #BF616A;
+}
+
+.mem-icon {
+	color: #A3BE8C;
+}
+
+.swap-icon {
+	color: #EBCB8B;
+}
+
+.bat-icon {
+	color: #1C9F9C;
+}
+
+.bri-icon {
+	color: #BA986C;
+}
+
+.cpu-bar, .mem-bar, .bri-bar, .bat-bar, .swap-bar, scale trough {
+	all: unset;
+	background-color: #34404C;
+	border-radius: 16px;
+	min-height: 2em;
+	min-width: 14em;
+}
+
+.cpu-bar, .mem-bar, .swap-bar, .bri-bar, .bat-bar, scale trough highlight {
+	all: unset;
+	border-radius: 16px;
+}
+
+.cpu-bar, scale trough highlight {
+	background-color: #BFDABF;
+}
+
+//.mem-bar scale trough highlight {
+	//background-color: #A3BE8C;
+//}
+
+//.swap-bar scale trough highlight {
+	//background-color: #EBCB8B;
+//}
+
+//.bat-bar scale trough highlight {
+	//background-color: #1C9F9C;
+//}
+
+//.bri-bar scale trough highlight {
+	//background-color: #BAF86C;
+//}
+
+// Files
+.files-container {
+	margin: 1em;
+}
+.storage-button {
+	background-color: #323232;
+	border-radius: 1em;
+}
+
+.storage-icon {
+	font-size: 3em;
+	margin-right: 0.5em;
+}
+
+.storage-button-sep {
+	color: $material-grey;
+	font-size: 2em;
+	margin: -2em;
+}
+
+.storage-label-box {
+	margin: 0.6em;
+}
+
+.storage-label {
+	font-size: 1em;
+	color: $color-blue1;
+}
+
+.files-box {
+	margin-top: 1em;
+}
+
+.files-button {
+	background-color: #323232;
+	border-radius: 1em;
+}
+
+.files-icon {
+	//margin: 0.5em;
+	//background-size: 1.5em;
+	//min-height: 1.5em;
+	//min-width: 1.5em;
+	margin-left: 1em;
+	font-size: 1.6em;
+	color: $color-green1;
+}
+
+.files-label {
+	color: $color-blue1;
+	font-size: 1em;
+	margin-left: 3em;
+}
+
 // User
+.user-box {
+	margin: 1em;
+}
 .face {
-	background-size: 150%;
-	min-height: 150px;
-	min-width: 150px;
-	margin: 15px 10px 0px 10px;
-	border-radius: 100%;
+	background-size: 15em;
+	min-height: 15em;
+	min-width: 15em;
+	border-radius: 15em;
 }
 
 .fullname {
 	color: $color-green1;
-	font-size : 150%;
+	font-size : 3em;
 	font-weight : bold;
 }
 
 .username {
 	color: $color-blue1;
-	font-size : 120%;
-	margin : -15px 0px 0px 0px;
+	font-size : 2em;
 }
 
-// Sys-info
 
-.cpu-bar-icon, .mem-bar-icon, .bri-bar-icon, .bat-bar-icon {
-	font-size: 28px;
-	font-weight: normal;
+// Toggle
+.switch-box {
+	margin: 1em;
 }
-
-.cpu-bar-icon {
-	color: #BF616A;
+.toggle-box {
+	background-color: #323232;
+	border-radius: 1em;
 }
-.mem-bar-icon {
-	color: #A3BE8C;
-}
-
-.bri-bar-icon {
-	color: #EBCB8B;
-}
-
-.bat-bar-icon {
-	color: #1C9F9C;
-}
-
-.cpu-bar, .mem-bar, .bri-bar, .bat-bar, scale through {
-	all: unset;
-	background-color: #34404C;
-	border-radius: 16px;
-	min-height: 28px;
-	min-width: 240px;
-}
-
-.cpu-bar, .mem-bar, .bri-bar, .bat-bar, scale through  highlight {
-	all: unset;
-	border-radius: 16px;
-}
-
-.cpu-bar, scale through  highlight {
-	background-color: #BF616A;
-}
-
-.mem-bar, scale through  highlight {
-	background-color: #A3BE8C;
-}
-
-.bri-bar, scale through  highlight {
-	background-color: #EBCB8B;
-}
-
-.bat-bar, scale through  highlight {
-	background-color: #1C9F9C;
+.toggle-icon {
+	background-size: 5em;
+	min-height: 5em;
+	min-width: 5em;
+	margin: 1em;
 }

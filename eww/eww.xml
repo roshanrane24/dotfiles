@@ -1,32 +1,179 @@
 <eww>
     <variables>
         <!-- User-->
-        <script-var name="IMAGE" interval="6h">ls ~/.face</script-var>
-        <script-var name="NAME" interval="6h">echo "Roshan Rane"</script-var>
-        <script-var name="UNAME" interval="6h">whoami</script-var>
+        <script-var
+            name="IMAGE"
+            interval="6h">
+            ls ~/.face
+        </script-var>
+        <var
+            name="NAME"
+            interval="6h">
+            Roshan Rane
+        </var>
+        <script-var
+            name="UNAME"
+            interval="6h">
+            whoami
+        </script-var>
         <!-- System-Info-->
-        <script-var name="CPU" interval="1s">~/.config/eww/scripts/sys-info cpu</script-var>
-        <script-var name="MEM" interval="1s">~/.config/eww/scripts/sys-info mem</script-var>
-        <script-var name="BRI" interval="1s">~/.config/eww/scripts/sys-info brightness</script-var>
-        <script-var name="BAT" interval="1s">~/.config/eww/scripts/sys-info battery</script-var>
-        <!-- TIME & DATE-->
-        <script-var name="DATE" interval="10m">date +%d</script-var>
-        <script-var name="MONTH" interval="10m">date +%b</script-var>
-        <script-var name="HOUR" interval="1m">date +%H</script-var>
-        <script-var name="MINUTE" interval="1m">date +%M</script-var>
-        <script-var name="SECOND" interval="1s">date +%S</script-var>
-        <script-var name="DAY" interval="1s">date +%A</script-var>
-        <!-- Weather-->
-        <script-var name="WTRICON" interval="5m">scripts/weather -unit metric icon</script-var>
-        <script-var name="WTRDSC" interval="5m">scripts/weather -unit metric description</script-var>
-        <script-var name="WTRTMP" interval="5m">scripts/weather -unit metric temp</script-var>
-        <script-var name="WTRATMP" interval="5m">scripts/weather -unit metric actual</script-var>
-        <script-var name="WTRHUMID" interval="5m">scripts/weather -unit metric humidity</script-var>
-        <script-var name="WTRWSPD" interval="5m">scripts/weather -unit metric wind-speed</script-var>
-        <script-var name="WTRWDIR" interval="5m">scripts/weather -unit metric wind-direction</script-var>
-        <script-var name="WTRHMD" interval="5m">scripts/weather -unit metric humidity</script-var>
-        <script-var name="WTRPSR" interval="5m">scripts/weather -unit metric pressure</script-var>
-        <script-var name="WTRLCT" interval="5m">scripts/weather -unit metric location</script-var>
+        <script-var
+            name="CPU"
+            interval="1s">
+            bin/sys-info cpu
+        </script-var>
+        <script-var
+            name="MEM"
+            interval="3s">
+            bin/sys-info mem
+        </script-var>
+        <script-var
+            name="SWAP"
+            interval="3s">
+            bin/sys-info swap
+        </script-var>
+        <script-var
+            name="BRI"
+            interval="10ms">
+            bin/sys-info brightness
+        </script-var>
+        <script-var
+            name="BAT"
+            interval="5s">
+            bin/sys-info battery
+        </script-var>
+        <!--TIME & DATE-->
+        <script-var
+            name="DATE"
+            interval="10m">
+            date +%d
+        </script-var>
+        <script-var
+            name="MONTH"
+            interval="10m">
+            date +%b
+        </script-var>
+        <script-var
+            name="HOUR"
+            interval="30s">
+            date +%H
+        </script-var>
+        <script-var
+            name="MINUTE"
+            interval="1s">
+            date +%M
+        </script-var>
+        <script-var
+            name="SECOND"
+            interval="1s">
+            date +%S
+        </script-var>
+        <script-var
+            name="DAY"
+            interval="1m">
+            date +%A
+        </script-var>
+        <!--Weather-->
+        <script-var
+            name="WTRICON"
+            interval="10m">
+            bin/weather -unit metric icon
+        </script-var>
+        <script-var
+            name="WTRDSC"
+            interval="10m">
+            bin/weather -unit metric description
+        </script-var>
+        <script-var
+            name="WTRTMP"
+            interval="10m">
+            bin/weather -unit metric temp
+        </script-var>
+        <script-var
+            name="WTRATMP"
+            interval="10m">
+            bin/weather -unit metric actual
+        </script-var>
+        <script-var
+            name="WTRHUMID"
+            interval="10m">
+            bin/weather -unit metric humidity
+        </script-var>
+        <script-var
+            name="WTRWSPD"
+            interval="10m">
+            bin/weather -unit metric wind-speed
+        </script-var>
+        <script-var
+            name="WTRWDIR"
+            interval="10m">
+            bin/weather -unit metric wind-direction
+        </script-var>
+        <script-var
+            name="WTRHMD"
+            interval="10m">
+            bin/weather -unit metric humidity
+        </script-var>
+        <script-var
+            name="WTRPSR"
+            interval="10m">
+            bin/weather -unit metric pressure
+        </script-var>
+        <script-var
+            name="WTRLCT"
+            interval="10m">
+            bin/weather -unit metric location
+        </script-var>
+        <script-var
+            name="STORAGEFREE"
+            interval="2m">
+            bin/files storage_free
+        </script-var>
+        <script-var
+            name="STORAGEMAX"
+            interval="1h">
+            bin/files storage_max
+        </script-var>
+        <script-var
+            name="STORAGEUSED"
+            interval="2m">
+            bin/files storage_used
+        </script-var>
+        <script-var
+            name="STORAGE"
+            interval="2m">
+            bin/files storage_percent
+        </script-var>
+        <script-var
+            name="TGLWIFI"
+            interval="1s">
+            bin/toggle wifi icon
+        </script-var>
+        <script-var
+            name="TGLWIFIL"
+            interval="1s">
+            bin/toggle wifi label
+        </script-var>
+        <script-var
+            name="TGLETH"
+            interval="1s">
+            bin/toggle ethernet icon
+        </script-var>
+        <script-var
+            name="TGLETHL"
+            interval="1s">
+            bin/toggle ethernet label
+        </script-var>
+        <script-var
+            name="TGLBLT"
+            interval="1s">
+            bin/toggle bluetooth icon
+        </script-var>
+        <script-var
+            name="TGLBLTL"
+            interval="1s">
+            bin/toggle bluetooth label
+        </script-var>
     </variables>
 <!-- /////////////////////////////////////////////////////////////// -->
     <definitions>
@@ -34,105 +181,687 @@
         <def name="bg">
             <box class="bg"></box>
         </def>
+        <def name="exit">
+            <button
+                halign="fill"
+                valign=
+                "fill"
+                class="close-button"
+                onclick="start-main">
+                    <box class="close-box"
+                        orientation="v"
+                        space-evenly="false"
+                        vexpand="false"
+                        hexpand="false">
+                        <label
+                            class="close-box-label"
+                            text="X"/>
+                    </box>
+                </button>
+        </def>
         <!-- User-->
         <def name="user">
-            <box class="gen-win" orientation="v" spacing="10" space-evenly="false" vexpand="false" hexpand="false">
-                <image class="face" style="background-image: url({{IMAGE}});" halign="center"/>
-                <label class="fullname" halign="center" wrap="true" limit-width="25" text="{{NAME}}"/>
-                <label class="username" halign="center" wrap="true" limit-width="25" text="{{UNAME}}"/>
-            </box>
-        </def>
-        <!-- System-Info-->
-        <def name="sys-info">
-            <box class="gen-win" vexpand="false" hexpand="false">
-
+            <box class="gen-win"
+                orientation="v"
+                space-evenly="false"
+                vexpand="false"
+                hexpand="false">
+                <box class="user-box"
+                    orientation="v"
+                    space-evenly="false"
+                    vexpand="false"
+                    hexpand="false">
+                    <box
+                        class="face"
+                        style="background-image: url('{{IMAGE}}');"
+                        halign="center"/>
+                    <label
+                        class="fullname"
+                        halign="center"
+                        wrap="true"
+                        limit-width="25"
+                        text="{{NAME}}"/>
+                    <label
+                        class="username"
+                        halign="center"
+                        wrap="true"
+                        limit-width="25"
+                        text="{{UNAME}}"/>
+                </box>
             </box>
         </def>
         <!-- Time & Date-->
         <def name="date">
-            <box class="gen-win" orientation="v" halign="fill" valign="fill" spacing="-10" vexpand="false" hexpand="false" space-evenly="false">
-                    <label wrap="true" class="date-day" text="{{DATE}}"></label>
-                    <label wrap="true" class="date-month" text="{{MONTH}}"></label>
+            <box
+                class="gen-win"
+                orientation="v"
+                halign="fill"
+                valign="fill"
+                spacing="-10"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <label
+                    wrap="true"
+                    class="date-day"
+                    text="{{DATE}}"/>
+                <label
+                    wrap="true"
+                    class="date-month"
+                    text="{{MONTH}}"/>
             </box>
         </def>
         <def name="time">
-            <box class="gen-win" orientation="v" halign="fill" valign="fill" spacing="-10" vexpand="false" hexpand="false" space-evenly="false">
-                <box class="time-box" orientation="h" spacing="-10">
-                    <label wrap="true" class="time-hour" text="{{HOUR}}"/>
-                    <label wrap="true" class="time-minute" text="{{MINUTE}}"/>
-                    <label wrap="true" class="time-second" text="{{SECOND}}"/>
+            <box
+                class="gen-win"
+                orientation="v"
+                halign="fill"
+                valign="fill"
+                spacing="-10"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <box
+                    class="time-box"
+                    orientation="h"
+                    spacing="-10">
+                    <label
+                        wrap="true"
+                        class="time-hour"
+                        text="{{HOUR}}"/>
+                    <label
+                        wrap="true"
+                        class="time-minute"
+                        text="{{MINUTE}}"/>
+                    <label
+                        wrap="true"
+                        class="time-second"
+                        text="{{SECOND}}"/>
                 </box>
-                <label wrap="true" class="time-day" text="{{DAY}}"/>
+                <label
+                    wrap="true"
+                    class="time-day"
+                    text="{{DAY}}"/>
             </box>
         </def>
         <!-- Weather-->
         <def name="weather">
-            <box class="gen-win" orientation="v" halign="fill" valign="fill" spacing="" vexpand="false" hexpand="false" space-evenly="false">
-                <box class="weather-1" orientation="h" halign="center" valign="center" space-evenly="false" spacing="0">
-                    <box style="background-image: url('{{WTRICON}}');" class="weather-icon" halign="center"/>
-                    <label class="weather-temp" wrap="true" text="{{WTRTMP}}"/>
-                    <label class="weather-temp-unit" wrap="true" text=""/>
-                    <box orientation="v" >
-                        <label class="weather-description" halign="start" limit-width="20" wrap="true" text="{{WTRDSC}}"/>
-                        <box class="weather-atemp-box" orientation="h" space-evenly="false">
-                            <label class="weather-atemp-text" halign="start" wrap="true" text="Feels Like "/>
-                            <label class="weather-atemp" halign="start" text="{{WTRATMP}}"/>
-                            <label class="weather-atemp-unit" halign="start" wrap="true" text=""/>
+            <box
+                class="gen-win"
+                orientation="v"
+                halign="fill"
+                valign="fill"
+                spacing="5"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <box
+                    class="weather-1"
+                    orientation="h"
+                    halign="center"
+                    valign="center"
+                    space-evenly="false"
+                    spacing="0">
+                    <box
+                        style="background-image: url('{{WTRICON}}');"
+                        class="weather-icon"
+                        halign="center"/>
+                    <label
+                        class="weather-temp"
+                        wrap="true"
+                        text="{{WTRTMP}}"/>
+                    <label
+                        class="weather-temp-unit"
+                        wrap="true"
+                        text=""/>
+                    <box
+                        orientation="v">
+                        <label
+                            class="weather-description"
+                            halign="start"
+                            limit-width="15"
+                            wrap="true"
+                            text="{{WTRDSC}}"/>
+                        <box
+                            class="weather-atemp-box"
+                            orientation="h"
+                            space-evenly="false">
+                        <label
+                            class="weather-atemp-text"
+                            halign="start"
+                            wrap="true" text="Feels Like "/>
+                        <label
+                            class="weather-atemp"
+                            halign="start"
+                            text="{{WTRATMP}}"/>
+                        <label
+                            class="weather-atemp-unit"
+                            halign="start"
+                            wrap="true" text=""/>
                         </box>
                     </box>
                 </box>
-                <box class="weather-2" orientation="h" halign="center" valign="center" spacing="5" space-evenly="false">
-                    <label class="wind-icon" halign="start" wrap="true" text=""/>
-                    <label class="wind-speed" halign="start" wrap="true" text="{{WTRWSPD}}"/>
-                    <label class="wind-direction-icon" halign="start" wrap="true" text=""/>
-                    <label class="wind-direction" halign="start" wrap="true" text="{{WTRWDIR}}"/>
-                    <label class="wind-direction-deg" halign="start" wrap="true" text=" "/>
-                    <label class="humidity-icon" halign="start" wrap="true" text=""/>
-                    <label class="humidity" halign="start" wrap="true" text="{{WTRHMD}}"/>
-                    <label class="pressure-icon" halign="start" wrap="true" text=""/>
-                    <label class="pressure" halign="start" wrap="true" text="{{WTRPSR}}"/>
-                    <label class="location-icon" halign="start" wrap="true" text=""/>
-                    <label class="location" halign="start" wrap="true" text="{{WTRLCT}}"/>
+                <box
+                    class="weather-2"
+                    orientation="h"
+                    halign="center"
+                    valign="center"
+                    spacing="5"
+                    space-evenly="false">
+                    <label
+                        class="wind-icon"
+                        halign="start"
+                        wrap="true"
+                        text=""/>
+                    <label
+                        class="wind-speed"
+                        halign="start"
+                        wrap="true"
+                        text="{{WTRWSPD}}"/>
+                    <label
+                        class="wind-direction-icon"
+                        halign="start"
+                        wrap="true"
+                        text=""/>
+                    <label
+                        class="wind-direction"
+                        halign="start"
+                        wrap="true"
+                        text="{{WTRWDIR}}"/>
+                    <label
+                        class="wind-direction-deg"
+                        halign="start"
+                        wrap="true"
+                        text=" "/>
+                    <label
+                        class="humidity-icon"
+                        halign="start"
+                        wrap="true"
+                        text=""/>
+                    <label
+                        class="humidity"
+                        halign="start"
+                        wrap="true"
+                        text="{{WTRHMD}}"/>
+                    <label
+                        class="pressure-icon"
+                        halign="start"
+                        wrap="true"
+                        text=""/>
+                    <label
+                        class="pressure"
+                        halign="start"
+                        wrap="true"
+                        text="{{WTRPSR}}"/>
+                    <label
+                        class="location-icon"
+                        halign="start"
+                        wrap="true"
+                        text=""/>
+                    <label
+                        class="location"
+                        halign="start"
+                        wrap="true"
+                        text="{{WTRLCT}}"/>
                 </box>
             </box>
+        </def>
+        <!-- Sys-Info -->
+        <def name="sys-info">
+            <box
+                class="gen-win"
+                orientation="v"
+                halign="fill"
+                valign="fill"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="true">
+                    <cpu-info/>
+                    <mem-info/>
+                    <swap-info/>
+                    <bat-info/>
+                    <bri-info/>
+            </box>
+        </def>
+        <def name="cpu-info">
+            <box
+                orientation="h"
+                halign="start"
+                valign="center"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                    <label
+                        class="cpu-icon"
+                        text=""/>
+                    <scale
+                        class="cpu-bar"
+                        min="0"
+                        active="false"
+                        max="101"
+                        value="{{CPU}}"/>
+            </box>
+        </def>
+        <def name="mem-info">
+            <box
+                orientation="h"
+                halign="start"
+                valign="center"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <label
+                    class="mem-icon"
+                    text=""/>
+                <scale
+                    class="mem-bar"
+                    min="0"
+                    active="false"
+                    max="101"
+                    value="{{MEM}}"/>
+            </box>
+        </def>
+        <def name="swap-info">
+            <box
+                orientation="h"
+                halign="start"
+                valign="center"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <label
+                    class="swap-icon"
+                    text=""/>
+                <scale
+                    class="swap-bar"
+                    min="0"
+                    active="false"
+                    max="101"
+                    value="{{SWAP}}"/>
+            </box>
+        </def>
+        <def name="bat-info">
+            <box
+                orientation="h"
+                halign="start"
+                valign="center"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <label
+                    class="bat-icon"
+                    text=""/>
+                <scale
+                    class="bat-bar"
+                    min="0"
+                    active="false"
+                    max="101"
+                    value="{{BAT}}"/>
+            </box>
+        </def>
+        <def name="bri-info">
+            <box
+                orientation="h"
+                halign="start"
+                valign="center"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <label
+                    class="bri-icon"
+                    text="滛"/>
+                <scale
+                    class="bri-bar"
+                    min="0"
+                    active="false"
+                    max="101"
+                    value="{{BRI}}"/>
+            </box>
+        </def>
+        <!-- Files -->
+        <def name="files">
+            <box
+                class="gen-win"
+                orientation="v"
+                halign="fill"
+                valign="fill"
+                spacing="0"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="false">
+                <box
+                    class="files-container"
+                    orientation="v"
+                    halign="fill"
+                    valign="fill"
+                    spacing="0"
+                    vexpand="false"
+                    hexpand="false"
+                    space-evenly="false">
+                    <storage/>
+                    <files-shortcuts/>
+                </box>
+            </box>
+        </def>
+        <def name="storage">
+            <button
+                class="storage-button"
+                on-click="baobab"
+                active="true">
+                <box
+                    orientation="h"
+                    halign="center"
+                    valign="fill"
+                    spacing="10"
+                    vexpand="false"
+                    hexpand="false"
+                    space-evenly="false">
+                    <label
+                        class="storage-icon"
+                        text=""/>
+                    <label
+                        class="storage-button-sep"
+                        text="|"/>
+                    <box
+                        class="storage-label-box"
+                        orientation="v"
+                        halign="center"
+                        valign="start"
+                        spacing="0"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="storage-label"
+                            text="Size {{STORAGEUSED}}/{{STORAGEMAX}}"/>
+                        <label
+                            class="storage-label"
+                            text="Free {{STORAGEFREE}}"/>
+                    </box>
+                </box>
+            </button>
+        </def>
+        <def name="files-shortcuts">
+            <box
+                class="files-box"
+                orientation="v"
+                halign="fill"
+                valign="fill"
+                spacing="10"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="true">
+                <button
+                    class="files-button"
+                    on-click="dolphin --new-window ~/">
+                    <box
+                        orientation="h"
+                        halign="start"
+                        valign="fill"
+                        spacing="10"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="files-icon"
+                            halign="center"
+                            text=""/>
+                        <label
+                            class="files-label"
+                            halign="center"
+                            text="Home"/>
+                    </box>
+                </button>
+                <button
+                    class="files-button"
+                    on-click="dolphin --new-window ~/Desktop">
+                    <box
+                        orientation="h"
+                        halign="start"
+                        valign="fill"
+                        spacing="10"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="files-icon"
+                            halign="center"
+                            text=""/>
+                        <label
+                            class="files-label"
+                            halign="center"
+                            text="Desktop"/>
+                    </box>
+                </button>
+                <button
+                    class="files-button"
+                    on-click="dolphin --new-window ~/Documents">
+                    <box
+                        orientation="h"
+                        halign="start"
+                        valign="fill"
+                        spacing="10"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="files-icon"
+                            halign="center"
+                            text=""/>
+                        <label
+                            class="files-label"
+                            halign="center"
+                            text="Documents"/>
+                    </box>
+                </button>
+                <button
+                    class="files-button"
+                    on-click="dolphin --new-window ~/Downloads">
+                    <box
+                        orientation="h"
+                        halign="start"
+                        valign="fill"
+                        spacing="10"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="files-icon"
+                            halign="center"
+                            text=""/>
+                        <label
+                            class="files-label"
+                            halign="center"
+                            text="Downloads"/>
+                    </box>
+                </button>
+                <button
+                    class="files-button"
+                    on-click="dolphin --new-window ~/Pictures">
+                    <box
+                        orientation="h"
+                        halign="start"
+                        valign="fill"
+                        spacing="10"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="files-icon"
+                            halign="center"
+                            text=""/>
+                        <label
+                            class="files-label"
+                            halign="center"
+                            text="Pictures"/>
+                    </box>
+                </button>
+                <button
+                    class="files-button"
+                    on-click="dolphin --new-window ~/Build">
+                    <box
+                        orientation="h"
+                        halign="start"
+                        valign="fill"
+                        spacing="10"
+                        vexpand="false"
+                        hexpand="false"
+                        space-evenly="false">
+                        <label
+                            class="files-icon"
+                            halign="center"
+                            text=""/>
+                        <label
+                            class="files-label"
+                            halign="center"
+                            text="Build"/>
+                    </box>
+                </button>
+            </box>
+        </def>
+        <def name="switches">
+            <box
+                class="gen-win"
+                orientation="h"
+                halign="fill"
+                valign="fill"
+                vexpand="false"
+                hexpand="false"
+                space-evenly="true">
+                <box
+                    class="switch-box"
+                    orientation="h"
+                    halign="center"
+                    valign="center"
+                    spacing="15"
+                    space-evenly="false">
+                    <wifi-toggle/>
+                    <ethernet-toggle/>
+                    <bluetooth-toggle/>
+                </box>
+            </box>
+        </def>
+        <def name="wifi-toggle">
+            <button
+                class="toggle-button"
+                tooltip="{{TGLWIFIL}}"
+                onclick="bin/toggle wifi toggle">
+                <box
+                    class="toggle-box"
+                    orientation="h"
+                    halign="center"
+                    valign="center"
+                    space-evenly="true">
+                    <box
+                        class="toggle-icon"
+                        style="background-image: url('{{TGLWIFI}}');"/>
+                </box>
+            </button>
+        </def>
+        <def name="ethernet-toggle">
+            <button
+                class="toggle-button"
+                tooltip="{{TGLETHL}}"
+                onclick="bin/toggle ethernet toggle">
+                <box
+                    class="toggle-box"
+                    orientation="h"
+                    halign="center"
+                    valign="center"
+                    space-evenly="true">
+                    <box
+                        class="toggle-icon"
+                        style="background-image: url('{{TGLETH}}');"/>
+                </box>
+            </button>
+        </def>
+        <def name="bluetooth-toggle">
+            <button
+                class="toggle-button"
+                tooltip="{{TGLBLTL}}"
+                onclick="bin/toggle bluetooth toggle">
+                <box
+                    class="toggle-box"
+                    orientation="h"
+                    halign="center"
+                    valign="center"
+                    space-evenly="true">
+                    <box
+                        class="toggle-icon"
+                        style="background-image: url('{{TGLBLT}}');"/>
+                </box>
+            </button>
         </def>
     </definitions>
 <!-- /////////////////////////////////////////////////////////////// -->
     <windows>
         <!-- BackGround-->
-        <window name="background" stacking="fg" focusable="false" screen="0">
+        <window name="background" stacking="fg" focusable="false">
             <geometry x="0" y="3%" width="100%" height="97%"/>
             <widget>
                 <bg/>
  </widget>
         </window>>
         <!-- TIME & DATE-->
-        <window name="date" stacking="fg" focusable="false" screen="0">
+        <window name="date" stacking="fg" focusable="false">
             <geometry x="4%" y="5%" width="10%" height="20%"/>
             <widget>
                 <date/>
             </widget>
         </window>>
-        <window name="time" stacking="fg" focusable="false" screen="0">
+        <window name="time" stacking="fg" focusable="false">
             <geometry x="15%" y="5%" width="30%" height="20%"/>
             <widget>
                 <time/>
             </widget>
         </window>>
         <!-- Weather-->
-        <window name="weather" stacking="fg" focusable="false" screen="0">
-            <geometry x="4%" y="26%" width="41%" height="20%"/>
+        <window name="weather" stacking="fg" focusable="false">
+            <geometry x="4%" y="26%" width="41%" height="23%"/>
             <widget>
                 <weather/>
             </widget>
         </window>>
-
         <!-- System-Info-->
-        <!--<window name="sys-info" stacking="fg" focusable="false" screen="0">-->
-            <!--<geometry x="5%" y="45%" width="15%" height="35%"/>-->
-            <!--<widget>-->
-                <!--<sys-info/>-->
-            <!--</widget>-->
-        <!--</window>>-->
+        <window name="sys-info" stacking="fg" focusable="false">
+            <geometry x="4%" y="50%" width="20%" height="45%"/>
+            <widget>
+                <sys-info/>
+            </widget>
+        </window>>
+        <!-- Files-->
+        <window name="files" stacking="fg" focusable="false">
+            <geometry x="25%" y="50%" width="20%" height="45%"/>
+            <widget>
+                <files/>
+            </widget>
+        </window>>
+        <!-- switches-->
+        <window name="switches" stacking="fg" focusable="false">
+            <geometry x="46%" y="5%" width="24%" height="15%"/>
+            <widget>
+                <switches/>
+            </widget>
+        </window>>
+        <!-- user-->
+        <window name="user" stacking="fg" focusable="false">
+            <geometry x="46%" y="21%" width="24%" height="44%"/>
+            <widget>
+                <user/>
+            </widget>
+        </window>>
+        <!-- Exit-->
+        <window name="exit" stacking="fg" focusable="false">
+            <geometry x="96%" y="5%" width="3%" height="3%"/>
+            <widget>
+                <exit/>
+            </widget>
+        </window>>
     </windows>
 </eww>
