@@ -2,7 +2,7 @@ from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
 from setting import (BROWSER, MODKEY, TERMINAL, EDITOR_GUI,
                      FILE_MANAGER, FILE_MANAGER_2, SCRIPTS,
-                     ROFI_THEME)
+                     ROFI_THEME, CONFIG)
 from groups import groups
 from functions import move_group_to_next_screen, move_group_to_prev_screen
 import os
@@ -197,10 +197,13 @@ keys = [
         desc="Shutdown qtile"),
 
     # Run Command/Application Launcher
-    Key([MODKEY], "g",
+    Key([MODKEY], "r",
         lazy.spawn("rofi -show drun -matching fuzzy -modi" \
-                   f"run,ssh,window,windowcd -theme {ROFI_THEME}"),
+                   f"run,window,ssh -theme {ROFI_THEME}"),
         desc="Spawn a command using a prompt widget"),
+    Key([MODKEY], "g",
+        lazy.spawn(f"sh -c '{CONFIG}/eww/bin/start main'"),
+        desc="Launch Widget Main"),
     Key([MODKEY], "Return",
         lazy.spawn(TERMINAL),
         desc="Launch Terminal"),
@@ -236,6 +239,9 @@ keys = [
         desc="Launch qBittorrent"),
     Key([MODKEY, "control"], "p",
         lazy.spawn("pycharm"),
+        desc="Launch pycharm"),
+    Key([MODKEY, "mod1"], "Return",
+        lazy.spawn("zsh -c '~/Build/dotfiles/eww-start.sh'"),
         desc="Launch pycharm"),
 
     Key([MODKEY], "space",
