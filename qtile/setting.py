@@ -27,7 +27,6 @@ MODKEY = "mod4"
 HOME = os.environ["HOME"]
 CONFIG = os.path.join(HOME, ".config")
 SCRIPTS = os.path.join(CONFIG, "shell-files")
-
 # Config
 bar_config = {
     "size": 25,

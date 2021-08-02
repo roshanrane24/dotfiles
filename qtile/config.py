@@ -4,8 +4,11 @@ import subprocess
 from setting import HOME, SCREEN
 from groups import groups
 from keybinds import keys
-from layout_screen import display, floating_layout, layouts, screens
+from functions import Display
+from layout_screen import (floating_layout, layouts,
+                           screens_created, add_screen, remove_screen)
 from libqtile import hook
+
 
 # Configuration Variables
 auto_fullscreen = True
@@ -25,16 +28,23 @@ extension_defaults = widget_defaults.copy()
 keys = keys
 layouts = layouts
 floating_layout = floating_layout
-screens = screens
+screens = screens_created
 groups = groups
 
 
 # Calling Hooks
 def randr():
+    global screens
+    display = Display()
     if SCREEN == 'extend':
         display.set_extend_all()
+        add_screen(screens_created)
+        remove_screen(screens_created)
     elif SCREEN == 'mirror':
         display.set_mirror_all()
+        remove_screen(screens_created)
+
+    screens = screens_created
 
 
 @hook.subscribe.startup_once

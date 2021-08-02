@@ -6,8 +6,6 @@ from bars import main_screen_bar, second_screen_bar
 from functions import Display
 
 
-display = Display()
-
 layouts = [
     layout.Bsp(
         border_focus=COLORS.LIGHT_PRIMARY,
@@ -77,8 +75,21 @@ floating_layout = layout.Floating(
     border_width=3,
 )
 
-screens = [Screen(top=main_screen_bar)]
+screens_created = [Screen(top=main_screen_bar)]
 
-if display.get_connect_display_count() > 1:
-    for s in range(1, display.get_connect_display_count()):
-        screens.append(Screen(top=second_screen_bar))
+
+def add_screen(screens):
+    display = Display()
+    if display.get_connect_display_count() > 1:
+        if len(screens) < display.get_connect_display_count():
+            for _ in range(1, display.get_connect_display_count()):
+                screens.append(Screen(top=second_screen_bar))
+
+
+def remove_screen(screens):
+    display = Display()
+    if display.get_connect_display_count() < len(screens):
+        screens = screens[:display.get_connect_display_count()]
+
+
+add_screen(screens=screens_created)
