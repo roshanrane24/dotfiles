@@ -47,10 +47,13 @@ configuration {
 /* window */
 window {
 	background-color:	transparent;
-	width:				100%;
-	height:				100%;
-	fullscreen:			true;
-	padding:			25px 0 0 0;
+	border-radius:	16px;
+	border:	2px;
+	border-color:		@primary;
+	width:				94%;
+	height:				90%;
+	fullscreen:			false;
+	padding:			2px;
 }
 
 /* window.overlay */
@@ -59,17 +62,15 @@ overlay {
 
 /* window.mainbox */
 mainbox {
-	background-color:	@black-trans2;
-	/*border-radius:	2%;*/
-	border:				1px;
+	background-color:	@black-trans1;
 	border-color:		@primary;
 	padding:			1% 1% 1% 1%;
 }
 /* window.mainbox.inputbar */
 inputbar {
-	background-color:	@black-trans1;
+	background-color:	@black-trans;
 	border:				0px;
-	border-radius:		0px;
+	border-radius:		16px;
 	border-color:		@primary;
 	margin:				0.5%;
 	padding:			0.5%;
@@ -86,7 +87,7 @@ prompt {
 	enabled:			true;
 	background-color:	@dark-primary;
 	text-color:			@light-primary;
-	/*border-radius: 		5px;*/
+	border-radius: 		8px;
 	border:				1px;
 	border-color:		@primary;
 	margin:				0.5%;
@@ -96,7 +97,7 @@ prompt {
 entry {
 	background-color:	@dark-primary;
 	text-color:			@light-primary;
-	border-radius:		0px;
+	border-radius:		8px;
 	border:				1px;
 	border-color:		@primary;
 	margin:				0.5%;
@@ -109,8 +110,8 @@ num-filtered-rows {
 }
 /* window.mainbox.listview */
 listview {
-	background-color:	@black-trans1;
-	/*border-radius: 		1px;*/
+	background-color:	@black-trans;
+	border-radius: 		16px;
 	border-color: 		@primary;
 	border: 			0px;
 	dynamic: 			false;
@@ -126,9 +127,9 @@ scrollbar {
 element {
 	background-color:	@dark-primary;
 	orientation:		vertical;
-	padding:			2%;
+	padding:			1%;
 	margin:				1.7%;
-	border-radius:		0px;
+	border-radius:		8px;
 }
 /* window.mainbox.listview.element.normal */
 element normal.normal {
@@ -136,19 +137,16 @@ element normal.normal {
 	text-color:			@light-primary;
 	border:				1px;
 	border-color:		@primary;
-	border-radius:		0px;
 }
 element alternate.normal {
 	background-color:	@dark-primary;
 	text-color:			@light-primary;
 	border:				1px;
 	border-color:		@primary;
-	border-radius:		0px;
 }
 element selected.normal {
 	background-color: 	@primary;
 	text-color:			@white;
-	border-radius:		0px;
 	border:				1px;
 	border-color:		@light-primary;
 }
@@ -162,14 +160,12 @@ element normal.urgent {
 element alternate.urgent {
 	background-color:	@dark-primary;
 	text-color:			@red;
-	border-radius:		0px;
 	border:				1px;
 	border-color:		@ired;
 }
 element selected.urgent {
 	background-color:	@primary;
 	text-color:			@red;
-	border-radius:		0px;
 	border:				1px;
 	border-color:		@ired-trans;
 }
@@ -177,21 +173,18 @@ element selected.urgent {
 element normal.active {
 	background-color:	@light-primary;
 	text-color:			@dark-primary;
-	border-radius:		0px;
 	border:				1px;
 	border-color:		@primary;
 }
 element alternate.active {
 	background-color: 	@light-primary;
 	text-color:			@dark-primary;
-	border-radius:		0px;
 	border:				1px;
 	border-color:		@primary;
 }
 element selected.active {
 	background-color:	@light-primary;
 	text-color:			@primary;
-	border-radius:		0px;
 	border:				2px;
 	border-color:		@light-primary;
 	highlight: 			bold white;
