@@ -1,6 +1,6 @@
 from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
-from setting import (BROWSER, MODKEY, TERMINAL, EDITOR_GUI,
+from setting import (BROWSER, BROWSER_2, MODKEY, TERMINAL, EDITOR_GUI,
                      FILE_MANAGER, FILE_MANAGER_2, SCRIPTS,
                      ROFI_THEME)
 from groups import groups
@@ -197,14 +197,13 @@ keys = [
         desc="Shutdown qtile"),
 
     # Run Command/Application Launcher
-    Key([MODKEY, "control"], "g",
-        lazy.spawn(f'rofi -show run -theme {ROFI_THEME}'),
+    Key([MODKEY], "d",
+        lazy.spawn("rofi -show drun -matching fuzzy -modi" \
+                   f"run,ssh,window,windowcd -theme {ROFI_THEME}"),
         desc="Spawn a command using a prompt widget"),
-    Key([MODKEY], "g",
-        lazy.spawn(f'rofi -show drun -theme {ROFI_THEME}'),
-        desc="Spawn a command using a prompt widget"),
-    Key([MODKEY, "mod1"], "g",
-        lazy.spawn(f'rofi -show window -theme {ROFI_THEME}'),
+    Key([MODKEY, "mod1"], "d",
+        lazy.spawn("rofi -show window -matching fuzzy -modi" \
+                   f"windowcd -theme {ROFI_THEME}"),
         desc="Spawn a command using a prompt widget"),
     Key([MODKEY], "Return",
         lazy.spawn(TERMINAL),
@@ -214,6 +213,9 @@ keys = [
         desc="Launch Terminal"),
     Key([MODKEY, "control"], "2",
         lazy.spawn(BROWSER),
+        desc="Launch Browser (Brave)"),
+    Key([MODKEY, "control", "shift"], "2",
+        lazy.spawn(BROWSER_2),
         desc="Launch Browser (Brave)"),
     Key([MODKEY, "control"], "3",
         lazy.spawn(FILE_MANAGER),
@@ -234,7 +236,7 @@ keys = [
         lazy.spawn("discord"),
         desc="Launch Discord"),
     Key([MODKEY, "control", "shift"], "7",
-        lazy.spawn("hexchat"),
+        lazy.spawn("telegram-desktop"),
         desc="Launch HexChat"),
     Key([MODKEY, "control"], "8",
         lazy.spawn("qbittorrent"),

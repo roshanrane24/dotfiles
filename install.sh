@@ -50,7 +50,7 @@ function install() {
             ;;
         2)
            echo
-           install_bash
+o          install_bash
            echo
            any_key
            main_menu
@@ -504,7 +504,7 @@ function link_file(){
       if [[ -e  "$2/$file" ]]; then
         echo "$file File Already Exist"
         printf "Do you want to replace file with new link? [y/N]"
-        confirm=`read`
+         read -r confirm
 
         case $confirm in
             Y|y|yes|Yes|YES)

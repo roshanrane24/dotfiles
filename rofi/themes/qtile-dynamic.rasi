@@ -2,6 +2,7 @@ configuration {
 	display-drun: 		"";
 	display-run: 		"";
 	display-window: 	"";
+	display-windowcd: 	"";
 	show-icons:			true;
 }
 
@@ -59,7 +60,7 @@ overlay {
 
 /* window.mainbox */
 mainbox {
-	background-color:	transparent;
+	background-color:	@primary-trans;
 	/*border-radius:	2%;*/
 	border:				0px;
 	border-color:		@primary;
@@ -67,10 +68,10 @@ mainbox {
 }
 /* window.mainbox.inputbar */
 inputbar {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans1;
 	border:				1px;
 	border-radius:		0px;
-	border-color:		@primary;
+	border-color:		@primary-trans1;
 	margin:				0.5%;
 	padding:			0.5%;
 	opacity: 0.5;
@@ -85,7 +86,7 @@ case-indicator {
 /* window.mainbox.inputbar.prompt */
 prompt {
 	enabled:			true;
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@light-primary;
 	/*border-radius: 		5px;*/
 	border:				1px;
@@ -95,7 +96,7 @@ prompt {
 }
 /* window.mainbox.inputbar.entry */
 entry {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@light-primary;
 	border-radius:		0px;
 	border:				1px;
@@ -110,7 +111,7 @@ num-filtered-rows {
 }
 /* window.mainbox.listview */
 listview {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans1;
 	/*border-radius: 		1px;*/
 	border-color: 		@primary;
 	border: 			1px;
@@ -125,7 +126,7 @@ scrollbar {
 }
 /* window.mainbox.listview.element */
 element {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	orientation:		vertical;
 	padding:			2%;
 	margin:				1.7%;
@@ -134,21 +135,21 @@ element {
 }
 /* window.mainbox.listview.element.normal */
 element normal.normal {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@light-primary;
 	border:				1px;
 	border-color:		@primary;
 	border-radius:		0px;
 }
 element alternate.normal {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@light-primary;
 	border:				1px;
 	border-color:		@primary;
 	border-radius:		0px;
 }
 element selected.normal {
-	background-color: 	@primary;
+	background-color: 	@primary-trans2;
 	text-color:			@white;
 	border-radius:		0px;
 	border:				1px;
@@ -156,20 +157,20 @@ element selected.normal {
 }
 /* window.mainbox.listview.element.urgent */
 element normal.urgent {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@red;
 	border:				1px;
 	border-color:		@ired;
 }
 element alternate.urgent {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@red;
 	border-radius:		0px;
 	border:				1px;
 	border-color:		@ired;
 }
 element selected.urgent {
-	background-color:	@primary;
+	background-color:	@primary-trans2;
 	text-color:			@red;
 	border-radius:		0px;
 	border:				1px;
@@ -177,21 +178,21 @@ element selected.urgent {
 }
 /* window.mainbox.listview.element.active */
 element normal.active {
-	background-color:	@light-primary;
+	background-color:	@light-primary-trans;
 	text-color:			@dark-primary;
 	border-radius:		0px;
 	border:				1px;
 	border-color:		@primary;
 }
 element alternate.active {
-	background-color: 	@light-primary;
+	background-color: 	@light-primary-trans;
 	text-color:			@dark-primary;
 	border-radius:		0px;
 	border:				1px;
 	border-color:		@primary;
 }
 element selected.active {
-	background-color:	@light-primary;
+	background-color:	@light-primary-trans;
 	text-color:			@primary;
 	border-radius:		0px;
 	border:				2px;

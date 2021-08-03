@@ -8,7 +8,7 @@ from libqtile.utils import guess_terminal
 SCREEN: str = 'extend'  # extend, mirror
 DYNAMIC_COLORS: bool = True
 if DYNAMIC_COLORS:
-    ROFI_THEME = 'qtile-dynamic'
+    ROFI_THEME = 'qtile-dynamic-solid'
     THEME = 'Green'
 else:
     ROFI_THEME = 'lime-amber'
@@ -18,9 +18,10 @@ else:
 # Applications
 TERMINAL = guess_terminal()
 BROWSER = "brave"
+BROWSER_2 = "chromium"
 FILE_MANAGER = "dolphin"
 FILE_MANAGER_2 = "nautilus"
-EDITOR_GUI = ""
+EDITOR_GUI = "code"
 MODKEY = "mod4"
 
 # Enviroment

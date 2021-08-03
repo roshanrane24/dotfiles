@@ -51,7 +51,7 @@ window {
 	width:				35%;
 	height:				100%;
 	fullscreen:			false;
-	padding:			25px 0 0 0;
+	padding:			25px 0 0 -12px;
 	location: 			west;
 	anchor: 			west;
 }
@@ -62,7 +62,7 @@ overlay {
 
 /* window.mainbox */
 mainbox {
-	background-color:	transparent;
+	background-color:	@black-trans;
 	/*border-radius:	2%;*/
 	border:				0px;
 	border-color:		@primary;
@@ -70,7 +70,7 @@ mainbox {
 }
 /* window.mainbox.inputbar */
 inputbar {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans1;
 	border:				1px;
 	border-radius:		0px;
 	border-color:		@primary;
@@ -88,7 +88,7 @@ case-indicator {
 /* window.mainbox.inputbar.prompt */
 prompt {
 	enabled:			true;
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@light-primary;
 	/*border-radius: 		5px;*/
 	border:				1px;
@@ -98,7 +98,7 @@ prompt {
 }
 /* window.mainbox.inputbar.entry */
 entry {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	text-color:			@light-primary;
 	border-radius:		0px;
 	border:				1px;
@@ -113,7 +113,7 @@ num-filtered-rows {
 }
 /* window.mainbox.listview */
 listview {
-	background-color:	@dark-primary;
+	background-color:	@dark-primary-trans2;
 	/*border-radius: 		1px;*/
 	border-color: 		@primary;
 	border: 			1px;

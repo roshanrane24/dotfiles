@@ -59,7 +59,7 @@ overlay {
 
 /* window.mainbox */
 mainbox {
-	background-color:	@black;
+	background-color:	@black-trans2;
 	/*border-radius:	2%;*/
 	border:				1px;
 	border-color:		@primary;
@@ -67,7 +67,7 @@ mainbox {
 }
 /* window.mainbox.inputbar */
 inputbar {
-	background-color:	@black;
+	background-color:	@black-trans1;
 	border:				0px;
 	border-radius:		0px;
 	border-color:		@primary;
@@ -109,7 +109,7 @@ num-filtered-rows {
 }
 /* window.mainbox.listview */
 listview {
-	background-color:	@black;
+	background-color:	@black-trans1;
 	/*border-radius: 		1px;*/
 	border-color: 		@primary;
 	border: 			0px;

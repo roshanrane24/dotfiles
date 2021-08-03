@@ -1,20 +1,20 @@
 * {
 	black:				#222222;
-	black-trans:		#22222222;
-	black-trans2:		#22222255;
-	black-trans3:		#22222288;
-	iamber:				#ff9914;
-	iamber-trans:		#ff9914cc;
-	iamber-dark:		#ff9a15;
-	ilime:				#abff4f;
-	ilime-trans:		#abff4fbb;
-	ilime-trans2:		#abff4fce;
+	black-trans:		#22222244;
+	black-trans1:		#22222288;
+	black-trans2:		#222222CC;
+	amber:				#ff9914;
+	amber-trans:		#ff9914cc;
+	amber-dark:			#ff9a15;
+	lime:				#abff4f;
+	lime-trans:			#abff4fbb;
+	lime-trans1:		#abff4fce;
 	red:				#ff0101;
-	ired:				#ff0101aa;
-	ired-trans2:		#ff010188;
+	red-trans:			#ff010155;
+	red-trans1:			#ff0101aa;
 	white:				#f5fffa;
-	white-trans:		#FFFFFFdd;
-	white-trans2:		#FFFFFF22;
-	white-trans3:		#FFFFFF88;
+	white-trans:		#f5fffa44;
+	white-trans1:		#f5fffa88;
+	white-trans2:		#f5fffacc;
 	font:				"Space Mono 25";
 }
