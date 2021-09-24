@@ -29,14 +29,15 @@ class Colors:
     DARK_GREEN = "#79B700"  # DARK
     WHITE = "#FFFFFF"
 
+
 THEME_LIGHT, THEME_PRIMARY, THEME_DARK = {
-    "Red":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
-    "Pink":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
-    "Purple":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
-    "Voilet":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
-    "Indigo":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
-    "Blue":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
-    "Green":(Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Red": (Colors.LIGHT_RED, Colors.RED, Colors.DARK_RED),
+    "Pink": (Colors.LIGHT_PINK, Colors.PINK, Colors.DARK_PINK),
+    "Purple": (Colors.LIGHT_PURPLE, Colors.PURPLE, Colors.DARK_PURPLE),
+    "Voilet": (Colors.LIGHT_VOILET, Colors.VOILET, Colors.DARK_VOILET),
+    "Indigo": (Colors.LIGHT_INDIGO, Colors.INDIGO, Colors.DARK_INDIGO),
+    "Blue": (Colors.LIGHT_BLUE, Colors.BLUE, Colors.DARK_BLUE),
+    "Green": (Colors.LIGHT_GREEN, Colors.GREEN, Colors.DARK_GREEN),
                                           }[THEME]
 
 if DYNAMIC_COLORS:
@@ -46,9 +47,9 @@ if DYNAMIC_COLORS:
     dark_primary, primary, light_primary = dc.get_colors()
     set_theme(dc.primary_color)
 else:
-    dark_primary, primary, light_primary = (Colors.THEME_LIGHT,
-                                            Colors.THEME_PRIMARY,
-                                            Colors.THEME_DARK)
+    dark_primary, primary, light_primary = (THEME_LIGHT,
+                                            THEME_PRIMARY,
+                                            THEME_DARK)
 
 
 class COLORS:

@@ -45,19 +45,19 @@ workspaces = {
     "3": {"label": "",
           "matches": {"wm_class": ["Thunar", "dolphin"]}},
     "4": {"label": "",
-          "matches": {"wm_class": ["code-oss", "jetbrains-pycharm-ce"]}},
+          "matches": {"wm_class": ["code-oss", "jetbrains-pycharm-ce", "Eclipse"]}},
     "5": {"label": "",
           "matches": {"wm_class": ["mpv", "vlc"]}},
     "6": {"label": "",
           "matches": {"wm_class": ["Spotify", "spotify"]}},
     "7": {"label": "",
-          "matches": {"wm_class": ["Discord", "Thunderbird"]}},
+          "matches": {"wm_class": ["discord", "Thunderbird"]}},
     "8": {"label": "",
           "matches": {"wm_class": ["qBittorrent", "qbittorrent"]}},
     "9": {"label": "︁",
           "matches": {"wm_class": ["Gimp-2.10"]}},
     "0": {"label": "",
-          "matches": None}
+          "matches": {"wm_class": ["zoom"]}}
               }
 
 floating_rules = [*layout.Floating.default_float_rules,

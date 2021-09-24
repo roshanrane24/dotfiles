@@ -191,17 +191,17 @@ element selected.active {
 }
 /* window.mainbox.listview.element.element-icon */
 element-icon {
+	background-color:	inherit;
 	size:				64;
 	border:				0px;
-	boder-color:		inherit;
-	text-color:			inherit;
-	horizontal-align:	true;
+	horizontal-align:	0.5;
 }
 /* window.mainbox.listview.element.element-index */
 element-index {
 }
 /* window.mainbox.listview.element.element-text */
 element-text {
+	background-color:	inherit;
 	text-color:			inherit;
 	horizontal-align:	0.5;
 	expand:				true;

@@ -7,3 +7,5 @@ alias lha='ls -lha'
 # >>> ncdu 
 alias ncdu='ncdu --color dark'
 # <<< ncdu
+# >>> Alias
+alias vim=nvim

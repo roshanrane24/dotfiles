@@ -155,8 +155,8 @@ main_screen_bar = bar.Bar([
     widget.Systray(
         background=widget_background,
         foreground=widget_foreground,
-        icon_size=25,
-        padding=0
+        icon_size=16,
+        padding=2
     ),
     mid_sep,
     clock,
@@ -269,13 +269,13 @@ second_screen_bar = bar.Bar([
         font='SpaceMono Nerd Font',
     ),
     mid_sep,
-    widget.ThermalSensor(
-        font='SpaceMono Nerd Font',
-        background=widget_background,
-        foreground=widget_foreground,
-        foreground_alert=COLORS.URGENT,
-        threshold=59
-    ),
+    # widget.ThermalSensor(
+        # font='SpaceMono Nerd Font',
+        # background=widget_background,
+        # foreground=widget_foreground,
+        # foreground_alert=COLORS.URGENT,
+        # threshold=59
+    # ),
     mid_sep,
     widget.HDDBusyGraph(
         background=widget_background,
