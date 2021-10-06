@@ -79,7 +79,9 @@ AUTO_NOTIFY_IGNORE+=("docker", "man", "sleep", "info", "python")
 #zinit light jeffreytse/zsh-vi-mode
 
 #bd
-zinit load b4b4r07/enhancd
+zinit ice atclone'./init.sh' nocompile'!' wait'!0' 
+zinit light b4b4r07/enhancd 
+
 # <<< Plugins
 
 # >>> Prompt Engine
