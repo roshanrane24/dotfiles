@@ -38,7 +38,7 @@ repo()
     fi
 
     echo $giturl
-    o $giturl
+ # $giturl
   fi
 }
 
