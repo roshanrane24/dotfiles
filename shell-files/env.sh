@@ -25,3 +25,6 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # EDITOR
 export EDITOR=vim
+
+# JAVA
+export JAVA_HOME=/usr/lib/jvm/java-16-openjdk
