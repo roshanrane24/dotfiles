@@ -1,6 +1,8 @@
 {
     "diagnostic.refreshOnInsertMode": true,
     "diagnostic.displayByAle": false,
+
+    // Python
     "pyright.enable": true,
     "python.venvPath": "./bin",
     "python.linting.enabled": true,
@@ -8,4 +10,5 @@
     "python.linting.pylintEnabled": false,
     "pyright.completion.snippetSupport": true,
     "python.linting.flake8Path": "/bin/flake8"
+
 }
