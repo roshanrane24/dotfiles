@@ -45,7 +45,7 @@ set nofoldenable                "Disable folding by default.
 set nobackup                    "Disable Backup Files
 set nowritebackup               "Disable Backup
 set noswapfile                  "Diasble Swap Files
-set cmdheight=2                 "Commad Line height
+set cmdheight=1                 "Commad Line height
 set autoread                    "Automatically re-read files if unmodified inside Vim
 set backspace=indent,eol,start  "Allow backspacing over indention, line breaks and insertion start.
 set backupdir=~/.cache/vim:     "Directory to store backup files
@@ -87,7 +87,7 @@ endif
 " >>> NerdTree
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', 'node_modules']
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '.class' ,'\.db$', '\.sqlite$', '__pycache__', 'node_modules']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
@@ -124,9 +124,9 @@ let g:fzf_colors =
 
 " See `man fzf-tmux` for available options
 if exists('$TMUX')
-  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+  let g:fzf_layout = { 'tmux': '-p90%,80%' }
 else
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 endif
 ">>> Rainbow
 let g:rainbow_active = 1
@@ -144,13 +144,12 @@ let g:airline_theme='badwolf'
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html',
                           \ 'coc-sh', 'coc-sql', 'coc-clangd',
                           \ 'coc-clang-format-style-options',
-                          \ 'coc-cmake', 'coc-css', 'coc-flutter',
-                          \ 'coc-fzf-preview', 'coc-go', 'coc-graphql',
-                          \ 'coc-htmldjango', 'coc-java', 'coc-tsserver',
-                          \ 'coc-xml', 'coc-yaml', 'coc-pydocstring',
-                          \ 'coc-pyright', 'coc-snippets', 'coc-diagnostic',
-                          \ 'coc-java', 'coc-toml', 'coc-markdownlint',
-                          \ 'coc-lua']
+                          \ 'coc-cmake', 'coc-css', 'coc-fzf-preview',
+                          \ 'coc-go', 'coc-graphql', 'coc-htmldjango',
+                          \ 'coc-tsserver', 'coc-xml', 'coc-yaml',
+                          \ 'coc-pydocstring', 'coc-pyright', 'coc-snippets',
+                          \ 'coc-diagnostic', 'coc-toml', 'coc-markdownlint',
+                          \ 'coc-lua', 'coc-java']
 
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
