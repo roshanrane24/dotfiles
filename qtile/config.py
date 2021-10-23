@@ -44,6 +44,11 @@ def autostart():
         ["xset", "b", "off"],
         ["/usr/bin/light-locker", "--lock-after-screensaver=5",
          "--lock-on-suspend", "--lock-on-lid"],
+        ["cbatticon", "-u", "10", "-l", "18", "-r", "6", "-c",
+         "\"systemctl suspend\""],
+        ["nm-applet"],
+        ["pasystray", "-m", "125"],
+        ["mictray"],
     ]
 
     for p in processes:
