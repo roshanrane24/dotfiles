@@ -30,7 +30,7 @@ clock = widget.Clock(
     background=widget_background,
     foreground=widget_foreground,
     font='SpaceMono Nerd Font',
-    format="%a %d %b %Y %H:%M",
+    format="%d|%m|%Y | %H:%M",
     update_interval=5.5,
     )
 
@@ -105,58 +105,58 @@ main_screen_bar = bar.Bar([
         format=' {percent:2.0%}'
     ),
     mid_sep,
-    widget.PulseVolume(
-        background=widget_background,
-        foreground=widget_foreground,
-        # theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
-        emoji=True,
-        font='SpaceMono Nerd Font',
-        padding=2,
-        update_interval=0.1
-    ),
-    widget.PulseVolume(
-        background=widget_background,
-        foreground=widget_foreground,
-        font='SpaceMono Nerd Font',
-        padding=5,
-        update_interval=0.1
-    ),
-    mid_sep,
-    widget.Wlan(
-        background=widget_background,
-        foreground=widget_foreground,
-        disconnected_message="睊",
-        font='SpaceMono Nerd Font',
-        format="{essid} {quality}"
-    ),
-    mid_sep,
-    widget.BatteryIcon(
-        background=widget_background,
-        foreground=widget_foreground,
-        update_interval=20,
-        # theme_path='/usr/share/icons/Papirus-Dark/16x16/panel',
-        theme_path='/usr/share/icons/Flat-Remix-Green-Dark/panel',
-    ),
-    widget.Battery(
-        # charge_char=" ",
-        # discharge_char=" ",
-        # empty_char=" ",
-        # full_char=" ",
-        format="{percent:2.0%}",
-        # low_percent=0.15,
-        # notify_below=15,
-        # show_short_text=False,
-        background=widget_background,
-        foreground=widget_foreground,
-        font='SpaceMono Nerd Font',
-        padding=0,
-    ),
-    mid_sep,
+    # widget.PulseVolume(
+        # background=widget_background,
+        # foreground=widget_foreground,
+        # # theme_path='/usr/share/icons/Papirus-Dark/22x22/panel/',
+        # emoji=True,
+        # font='SpaceMono Nerd Font',
+        # padding=2,
+        # update_interval=0.1
+    # ),
+    # widget.PulseVolume(
+        # background=widget_background,
+        # foreground=widget_foreground,
+        # font='SpaceMono Nerd Font',
+        # padding=5,
+        # update_interval=0.1
+    # ),
+    # mid_sep,
+    # widget.Wlan(
+        # background=widget_background,
+        # foreground=widget_foreground,
+        # disconnected_message="睊",
+        # font='SpaceMono Nerd Font',
+        # format="{essid} {quality}"
+    # ),
+    # mid_sep,
+    # widget.BatteryIcon(
+        # background=widget_background,
+        # foreground=widget_foreground,
+        # update_interval=20,
+        # # theme_path='/usr/share/icons/Papirus-Dark/16x16/panel',
+        # theme_path='/usr/share/icons/Flat-Remix-Green-Dark/panel',
+    # ),
+    # widget.Battery(
+        # # charge_char=" ",
+        # # discharge_char=" ",
+        # # empty_char=" ",
+        # # full_char=" ",
+        # format="{percent:2.0%}",
+        # # low_percent=0.15,
+        # # notify_below=15,
+        # # show_short_text=False,
+        # background=widget_background,
+        # foreground=widget_foreground,
+        # font='SpaceMono Nerd Font',
+        # padding=0,
+    # ),
+    # mid_sep,
     widget.Systray(
         background=widget_background,
         foreground=widget_foreground,
         icon_size=16,
-        padding=2
+        padding=5
     ),
     mid_sep,
     clock,
