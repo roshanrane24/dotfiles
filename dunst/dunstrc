@@ -7,8 +7,13 @@
 
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
-    geometry = "400-5+26"
+    # geometry = "400-5+26"
+    width = (250,400)
+    height = (0, 80)
+    origin = top, right
+    offset = 10x27
 
+    scale = 0
     # Progress bar
     progress_bar = true
     progress_bar_height = 15
@@ -24,10 +29,10 @@
     shrink = yes
 
     # The transparency of the window.  Range: [0; 100].
-    transparency = 0
+    transparency = 5
 
     # The height of the entire notification.
-    notification_height = 100
+    # notification_height = 100
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -124,7 +129,7 @@
 
     # When word_wrap is set to no, specify where to make an ellipsis in long lines.
     # Possible values are "start", "middle" and "end".
-    ellipsize = middle
+    ellipsize = end
 
     # Ignore newlines '\n' in notifications.
     ignore_newline = false
@@ -163,7 +168,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/rofi -dmenu -p dunst -theme qtile-dynamic-clear -no-show-icons
+    dmenu = /usr/bin/rofi -dmenu -p dunst -theme dmenu -no-show-icons
     # Browser for opening urls in context menu.
     browser = /usr/bin/brave
 
@@ -177,17 +182,17 @@
     class = Dunst
 
     # Print a notification on startup.
-    startup_notification = false
+    #startup_notification = false
 
     #  crit: Critical features. Dunst aborts
     #  warn: Only non-fatal warnings
     #  mesg: Important Messages
     #  info: all unimportant stuff
     # debug: all less than unimportant stuff
-    verbosity = mesg
+    #verbosity = mesg
 
     # Define the corner radius of the notification window
-    corner_radius = 0
+    corner_radius = 10
 
     ### Legacy
     # Use the Xinerama extension instead of RandR for multi-monitor support.
@@ -202,21 +207,21 @@
 
     ignore_dbusclose = false
 
-[experimental]
-    per_monitor_dpi = false`
+#[experimental]
+    # per_monitor_dpi = 92
 
-[shortcuts]
-    # Close notification.
-    close = ctrl+space
+#[shortcuts]
+    ## Close notification.
+    #close = ctrl+space
 
-    # Close all notifications.
-    close_all = ctrl+shift+space
+    ## Close all notifications.
+    #close_all = ctrl+shift+space
 
-    # Redisplay last message(s).
-    history = ctrl+grave
+    ## Redisplay last message(s).
+    #history = ctrl+grave
 
-    # Context menu.
-    context = shift+space
+    ## Context menu.
+    #context = shift+space
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
