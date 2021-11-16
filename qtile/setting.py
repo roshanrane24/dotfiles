@@ -11,8 +11,8 @@ if DYNAMIC_COLORS:
     ROFI_THEME = 'qtile-dynamic-solid'
     THEME = 'Green'
 else:
-    ROFI_THEME = 'lime-amber'
-    THEME = 'Green'
+    ROFI_THEME = 'qtile-dynamic-solid'
+    THEME = 'Pink' # Red Pink Purple Voilet Indigo Blue Pink
 
 
 # Applications
@@ -35,6 +35,10 @@ bar_config = {
     "margin": 0,
     "opacity": 1,
 }
+
+## Tranparency for bar elements [0-9]
+widget_trans = 7
+bar_trans = 3
 
 # Worspaces/Group
 workspaces = {

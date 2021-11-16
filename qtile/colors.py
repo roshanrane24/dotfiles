@@ -1,4 +1,5 @@
 from setting import DYNAMIC_COLORS, THEME
+import os
 
 
 class Colors:
@@ -47,9 +48,26 @@ if DYNAMIC_COLORS:
     dark_primary, primary, light_primary = dc.get_colors()
     set_theme(dc.primary_color)
 else:
-    dark_primary, primary, light_primary = (THEME_LIGHT,
+    dark_primary, primary, light_primary = (THEME_DARK,
                                             THEME_PRIMARY,
-                                            THEME_DARK)
+                                            THEME_LIGHT)
+    with open(os.path.join(os.environ["HOME"], ".cache/dynamic-rofi.rasi"),
+              'w') as css:
+        lines = ["* {\n",
+                 f"dark-primary: {dark_primary};\n",
+                 f"dark-primary-trans: {dark_primary}44;\n",
+                 f"dark-primary-trans1: {dark_primary}88;\n",
+                 f"dark-primary-trans2: {dark_primary}BB;\n",
+                 f"primary: {primary};\n",
+                 f"primary-trans: {primary}44;\n",
+                 f"primary-trans1: {primary}88;\n",
+                 f"primary-trans2: {primary}BB;\n",
+                 f"light-primary: {light_primary};\n",
+                 f"light-primary-trans: {light_primary}44;\n",
+                 f"light-primary-trans1: {light_primary}88;\n",
+                 f"light-primary-trans2: {light_primary}BB;\n",
+                 "}"]
+        css.writelines(lines)
 
 
 class COLORS:

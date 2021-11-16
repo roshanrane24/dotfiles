@@ -1,24 +1,24 @@
 from libqtile import bar, widget, qtile
 from colors import COLORS
-from setting import bar_config
+from setting import bar_config, widget_trans, bar_trans
 
 
-widget_background = COLORS.BACKGROUND
-widget_foreground = COLORS.PRIMARY
-bar_background = COLORS.BACKGROUND
+widget_background = COLORS.BACKGROUND + f".{widget_trans}"
+widget_foreground = COLORS.LIGHT_PRIMARY
+bar_background = COLORS.BACKGROUND + f".{bar_trans}"
 
 
 # Common Widgets
 end_sep = widget.Sep(
     background=widget_background,
-    foreground=COLORS.LIGHT_BACKGROUND,
+    foreground=COLORS.LIGHT_BACKGROUND + f".{widget_trans}",
     linewidth=1,
     padding=3,
     size_percent=80,
     )
 mid_sep = widget.Sep(
     background=widget_background,
-    foreground=COLORS.LIGHT_BACKGROUND,
+    foreground=COLORS.LIGHT_BACKGROUND + f".{widget_trans}",
     linewidth=1,
     padding=3,
     margin=5,
@@ -28,7 +28,7 @@ mid_sep = widget.Sep(
 clock = widget.Clock(
     timezone="Asia/Kolkata",
     background=widget_background,
-    foreground=widget_foreground,
+    foreground=COLORS.LIGHT_PRIMARY,
     font='SpaceMono Nerd Font',
     format="%d|%m|%Y | %H:%M",
     update_interval=5.5,
@@ -49,7 +49,7 @@ main_screen_bar = bar.Bar([
         font='Font Awesome 5 Free,Font Awesome 5 Free Regular',
         foreground=COLORS.LIGHT_FONT,                      # For unused groups
         hide_unused=True,
-        highlight_color=[COLORS.BACKGROUND],
+        highlight_color=[COLORS.BACKGROUND + f".{min(9, widget_trans + 1)}"],
         highlight_method="line",
         inactive=COLORS.LIGHT_BACKGROUND,
         # Inactive Screen Bar > Active Screen Group
@@ -91,7 +91,9 @@ main_screen_bar = bar.Bar([
         font='SpaceMono Nerd Font'
     ),
     mid_sep,
-    widget.Spacer(),
+    widget.Spacer(
+        background=widget_background,
+    ),
     mid_sep,
     widget.Backlight(
         brightness_file="/sys/class/backlight/intel_backlight/brightness",
@@ -168,7 +170,7 @@ main_screen_bar = bar.Bar([
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
-                "sh -c '~/.config/dunst/scripts/notification-center'"
+                "sh -c 'wlogout'"
             )
         },
         padding=7
@@ -191,7 +193,7 @@ second_screen_bar = bar.Bar([
         font='Font Awesome 5 Free,Font Awesome 5 Free Regular',
         foreground=COLORS.LIGHT_FONT,                      # For unused groups
         hide_unused=True,
-        highlight_color=[COLORS.BACKGROUND],
+        highlight_color=[COLORS.BACKGROUND + f".{min(9, widget_trans + 1)}"],
         highlight_method="line",
         inactive=COLORS.LIGHT_BACKGROUND,
         # Inactive Screen Bar > Active Screen Group
@@ -232,7 +234,9 @@ second_screen_bar = bar.Bar([
         font='SpaceMono Nerd Font'
     ),
     mid_sep,
-    widget.Spacer(),
+    widget.Spacer(
+        background=widget_background,
+    ),
      mid_sep,
     # widget.WidgetBox(
     #     widget=[widget.BitcoinTicker(font='SpaceMono Nerd Font',
@@ -298,7 +302,7 @@ second_screen_bar = bar.Bar([
         font='SpaceMono Nerd Font',
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(
-                "zsh -c '~/.config/dunst/scripts/notification-center'"
+                "sh -c 'wlogout'"
             )
         },
         padding=7

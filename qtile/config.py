@@ -43,11 +43,11 @@ def autostart():
         ["numlockx", "on"],
         ["xset", "b", "off"],
         ["/usr/bin/light-locker", "--lock-after-screensaver=5",
-         "--lock-on-suspend", "--lock-on-lid"],
+         "--lock-on-suspend", "--lock-on-lid", "--late-locking"],
         ["cbatticon", "-u", "10", "-l", "18", "-r", "6", "-c",
          "\"systemctl suspend\""],
         ["nm-applet"],
-        ["pasystray", "-m", "125"],
+        ["pasystray", "-m", "125", "-t"],
         ["mictray"],
     ]
 

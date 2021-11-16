@@ -1,6 +1,6 @@
 from libqtile import layout
 from libqtile.config import Screen
-from setting import floating_rules
+from setting import floating_rules, widget_trans, bar_trans
 from colors import COLORS
 from bars import main_screen_bar, second_screen_bar
 from functions import Display
@@ -46,8 +46,8 @@ layouts = [
     layout.TreeTab(
         active_bg=COLORS.LIGHT_PRIMARY,
         active_fg=COLORS.DARK_FONT,
-        bg_color=COLORS.BACKGROUND,
-        border_width=0,
+        bg_color=COLORS.BACKGROUND + f".{widget_trans + 1}",
+        border_width=1,
         inactive_bg=COLORS.DARK_PRIMARY,
         inactive_fg=COLORS.LIGHT_FONT,
         level_shift=4,
@@ -58,7 +58,7 @@ layouts = [
         previous_on_rm=True,
         sections=["Main", "Extra"],
         section_bottom=9,
-        section_fg=COLORS.LIGHT_BACKGROUND,
+        section_fg=COLORS.BACKGROUND,
         section_fontsize=14,
         section_left=19,
         section_padding=19,
