@@ -4,7 +4,7 @@ import subprocess
 from setting import HOME, SCREEN
 from groups import groups
 from keybinds import keys
-from layout_screen import display, floating_layout, layouts, screens
+from layout_screen import floating_layout, layouts, screens
 from libqtile import hook
 
 # Configuration Variables
@@ -30,11 +30,11 @@ groups = groups
 
 
 # Calling Hooks
-def randr():
-    if SCREEN == 'extend':
-        display.set_extend_all()
-    elif SCREEN == 'mirror':
-        display.set_mirror_all()
+# def randr():
+#     if SCREEN == 'extend':
+#         display.set_extend_all()
+#     elif SCREEN == 'mirror':
+#         display.set_mirror_all()
 
 
 @hook.subscribe.startup_once
@@ -42,8 +42,10 @@ def autostart():
     processes = [
         ["numlockx", "on"],
         ["xset", "b", "off"],
-        ["/usr/bin/light-locker", "--lock-after-screensaver=5",
-         "--lock-on-suspend", "--lock-on-lid", "--late-locking"],
+        ["xrandr", "--auto"],
+        ["xset", "s", "600", "300"],
+        ["xset", "dpms", "900", "1500", "2100"],
+        ["xss-lock", "-l", "betterlockscreen"],
         ["cbatticon", "-u", "10", "-l", "18", "-r", "6", "-c",
          "\"systemctl suspend\""],
         ["nm-applet"],
@@ -64,16 +66,11 @@ def wallpaper():
     subprocess.call([os.path.join(HOME, ".fehbg")])
 
 
-@hook.subscribe.startup_complete
-def randr_scom():
-    randr()
-
-
-@hook.subscribe.client_new
-def floating_dialogs(window):
-    if ((window.window.get_wm_type() == 'dialog') or
-       (window.window.get_wm_transient_for())):
-        window.floating = True
+# @hook.subscribe.client_new
+# def floating_dialogs(window):
+#     if ((window.window.get_wm_type() == 'dialog') or
+#        (window.window.get_wm_transient_for())):
+#         window.floating = True
 
 
 @hook.subscribe.client_new
@@ -84,5 +81,5 @@ def spotify_6(window):
 
 
 @hook.subscribe.screen_change
-def randr_sc():
-    randr()
+def refresh_screens():
+    subprocess.Popen(["xrandr", "--auto"])
