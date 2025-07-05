@@ -1,0 +1,60 @@
+* {
+    color: @theme-_text_color;
+}
+
+.monitor {
+    background: @theme_bg_color;
+}
+
+.monitor_active {
+    border: var(--border-size) solid @borders;
+}
+
+.index {
+    background: orange;
+}
+
+.workspace {
+    background: @theme_base_color;
+}
+
+.workspace_special {
+    border: var(--border-size) solid yellow;
+}
+
+.workspace_active {
+    border: var(--border-size) solid purple;
+}
+
+.client-image {
+    background: @theme_selected_bg_color;
+}
+
+.client {
+    background: @theme_bg_color;
+}
+
+.client_active {
+    border: var(--border-size) solid @border;
+}
+
+
+.launcher {
+    background: pink;
+}
+
+.launcher-entry {
+    background: greenyellow;
+}
+
+.launcher-list {
+    background: blue;
+}
+
+.launcher-item {
+    background: red;
+}
+
+.launcher-item-selected {
+    background-color: aqua;
+}

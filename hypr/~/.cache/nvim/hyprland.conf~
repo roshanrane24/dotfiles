@@ -1,20 +1,12 @@
 ### PROGRAMS/VARIABLES ###
 
 $scriptPath = $HOME/.config/shell-files
-$mainMod = super
-$altMod = alt
-$key = tab
-$reverse = grave
+$mainMod = SUPER 
 $terminal = ghostty
 $fileManager = dolphin
-$fileManager2 = nautilus
 $browser = brave
-$browser2 = opera
-$menu = rofi -show-icons -show drun -matching fuzzy -run-command "uwsm app -- {cmd}" -modi drun
-$menuWindows = rofi -show-icons -show window -matching fuzzy -modi window
-
-### ENVIRONMENT VARIABLES ###
-source = ~/.config/hypr/hypr-environment.conf
+$menu = rofi -show drun -matching fuzzy -modi run,combi
+$menuWindows = rofi -show window -matching fuzzy -modi window
 
 ### Monitors ##
 source = ~/.config/hypr/hypr-monitors.conf
@@ -22,8 +14,8 @@ source = ~/.config/hypr/hypr-monitors.conf
 ### AUTOSTART ###
 source = ~/.config/hypr/hypr-autostart.conf
 
-### PLUGINS ###
-source = ~/.config/hypr/hypr-plugins.conf
+### ENVIRONMENT VARIABLES ###
+source = ~/.config/hypr/hypr-environment.conf
 
 ### ANIMATIONS ###
 source = ~/.config/hypr/hypr-animations.conf
@@ -58,4 +50,8 @@ source = ~/.config/hypr/hypr-misc.conf
 # windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
 # windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
 # windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
-#
+
+experimental {
+    #hdr = true
+}
+
