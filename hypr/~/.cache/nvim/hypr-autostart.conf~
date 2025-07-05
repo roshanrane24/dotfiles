@@ -1,4 +1,0 @@
-exec-once = $terminal
-exec-once = waybar & hyprpaper
-exec-once = avizo-service
-
