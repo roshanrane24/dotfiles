@@ -1,11 +1,12 @@
 [Unit]
-Description=KDE Connect
-After=multi-user.target
+Description=KDE Connect Tray Indicator
+Documentation=https://userbase.kde.org/KDEConnect
+# order startup after WM
+After=app-org.kde.kdeconnect.daemon@autostart.service
 
 [Service]
+Type=exec
+# Repurpose XDG Autostart filtering
 ExecStart=/usr/bin/kdeconnect-indicator
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=default.target
+Restart=on-failure
+RestartSec=10s

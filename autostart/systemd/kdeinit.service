@@ -1,0 +1,8 @@
+[Unit]
+Description=KDE 'kdeinit' - TODO
+After=wayland-session@hyprland.desktop.target
+
+[Service]
+ExecStart=/usr/bin/kdeinit5 +kcminit_startup --no-fork
+KillMode=none
+BusName=org.kde.klauncher5

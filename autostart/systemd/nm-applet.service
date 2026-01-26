@@ -1,0 +1,10 @@
+[Unit]
+Description=Network Manager Applet
+After=waybar.service
+
+[Service]
+ExecStart=/usr/bin/nm-applet
+Restart=on-failure
+
+[Install]
+WantedBy=wayland-session@hyprland.desktop.target

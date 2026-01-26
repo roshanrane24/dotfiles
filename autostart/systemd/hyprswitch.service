@@ -1,0 +1,15 @@
+[Unit]
+Description=HyprSwitch Appswicher for Hyprland
+Documentation=man:hyprswitch
+# order startup after WM
+After=graphical-session.target
+
+[Service]
+Type=service
+# Repurpose XDG Autostart filtering
+ExecStart=hyprswitch init --show-title --size-factor 5 --workspaces-per-row 5  --custom-css=/home/greenalien/.config/hypr/hyprswitch.css
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

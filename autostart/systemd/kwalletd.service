@@ -1,0 +1,8 @@
+[Unit]
+Description=KDE Secret Wallet
+Requires=kdeinit.service
+
+[Service]
+ExecStart=/usr/bin/kwalletd5
+ExecStop=/usr/bin/kquitapp5 kwalletd5
+BusName=org.kde.kwalletd5
