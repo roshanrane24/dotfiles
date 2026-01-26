@@ -1,3 +1,5 @@
+HOME = os.getenv("HOME")
+
 --- Indentation
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
@@ -25,15 +27,16 @@ vim.opt.cursorline = true
 vim.opt.tabpagemax = 50
 vim.opt.background = "dark"
 vim.opt.showmode = true
--- Misc
+-- Backup
 vim.opt.backup = true
 vim.opt.writebackup = true
 vim.opt.swapfile = true
+vim.opt.backspace = "indent,eol,start"
+vim.opt.backupdir = HOME .. "/.cache/nvim"
+vim.opt.dir = HOME .. "/.cache/nvim"
+-- Misc
 vim.opt.cmdheight = 1
 vim.opt.autoread = true
-vim.opt.backspace = "indent,eol,start"
--- set backupdir=~/.cache/vim:     "Directory to store backup files
--- set dir=~/.cache/vim            "Directory to store swap files.
 -- set formatoptions+=j            "Delete comment characters when joining lines.
 vim.opt.history = 1000
 vim.opt.shell = "/bin/sh"

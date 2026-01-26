@@ -1,3 +1,8 @@
 require("swolf.lazy")
 require("swolf.set")
 require("swolf.remap")
+require("swolf.lsp")
+require("swolf.mason")
+require("swolf.cmp")
+require("swolf.telescope")
+require("swolf.dap")
