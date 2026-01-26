@@ -148,3 +148,5 @@ __git_prompt()
     return
   fi
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
