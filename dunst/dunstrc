@@ -10,8 +10,8 @@
     # geometry = "400-5+26"
     width = (250,400)
     height = (0, 80)
-    origin = top, right
-    offset = 10x27
+    origin = bottom, right
+    offset = (10, 27)
 
     scale = 0
     # Progress bar
