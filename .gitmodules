@@ -1,3 +1,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:roshanrane24/nvim-config.git
+[submodule "hypr"]
+	path = hypr
+	url = git@github.com:roshanrane24/hypr-config.git
