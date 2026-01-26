@@ -5,13 +5,14 @@ export PATH=$PATH:$HOME/.local/bin:/usr/local/go/bin:$HOME/.cargo/bin
 export LS_COLORS="$(vivid generate jellybeans)"
 
 # >>> Locale
-export LC_ALL="en_US.UTF-8"
+export LC_ALL="en_IN.UTF-8"
 
 # >>> prompt
 export PS1='\e[32m\w\n\e[031m>\e[m '
 
 # >>> qt-gtk theme
-export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 # Ignore These Commands in history
 export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:hibernate*:history*"}
@@ -27,7 +28,7 @@ export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:hibernate*:history*"}
 export EDITOR=vim
 
 # DOTFILES
-export DOTFILES_PATH='~/.config/dotfiles'
+export DOTFILES_PATH="$HOME/.config/dotfiles"
 
 # JAVA
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk

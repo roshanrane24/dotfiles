@@ -77,7 +77,6 @@ else
 fi
 }
 
-
 zle -N zle-keymap-select
 
 # ensure beam cursor when starting new terminal
@@ -88,4 +87,3 @@ zle-line-init() { zle -K viins; _set_beam_cursor }
 zle-line-finish() { _set_block_cursor }
 zle -N zle-line-finish
 
-notify-send() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
