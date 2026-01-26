@@ -1,0 +1,69 @@
+log_level = "info"
+outputs = "All"
+position = "Top"
+app_launcher_cmd = "walker"
+
+[modules]
+left = [["appLauncher", "Workspaces", "Updates"]]
+center = ["WindowTitle"]
+right = ["SystemInfo", ["Tray", "Clock", "Privacy", "Settings"]]
+
+[updates]
+check_cmd = "checkupdates; paru -Qua"
+update_cmd = 'alacritty -e bash -c "paru; echo Done - Press enter to exit; read" &'
+
+[workspaces]
+enable_workspace_filling = false
+workspace_names = [ "", "", "", "", "", "", "", "", "", ""]
+
+
+[[CustomModule]]
+name = "appLauncher"
+icon = ""
+command = "walker"
+
+[window_title]
+truncate_title_after_length = 100
+
+[settings]
+lock_cmd = "playerctl --all-players pause; nixGL hyprlock &"
+audio_sinks_more_cmd = "pavucontrol -t 3"
+audio_sources_more_cmd = "pavucontrol -t 4"
+wifi_more_cmd = "nm-connection-editor"
+vpn_more_cmd = "nm-connection-editor"
+bluetooth_more_cmd = "blueberry"
+
+[appearance]
+style = "Solid"
+font_name = "SpaceMono Nerd Font"
+scale_factor = 1.2
+opacity = 0.98
+#primary_color = "#7aa2f7"
+# success_color = "#9ece6a"
+# text_color = "#a9b1d6"
+# workspace_colors = ["#7aa2f7", "#9ece6a"]
+special_workspace_colors = ["#7aa2f7", "#9ece6a"]
+success_color = "#a6e3a1"
+text_color = "#cdd6f4"
+workspace_colors = ["#33d17a", "#3d3846", "#00f607"]
+
+[appearance.menu]
+opacity = 0.99
+backdrop = 0
+
+[appearance.primary_color]
+base = "#33d17a"
+text = "#241f31"
+
+[appearance.danger_color]
+base = "#f38ba8"
+weak = "#f9e2af"
+
+[appearance.background_color]
+base = "#24252e"
+weak = "#303340"
+strong = "#272a34"
+
+[appearance.secondary_color]
+base = "#11111b"
+strong = "#1b1b25"
