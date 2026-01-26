@@ -3,24 +3,27 @@ HISTFILE=~/.cache/zsh-history
 HISTSIZE=1000
 SAVEHIST=3000
 unsetopt beep
+
+# Load completion
+fpath+=~/.zfunc
 #bindkey -v # Vim Keybinds
 # <<< End of lines configured by zsh-newuser-install
 # >>> The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
-#autoload -Uz compinit
-#compinit
+autoload -Uz compinit
+compinit
 # <<< End of lines added by compinstall
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/greenalien/.local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-  if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
-    . "/opt/anaconda/etc/profile.d/conda.sh"
-  else
-      export PATH="/opt/anaconda/bin:$PATH"
-  fi
+    if [ -f "/home/greenalien/.local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/greenalien/.local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/greenalien/.local/anaconda3/bin:$PATH"
+    fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
@@ -62,7 +65,7 @@ then
   zinit light zdharma/fast-syntax-highlighting
   #
   #AutoComplete
-  #zinit light marlonrichert/zsh-autocomplete
+  zinit light marlonrichert/zsh-autocomplete
 
   #URL Highlighter
   zinit light ascii-soup/zsh-url-highlighter
@@ -70,7 +73,11 @@ then
   #Autosuggetion
   zinit light zsh-users/zsh-autosuggestions
   #FZF
-  zinit light junegunn/fzf
+  if [ ! -f ~/.fzf.zsh ]
+  then
+    zinit ice atload'./install'
+    zinit light junegunn/fzf
+  fi
 
   # AutoEnv
   #zinit load wookayin/zsh-autoswitch-virtualenv
@@ -103,12 +110,20 @@ then
   zinit light b4b4r07/enhancd 
 fi
 # <<< Plugins
-# >>> TMUX\
+# >>> TMUX
 tmux has-session -t default
-if [ "$(echo $?)" != 0 ]
+if [ "$?" != 0 ]
 then
   tmux new-session -s default
 fi
+
+tmux-attach-default () {
+    if [ -z $TMUX ]
+    then
+      tmux attach-session -t default
+    fi
+}
+
 # <<< TMUX
 # >>> Prompt Engine
 autoload -Uz promptinit
