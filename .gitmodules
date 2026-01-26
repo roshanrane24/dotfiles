@@ -4,3 +4,6 @@
 [submodule "hypr"]
 	path = hypr
 	url = git@github.com:roshanrane24/hypr-config.git
+[submodule "bifrost"]
+	path = bifrost
+	url = git@github.com:roshanrane24/bifrost.git
