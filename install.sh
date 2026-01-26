@@ -442,7 +442,8 @@ function install_tmux() {
 function install_vim() {
     echo "Setting Up Vim"
     printf "[Vim/NeoVim]:"
-    vn=`read`
+    read -r vn
+    echo $vn
     case $vn in
         vim|Vim|VIM|v)
             vimPath="$HOME/.vim"
@@ -454,10 +455,10 @@ function install_vim() {
         neo|neovim|Neovim|NeoVim|nv|n|NEOVIM|nvim)
             vimPath="$HOME/.config/nvim"
             # Plug
-            sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+            #sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+            #   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-            link_file "$PWD/nvim/init.vim" $vimPath
+            link_files "$PWD/nvim" $vimPath
             ;;
         *)
             echo "Not a Valid Choice"
@@ -495,33 +496,49 @@ function package_install() {
     fi
 }
 
-function link_file(){
-   if [[ ! -d $(ls -d $1) ]]; then
-      echo "Source Directory Doesn't Exist"
-      return
-   fi
-   for file in $(ls -p $1 | grep -v /); do
-      if [[ -e  "$2/$file" ]]; then
-        echo "$file File Already Exist"
-        printf "Do you want to replace file with new link? [y/N]"
-         read -r confirm
+function link_files(){
+    if [[ ! -e $1 ]]
+    then
+	echo 'Source file does not exist'
+	return
+    fi
 
-        case $confirm in
-            Y|y|yes|Yes|YES)
-                rm -f "$2/$file"
-                ln "$1/$file" "$2/$file"
-                ;;
-            N|n|no|No|NO)
-                echo "$file file unchanged"
-                ;;
-            *)
-                echo "$file file unchanged"
-                ;;
-        esac
-      else
-        ln "$1/$file" "$2/$file"
-      fi
-   done
+    if [[ -d $1 ]]; then
+	if [[ ! -d $2 ]]
+	then
+	    mkdir $2 2> /dev/null
+	fi
+	for node in $(ls -p $1);
+	do
+	    if [[ -d "$1/$node" ]]
+	    then
+	        mkdir "$2/$node" 2> /dev/null
+	        link_files "$1/$node" "$2/$node"
+	    elif [[ -e "$2/$node" ]]
+	    then
+		echo "$2/$node File Already Exist"
+		printf "Do you want to replace file with new link? [y/N]"
+		read -r confirm
+
+		case $confirm in
+		    Y|y|yes|Yes|YES)
+			rm -f "$2/$node"
+			link_files "$1/$node" "$2/$node"
+			;;
+		    N|n|no|No|NO)
+			echo "$file file unchanged"
+			;;
+		    *)
+			echo "$file file unchanged"
+			;;
+		esac
+	    else
+		link_files "$1/$node" "$2/$node"
+	    fi
+       done
+    else
+	ln -sf "$1" "$2"
+    fi
 }
 
 function any_key() {
